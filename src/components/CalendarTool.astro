@@ -78,7 +78,9 @@ import { zones, MONTHS } from '@/lib/calendar';
 <script>
   // Imports the same derivation the zone pages render with, so the tool and the
   // static pages can never disagree.
-  import { zones, windowsFor, monthsFrom, formatDay } from '@/lib/calendar';
+  import {
+    zones, windowsFor, monthsFrom, successionFor, formatDay, SUCCESSION_EVERY_DAYS,
+  } from '@/lib/calendar';
 
   const zoneSel = document.getElementById('cal-zone') as HTMLSelectElement | null;
   const monthSel = document.getElementById('cal-month') as HTMLSelectElement | null;
@@ -153,7 +155,7 @@ import { zones, MONTHS } from '@/lib/calendar';
       const custom = lf !== z.lastFrostDay || ff !== z.firstFrostDay;
 
       const season = ((ff - lf + 365) % 365) || 365;
-      const months = monthsFrom(windowsFor(lf, ff));
+      const months = monthsFrom(windowsFor(lf, ff), successionFor(lf, ff));
       const month = months[Number(monthSel!.value)];
 
       meta!.innerHTML = custom
@@ -163,13 +165,12 @@ import { zones, MONTHS } from '@/lib/calendar';
           `and its first fall frost around <strong>${esc(z.firstFrost)}</strong>. ` +
           `<a href="/planting-calendar/zone-${z.zone}/">See the full zone ${z.zone} calendar</a>.`;
 
-      if (!month || month.entries.length === 0) {
+      if (!month || (month.entries.length === 0 && month.resow.length === 0)) {
         out!.innerHTML =
-          `<p class="cal__empty">No <em>first</em> sowing window falls in ` +
+          `<p class="cal__empty">Nothing to sow outdoors in ` +
           `${esc(month ? month.name : '')} for these dates. Crops already in the ground keep ` +
-          `growing, and radishes, lettuce, spinach, bush beans, kale and carrots can be ` +
-          `re-sown every 2-3 weeks while conditions allow — a gap here means nothing new ` +
-          `<em>starts</em> this month, not that nothing can be planted.</p>`;
+          `growing. Use the time to plan beds, order seed, or start long-season crops under a ` +
+          `light indoors.</p>`;
         return;
       }
 
@@ -182,9 +183,20 @@ import { zones, MONTHS } from '@/lib/calendar';
         )
         .join('');
 
+      const resowRows = month.resow
+        .map(
+          (r) =>
+            `<li><span class="cal__crop">${esc(r.crop.name)}</span>` +
+            `<span class="cal__action">Re-sow every ${SUCCESSION_EVERY_DAYS} days` +
+            (r.heatRisk ? ` <span class="pill pill--harder">may bolt in heat</span>` : '') +
+            `</span>` +
+            `<span class="cal__window">last sowing ${esc(formatDay(r.lastDay))}</span></li>`
+        )
+        .join('');
+
       out!.innerHTML =
         `<h3 class="mt-0">${esc(month.name)}${custom ? '' : ` in zone ${z.zone}`}</h3>` +
-        `<ul class="cal__list">${rows}</ul>`;
+        `<ul class="cal__list">${rows}${resowRows}</ul>`;
     }
 
     function save() {

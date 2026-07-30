@@ -12,6 +12,7 @@ changes, schema changes. It is the source of truth.
 - **Pages URL:** https://howtostartavegetablegarden.pages.dev
 - **v1 shipped:** 2026-07-30 — 18 routes
 - **Fact-check pass 1:** 2026-07-31 — calendar dataset corrected against extension sources
+- **Succession sowing:** 2026-07-31 — repeating sowing runs; fixed the empty-month defect
 - Domain registered 2026-07-29 at Spaceship, zone `503472023b8afc3b3d7470e0db12a766` in the
   Cloudflare **Templatery** account (`caaea080dc96ef6541c3f5091718fe1e`)
 
@@ -67,6 +68,32 @@ Verified against cooperative-extension publications on 2026-07-31 (sources are l
 - Confirmed correct and left alone: tomato (6-8 wks indoors, +1-2), pepper (8-10, +2-3), radish
   (-2 to -4), spinach (-3 to -6), peas ("as soon as soil thaws"), lettuce, kale, carrot spacing.
 
+## Succession sowing (added 2026-07-31)
+
+Fixes the defect where zone 7 claimed "nothing to plant" in May and June: each crop had one
+spring window, so gaps appeared once it passed.
+
+`successionFor(lastFrostDay, firstFrostDay)` generates a repeating run per crop — from the
+first outdoor window to the last sowing that can still mature before the first frost
+(days-to-harvest + 14-day buffer), stepping every `SUCCESSION_EVERY_DAYS` (14, from UMD
+Extension). **Both bounds derive from data already in the dataset; no summer-temperature model
+was invented.** `monthsFrom()` takes the runs and populates `MonthPlan.resow` — one row per crop
+per month, not one per sowing date.
+
+Result: active months per zone now run 6 (zone 3) to 12 (zone 10), monotonic as it should be.
+
+**The bolting flag is a labelled heuristic, not sourced.** `HEAT_RISK_WINDOW` in `calendar.ts`
+is a fixed calendar span (June 15 - September 1) applied to cool-season crops. It is keyed to
+the calendar and NOT to an offset from the last frost — an offset-based version flagged zone 9's
+October sowings, which are its *best* fall window. Each zone page states how to read the flag
+for that zone. If you ever get real summer-temperature data, this is the thing to replace.
+
+**When touching the calendar, re-run the tool-vs-static cross-check.** The island and the zone
+pages both call the same functions, so they must agree for all 96 zone-months. The bug this
+caught: the zone page still guarded month sections on `m.entries.length === 0`, so months with
+only re-sow rows rendered nothing — the original defect, resurfacing silently. Guard on
+`m.entries.length === 0 && m.resow.length === 0`.
+
 ## Hard rules
 
 1. **All planting dates come from `src/data/zones.json` + `src/data/crops.json`.** Never
@@ -115,13 +142,16 @@ best practices 100, SEO 100 on home, spoke and calendar. No horizontal overflow 
 watering, beginner mistakes, garden pests, community gardens. Nothing links to them yet, so
 each is just a new file in `src/content/guides/` + a `GUIDE_LINKS` entry.
 
-**Succession sowing is not modelled — the biggest remaining data gap.** Each crop carries a
-single spring window, so long-season locations show months with no first sowing even though
-planting is fine then. Zone 7 showed "nothing in May, June" before this was reworded. The copy
-now says "no *first* sowing window falls in X" and names the succession crops, which is honest
-but not a fix. A real fix needs per-crop heat tolerance (the bolting threshold) plus local
-summer temperatures, so repeat windows can be generated while conditions allow. That is the
-next research cycle. `crops.json` carries a `succession` flag and a `limitations` field already.
+**Residual: zones 9-10 do not wrap the sowing year.** A cool-season crop's first window is
+derived from the last spring frost, so in zone 9 the January/February windows do not also appear
+as "sow now for winter" in the preceding November. Zone 9 shows November idle for this reason;
+zone 10 happens not to, because its windows already wrap into December. Low priority, but it is
+a real artifact of anchoring everything to one last-frost date.
+
+**Succession crops are a conservative set.** radish, lettuce, spinach, kale, carrot, bush beans.
+Deliberately excluded: peas (heat-limited to spring and autumn), cucumber (resents root
+disturbance, one or two sowings is the norm), zucchini (two plants already outproduce a
+household). Revisit if the crop list grows.
 
 **Still unverified.** Days-to-harvest, seed depth and sun-hour figures were not checked against
 a source in pass 1 — only timings, soil temperatures and spacings were. The cost figures on the

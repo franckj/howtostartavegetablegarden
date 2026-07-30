@@ -4,7 +4,9 @@ import AnswerBox from '@/components/AnswerBox.astro';
 import Faq from '@/components/Faq.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import CalendarTool from '@/components/CalendarTool.astro';
-import { zones, crops, zonesMeta, cropsMeta, dataSources } from '@/lib/calendar';
+import {
+  zones, crops, zonesMeta, cropsMeta, dataSources, SUCCESSION_EVERY_DAYS,
+} from '@/lib/calendar';
 import { SITE, faqSchema, breadcrumbSchema, humanDate } from '@/lib/site';
 
 const path = '/planting-calendar/';
@@ -42,7 +44,11 @@ const faqs = [
   },
   {
     q: 'Can I plant a second crop in the same season?',
-    a: 'Yes, and the calendar shows it. Cool-season crops like radishes, lettuce, spinach, kale, peas and carrots can be sown again roughly 10 to 12 weeks before your first fall frost, and many taste better after a light frost. Zone 5 and warmer usually get two full rounds; zone 3 gets a tight one.',
+    a: 'Yes, and the calendar shows it as "re-sow" rows. Radishes, lettuce, spinach, kale, carrots and bush beans are all worth sowing again every 14 days for a continuous harvest rather than one glut, right up to the last date each crop can still mature before your first fall frost. Cool-season crops sown into midsummer are flagged, because they bolt in heat.',
+  },
+  {
+    q: 'What is succession planting?',
+    a: 'Sowing a short row of the same crop every couple of weeks instead of the whole packet at once, so you harvest steadily rather than getting everything in one week. University of Maryland Extension puts it as planting "a portion of that space every two weeks". It is the single easiest way to get more out of a small bed.',
   },
   {
     q: 'Why does the calendar for zones 9 and 10 look inverted?',
@@ -199,7 +205,9 @@ const datasetSchema = {
       <strong>Known limitation.</strong> {cropsMeta.limitations}
     </p>
     <p>
-      Crops covered: {crops.map((c) => c.name).join(', ')}. The full depth and spacing table
+      Succession sowings are generated for {crops.filter((c) => c.succession).length} of the
+      crops on a {SUCCESSION_EVERY_DAYS}-day interval, running to the last sowing that can still
+      mature before the first frost. Crops covered: {crops.map((c) => c.name).join(', ')}. The full depth and spacing table
       is on <a href="/">the main guide</a>, and the data is free to reuse with attribution
       (CC BY 4.0).
     </p>

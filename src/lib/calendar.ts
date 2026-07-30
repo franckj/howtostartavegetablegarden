@@ -177,19 +177,111 @@ export function windowsForZone(zone: Zone): WindowEntry[] {
   return windowsFor(zone.lastFrostDay, zone.firstFrostDay);
 }
 
+/** UMD Extension: re-sow "a portion of that space every two weeks". */
+export const SUCCESSION_EVERY_DAYS = cropsData.successionEveryDays as number;
+
+/**
+ * Heuristic, NOT a sourced figure. Cool-season crops bolt in summer heat, and
+ * across the US peak heat falls in roughly the same calendar window regardless
+ * of hardiness zone — June 15 to September 1 (days 166-244).
+ *
+ * Keyed to the calendar rather than to an offset from the last frost on purpose:
+ * an offset flags zone 9's October sowings, which are its *best* fall window.
+ * A hardiness zone carries no summer-temperature information at all, so this
+ * stays a warning. Zone 3 gardeners can often ignore it; zones 9-10 should treat
+ * it as starting earlier and ending later than the window given here.
+ */
+const HEAT_RISK_WINDOW: [number, number] = [166, 244];
+
+export interface SuccessionPlan {
+  crop: Crop;
+  /** Start of the first sowing window. */
+  startDay: number;
+  /** Latest sowing that can still mature before the first frost. */
+  lastDay: number;
+  everyDays: number;
+  /** Every sowing date in the run, first to last. */
+  sowings: { day: number; heatRisk: boolean }[];
+}
+
+/**
+ * A repeating sowing run per crop: first outdoor window through the last sowing
+ * that still matures before the first frost (slowest days-to-harvest + 14-day
+ * buffer), stepping every SUCCESSION_EVERY_DAYS.
+ *
+ * Both bounds come from the frost dates and days-to-harvest already in the
+ * dataset — nothing here is invented.
+ */
+export function successionFor(lastFrostDay: number, firstFrostDay: number): SuccessionPlan[] {
+  const out: SuccessionPlan[] = [];
+
+  for (const crop of crops) {
+    if (!crop.succession) continue;
+
+    const first = crop.actions.find((a) => a.method === 'direct');
+    if (!first) continue;
+
+    const startDay = lastFrostDay + first.weeks[0] * 7;
+    const lastDay = firstFrostDay - (crop.daysToHarvest[1] + 14);
+
+    // A season too short for even one more sowing yields no run.
+    const spanDays = lastDay - startDay;
+    if (spanDays < SUCCESSION_EVERY_DAYS) continue;
+
+    const sowings: { day: number; heatRisk: boolean }[] = [];
+    for (let d = startDay; d <= lastDay; d += SUCCESSION_EVERY_DAYS) {
+      // Cool-season crops sown into peak summer are the ones that bolt.
+      const wrapped = ((Math.round(d) - 1) % YEAR + YEAR) % YEAR + 1;
+      const heatRisk =
+        crop.season === 'cool' &&
+        wrapped >= HEAT_RISK_WINDOW[0] &&
+        wrapped <= HEAT_RISK_WINDOW[1];
+      sowings.push({ day: d, heatRisk });
+    }
+
+    out.push({ crop, startDay, lastDay, everyDays: SUCCESSION_EVERY_DAYS, sowings });
+  }
+
+  return out;
+}
+
 export interface MonthPlan {
   month: number;
   name: string;
   entries: WindowEntry[];
+  /** Crops that can be re-sown this month, with the run's final sowing date. */
+  resow: { crop: Crop; lastDay: number; heatRisk: boolean }[];
 }
 
-/** Group planting windows by every month they touch. */
-export function monthsFrom(windows: WindowEntry[]): MonthPlan[] {
+/**
+ * Group planting windows by every month they touch, and mark which crops can be
+ * re-sown in each month. Passing the succession runs is what stops a long-season
+ * location showing empty months it can obviously plant in.
+ */
+export function monthsFrom(
+  windows: WindowEntry[],
+  succession: SuccessionPlan[] = []
+): MonthPlan[] {
   const buckets: WindowEntry[][] = Array.from({ length: 12 }, () => []);
 
   for (const entry of windows) {
     for (const m of monthsSpanned(entry.startDay, entry.endDay)) {
       buckets[m].push(entry);
+    }
+  }
+
+  // One re-sow row per crop per month, not one per sowing date.
+  const resow: MonthPlan['resow'][] = Array.from({ length: 12 }, () => []);
+  for (const plan of succession) {
+    // Skip index 0 — that sowing is already listed as the crop's first window.
+    for (const s of plan.sowings.slice(1)) {
+      const m = monthOf(s.day);
+      const existing = resow[m].find((r) => r.crop.slug === plan.crop.slug);
+      if (existing) {
+        existing.heatRisk = existing.heatRisk || s.heatRisk;
+      } else {
+        resow[m].push({ crop: plan.crop, lastDay: plan.lastDay, heatRisk: s.heatRisk });
+      }
     }
   }
 
@@ -200,11 +292,16 @@ export function monthsFrom(windows: WindowEntry[]): MonthPlan[] {
     entries: entries.sort(
       (a, b) => order[a.method] - order[b.method] || a.crop.name.localeCompare(b.crop.name)
     ),
+    resow: resow[month].sort((a, b) => a.crop.name.localeCompare(b.crop.name)),
   }));
 }
 
+export function successionForZone(zone: Zone): SuccessionPlan[] {
+  return successionFor(zone.lastFrostDay, zone.firstFrostDay);
+}
+
 export function calendarForZone(zone: Zone): MonthPlan[] {
-  return monthsFrom(windowsForZone(zone));
+  return monthsFrom(windowsForZone(zone), successionForZone(zone));
 }
 
 /** One row per crop for a zone's summary table. */

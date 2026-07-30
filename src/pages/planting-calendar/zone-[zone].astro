@@ -6,7 +6,10 @@ import Toc from '@/components/Toc.astro';
 import Faq from '@/components/Faq.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import NextSteps from '@/components/NextSteps.astro';
-import { zones, crops, calendarForZone, cropRowsForZone, zonesMeta } from '@/lib/calendar';
+import {
+  zones, crops, calendarForZone, cropRowsForZone, successionForZone,
+  zonesMeta, cropsMeta, formatDay, SUCCESSION_EVERY_DAYS,
+} from '@/lib/calendar';
 import { SITE, GUIDE_LINKS, faqSchema, breadcrumbSchema, humanDate } from '@/lib/site';
 
 export const getStaticPaths: GetStaticPaths = () =>
@@ -18,7 +21,11 @@ const dateModified = '2026-07-31';
 
 const months = calendarForZone(zone);
 const rows = cropRowsForZone(zone);
-const activeMonths = months.filter((m) => m.entries.length > 0);
+const runs = successionForZone(zone);
+const runBySlug = new Map(runs.map((r) => [r.crop.slug, r]));
+// A month counts as active if anything can be sown then — first window or re-sow.
+const activeMonths = months.filter((m) => m.entries.length > 0 || m.resow.length > 0);
+const idleMonths = months.filter((m) => m.entries.length === 0 && m.resow.length === 0);
 
 const title = `Zone ${zone.zone} Planting Calendar: What to Plant Each Month`;
 const description = `Zone ${zone.zone} planting dates for 12 beginner vegetables. Last frost around ${zone.lastFrost}, first frost around ${zone.firstFrost}, ${zone.seasonDays} frost-free days.`;
@@ -38,7 +45,6 @@ const tocItems = [
 /** Zones 3-5 thaw late enough that the frost date alone is actively misleading. */
 const coldZone = zone.zone <= 5;
 
-const successionCrops = crops.filter((c) => c.succession).map((c) => c.name);
 
 const faqs = [
   {
@@ -117,13 +123,15 @@ const zoneSchema = {
 
     <h2 id="month-by-month">Month by month in zone {zone.zone}</h2>
     <p>
-      {activeMonths.length} of the 12 months have something to plant in zone {zone.zone}. Each
-      window is the span in which that sowing or transplanting can safely happen.
+      {activeMonths.length} of the 12 months have something to plant in zone {zone.zone}. Rows
+      marked <em>re-sow</em> are succession sowings — the same crop planted again every{' '}
+      {SUCCESSION_EVERY_DAYS} days for a continuous harvest, up to the last date it can still
+      mature before {zone.firstFrost}.
     </p>
 
     {
       months.map((m) =>
-        m.entries.length === 0 ? null : (
+        m.entries.length === 0 && m.resow.length === 0 ? null : (
           <>
             <h3 id={m.name.toLowerCase()}>{m.name}</h3>
             <div class="table-wrap">
@@ -145,6 +153,22 @@ const zoneSchema = {
                       <td>{e.window}</td>
                     </tr>
                   ))}
+                  {m.resow.map((r) => (
+                    <tr>
+                      <th scope="row" style="text-align:left;font-weight:600;background:none">
+                        {r.crop.name}
+                      </th>
+                      <td style="white-space:normal">
+                        Re-sow every {SUCCESSION_EVERY_DAYS} days
+                        {r.heatRisk && (
+                          <>
+                            {' '}<span class="pill pill--harder">may bolt in heat</span>
+                          </>
+                        )}
+                      </td>
+                      <td>last sowing {formatDay(r.lastDay)}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -154,26 +178,16 @@ const zoneSchema = {
     }
 
     {
-      months.filter((m) => m.entries.length === 0).length > 0 && (
+      idleMonths.length > 0 && (
         <div class="note">
           <p>
             <strong>
-              No <em>first</em> sowing window falls in{' '}
-              {months
-                .filter((m) => m.entries.length === 0)
-                .map((m) => m.name)
-                .join(', ')}{' '}
-              for zone {zone.zone}.
+              Nothing to sow outdoors in{' '}
+              {idleMonths.map((m) => m.name).join(', ')} in zone {zone.zone}.
             </strong>{' '}
-            That does not mean the garden is idle. Each crop above carries one spring window,
-            and several of them are routinely re-sown every 2 to 3 weeks while conditions allow
-            &mdash; {successionCrops.join(', ')}. So a gap here means &ldquo;nothing new starts
-            this month&rdquo;, not &ldquo;nothing can be planted&rdquo;.
-          </p>
-          <p>
-            Genuinely quiet months are the deep-winter ones in cold zones and the peak-heat ones
-            in zones 8 to 10, when cool-season crops bolt and it is worth waiting for the fall
-            sowing dates instead.
+            Crops already in the ground keep growing and keep being harvested. Use the time to
+            plan beds, order seed, build a compost pile, or start long-season crops under a
+            light indoors.
           </p>
         </div>
       )
@@ -196,6 +210,7 @@ const zoneSchema = {
             <th scope="col">Start indoors</th>
             <th scope="col">Plant outdoors</th>
             <th scope="col">Fall sowing</th>
+            <th scope="col">Re-sow until</th>
             <th scope="col">Harvest from</th>
           </tr>
         </thead>
@@ -209,6 +224,11 @@ const zoneSchema = {
                 <td>{r.indoors ?? '-'}</td>
                 <td style="white-space:normal">{r.outdoors}</td>
                 <td>{r.fall ?? '-'}</td>
+                <td>
+                  {runBySlug.has(r.crop.slug)
+                    ? formatDay(runBySlug.get(r.crop.slug)!.lastDay)
+                    : '-'}
+                </td>
                 <td>{r.harvest}</td>
               </tr>
             ))
@@ -255,6 +275,20 @@ const zoneSchema = {
         </div>
       )
     }
+
+    <div class="note">
+      <p>
+        <strong>About the bolting warnings.</strong> Cool-season crops run to seed and turn
+        bitter in summer heat. The &ldquo;may bolt in heat&rdquo; flag above is a rough
+        calendar rule &mdash; mid-June to the start of September, the same window across the
+        whole country &mdash; because a hardiness zone carries no summer-temperature
+        information at all. In zone {zone.zone} treat it as {zone.zone <= 4
+          ? 'cautious; summers here are mild enough that midsummer sowings often succeed'
+          : zone.zone >= 8
+            ? 'understated; your hot spell starts earlier and runs later, and heat-tolerant varieties plus afternoon shade matter'
+            : 'about right, with heat-tolerant varieties and afternoon shade extending it either side'}.
+      </p>
+    </div>
 
     <div class="note">
       <p><strong>Where these dates come from.</strong> {zonesMeta.note}</p>

@@ -389,7 +389,13 @@
       "name": "Penn State Extension — Cool-season vs. Warm-season Vegetables",
       "url": "https://extension.psu.edu/cool-season-vs-warm-season-vegetables",
       "used_for": "Frost-tolerance categories (hardy, semi-hardy, tender, very tender)"
+    },
+    {
+      "name": "University of Maryland Extension — Planting Vegetables in Succession",
+      "url": "https://extension.umd.edu/resource/planting-vegetables-succession",
+      "used_for": "The 14-day succession interval, and confirmation that leaf lettuce can be re-sown well into summer rather than stopping at a spring cutoff"
     }
   ],
-  "limitations": "Each crop carries a single spring window, so a long-season location will show months with no first sowing even though planting is perfectly possible then via succession sowing. Crops marked succession=true are routinely re-sown every 2-3 weeks while conditions allow. Modelling those repeat windows properly needs per-crop heat tolerance and local summer temperatures, which this dataset does not yet carry."
+  "limitations": "Succession sowings are generated on a fixed 14-day interval from each crop's first outdoor window up to the last sowing that can still mature before the first fall frost (days-to-harvest plus a 14-day buffer). No summer-heat cutoff is applied, because hardiness zones carry no summer temperature information and extension guidance does not give a per-crop cutoff date. Instead, midsummer sowings of cool-season crops are flagged as a bolting risk. The 4-weeks-after-last-frost threshold for that flag is a labelled heuristic, not a sourced figure.",
+  "successionEveryDays": 14
 }

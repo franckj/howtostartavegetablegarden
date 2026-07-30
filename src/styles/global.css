@@ -154,7 +154,6 @@ blockquote p:last-child {
   justify-content: space-between;
   gap: var(--sp-4);
   min-height: 64px;
-  flex-wrap: wrap;
 }
 
 .brand {
@@ -189,21 +188,49 @@ blockquote p:last-child {
   text-decoration: underline;
 }
 
-@media (max-width: 620px) {
+/* Below this the brand and three nav links cannot share one line, so commit to a
+   deliberate two-row header rather than letting the nav wrap raggedly. The nav
+   scrolls sideways so adding a link never creates a third row. */
+@media (max-width: 720px) {
   .site-header__inner {
-    padding-top: var(--sp-3);
-    padding-bottom: var(--sp-3);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    min-height: 0;
   }
+
+  .brand {
+    padding: var(--sp-4) 0;
+  }
+
   .nav {
-    gap: var(--sp-4);
+    /* full-bleed hairline: cancel the .wrap padding, then re-apply it inside */
+    margin: 0 calc(-1 * var(--sp-5));
+    padding: var(--sp-3) var(--sp-5);
+    border-top: 1px solid var(--border);
+    gap: var(--sp-5);
     font-size: var(--fs-xs);
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav a {
+    white-space: nowrap;
   }
 }
 
 /* ---------- page head ---------- */
 
+/* Vertical only — a `padding` shorthand here would zero the horizontal padding
+   this element inherits from .wrap and push content flush to the viewport edge. */
 .page-head {
-  padding: var(--sp-7) 0 var(--sp-5);
+  padding-top: var(--sp-7);
+  padding-bottom: var(--sp-5);
 }
 
 .eyebrow {

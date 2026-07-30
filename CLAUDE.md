@@ -29,6 +29,22 @@ dashboard click (Pages → Settings → Builds & deployments → Connect to Git)
 
 After a meaningful content change: `node scripts/indexnow.mjs` (key file already deployed).
 
+## Analytics
+
+Plausible, new `pa-*` script format (`SITE.plausibleScript` in `src/lib/site.ts`), verified
+sending on 2026-07-30: `POST https://plausible.io/api/event` -> 202, domain
+`howtostartavegetablegarden.com`, pageview + engagement events.
+
+Two gotchas, both already handled:
+
+- **Both script tags need `is:inline`.** Without it Astro bundles the queue shim as a module,
+  which defers it past the async script and `plausible.init()` never seeds `plausible.o`.
+- **Plausible silently drops events when `navigator.webdriver` is true** — so Playwright and
+  any headless check will see the script load and *no* event. Its own escape hatch is
+  `window.__plausible = true` via an init script. A silent verification run is not a failure.
+
+No cookies, so no consent banner. Cookie-free status is asserted in the privacy policy.
+
 ## Hard rules
 
 1. **All planting dates come from `src/data/zones.json` + `src/data/crops.json`.** Never
@@ -75,9 +91,8 @@ ground has thawed, which is why zones 3-5 get an explicit soil-workability cavea
 Part 2 upgrade cycle in `htsavg-execution-kit.md` (research → draft → edit against a fact
 base), homepage and calendar first.
 
-**Launch tasks needing Franck's accounts:** Plausible site not yet created (script is already
-in the layout with `data-domain`); Google Search Console verify + submit sitemap; Bing
-Webmaster Tools (feeds ChatGPT/Copilot).
+**Launch tasks needing Franck's accounts:** Google Search Console verify + submit sitemap;
+Bing Webmaster Tools (feeds ChatGPT/Copilot). IndexNow already pinged (17 URLs, 202).
 
 **Confirm:** the terms page states governing law is France, inferred from Franck being the
 Paris-based operator. Change `src/content/pages/terms-of-service.md` if that is wrong.

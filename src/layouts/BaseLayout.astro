@@ -91,7 +91,22 @@ const graph = [
       set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}
     />
 
-    <script defer data-domain={SITE.plausibleDomain} src="https://plausible.io/js/script.js"></script>
+    <!-- Privacy-friendly analytics by Plausible. is:inline keeps the queue shim as a
+         classic script so plausible.init() runs before the async script lands. -->
+    <script is:inline async src={SITE.plausibleScript}></script>
+    <script is:inline>
+      window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        };
+      plausible.init =
+        plausible.init ||
+        function (i) {
+          plausible.o = i || {};
+        };
+      plausible.init();
+    </script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>

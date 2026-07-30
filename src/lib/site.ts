@@ -4,7 +4,8 @@ export const SITE = {
   name: 'How to Start a Vegetable Garden',
   tagline: 'Plain-English guides for first-time vegetable gardeners.',
   email: 'hello@howtostartavegetablegarden.com',
-  plausibleDomain: 'howtostartavegetablegarden.com',
+  /** Site-specific Plausible script (new pa-* format, from the Plausible dashboard). */
+  plausibleScript: 'https://plausible.io/js/pa-033EHS82pAgyEh11ZPIuC.js',
   /** Bumped whenever v1 content is reviewed; surfaced in schema + footer. */
   lastUpdated: '2026-07-30',
 } as const;

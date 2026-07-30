@@ -6,7 +6,7 @@ import Toc from '@/components/Toc.astro';
 import Faq from '@/components/Faq.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import NextSteps from '@/components/NextSteps.astro';
-import { zones, calendarForZone, cropRowsForZone, zonesMeta } from '@/lib/calendar';
+import { zones, crops, calendarForZone, cropRowsForZone, zonesMeta } from '@/lib/calendar';
 import { SITE, GUIDE_LINKS, faqSchema, breadcrumbSchema, humanDate } from '@/lib/site';
 
 export const getStaticPaths: GetStaticPaths = () =>
@@ -14,7 +14,7 @@ export const getStaticPaths: GetStaticPaths = () =>
 
 const { zone } = Astro.props;
 const path = `/planting-calendar/zone-${zone.zone}/`;
-const dateModified = '2026-07-30';
+const dateModified = '2026-07-31';
 
 const months = calendarForZone(zone);
 const rows = cropRowsForZone(zone);
@@ -35,13 +35,15 @@ const tocItems = [
   { id: 'notes', label: `Growing in zone ${zone.zone}` },
 ];
 
-/** Zones 3-5 thaw late enough that the frost date alone can mislead. */
+/** Zones 3-5 thaw late enough that the frost date alone is actively misleading. */
 const coldZone = zone.zone <= 5;
+
+const successionCrops = crops.filter((c) => c.succession).map((c) => c.name);
 
 const faqs = [
   {
     q: `When is the last frost in zone ${zone.zone}?`,
-    a: `Zone ${zone.zone} averages its last spring frost around ${zone.lastFrost} and its first fall frost around ${zone.firstFrost}, giving roughly ${zone.seasonDays} frost-free days. These are zone-wide averages across a very large area, so confirm your local dates with your county cooperative extension office before committing to them.`,
+    a: `Zone ${zone.zone} is conventionally taken to average its last spring frost around ${zone.lastFrost} and its first fall frost around ${zone.firstFrost}, giving roughly ${zone.seasonDays} frost-free days. Be aware that a hardiness zone is defined by winter minimum temperature, not by frost dates — these are widely-used approximations, not official USDA figures. Get your real dates from the NOAA freeze-date map or your county cooperative extension office.`,
   },
   {
     q: `What can I plant now in zone ${zone.zone}?`,
@@ -94,10 +96,10 @@ const zoneSchema = {
   <div class="wrap prose">
     <AnswerBox label={`Zone ${zone.zone} at a glance`}>
       <p>
-        Zone {zone.zone} averages its last spring frost around <strong>{zone.lastFrost}</strong>
-        and its first fall frost around <strong>{zone.firstFrost}</strong> — about
-        <strong>{zone.seasonDays} frost-free days</strong>, with winter lows of {zone.minTempF}&deg;F.
-        {zone.summary}
+        Zone {zone.zone} runs winter lows of {zone.minTempF}&deg;F, and is conventionally
+        taken to average its last spring frost around <strong>{zone.lastFrost}</strong> and
+        its first fall frost around <strong>{zone.firstFrost}</strong> — about
+        <strong>{zone.seasonDays} frost-free days</strong>. {zone.summary}
       </p>
       <p>
         Sow frost-tolerant crops (peas, spinach, radishes, lettuce, kale, carrots) 6 to 2 weeks
@@ -153,14 +155,27 @@ const zoneSchema = {
 
     {
       months.filter((m) => m.entries.length === 0).length > 0 && (
-        <p class="note">
-          <strong>Nothing to plant outdoors in zone {zone.zone} during{' '}
-          {months
-            .filter((m) => m.entries.length === 0)
-            .map((m) => m.name)
-            .join(', ')}.</strong> Use those months to plan beds, order seed, build a compost
-          pile, or start long-season crops under a light indoors.
-        </p>
+        <div class="note">
+          <p>
+            <strong>
+              No <em>first</em> sowing window falls in{' '}
+              {months
+                .filter((m) => m.entries.length === 0)
+                .map((m) => m.name)
+                .join(', ')}{' '}
+              for zone {zone.zone}.
+            </strong>{' '}
+            That does not mean the garden is idle. Each crop above carries one spring window,
+            and several of them are routinely re-sown every 2 to 3 weeks while conditions allow
+            &mdash; {successionCrops.join(', ')}. So a gap here means &ldquo;nothing new starts
+            this month&rdquo;, not &ldquo;nothing can be planted&rdquo;.
+          </p>
+          <p>
+            Genuinely quiet months are the deep-winter ones in cold zones and the peak-heat ones
+            in zones 8 to 10, when cool-season crops bolt and it is worth waiting for the fall
+            sowing dates instead.
+          </p>
+        </div>
       )
     }
 
@@ -205,14 +220,23 @@ const zoneSchema = {
     <h2 id="notes">Growing in zone {zone.zone}</h2>
     <p>{zone.summary}</p>
 
+    <div class="note">
+      <p>
+        <strong>Soil beats calendar.</strong> Extension guidance for the hardiest crops is
+        &ldquo;as soon as the soil can be worked&rdquo; or &ldquo;as soon as the soil
+        thaws&rdquo; &mdash; not a fixed date. If you cannot crumble a handful of soil in your
+        fist, wait, whatever the table says. Warm-season crops have a matching rule: beans want
+        60&deg;F soil, cucumbers and squash 70&deg;F.
+      </p>
+    </div>
+
     {
       coldZone && (
         <div class="note">
           <p>
-            <strong>Watch the soil, not just the calendar.</strong> In zone {zone.zone} the
-            earliest spring windows above assume the ground has thawed and is workable. In a
-            late spring it may still be frozen or waterlogged on those dates — if you cannot
-            crumble a handful of soil in your fist, wait. A raised bed, which warms 2 to 3
+            <strong>This matters most in zone {zone.zone}.</strong> The earliest spring windows
+            above assume the ground has thawed and is workable, and in a late spring it may
+            still be frozen or waterlogged on those dates. A raised bed, which warms 2 to 3
             weeks earlier than open ground, is the reliable way to hit the early dates here.
           </p>
         </div>
@@ -233,7 +257,19 @@ const zoneSchema = {
     }
 
     <div class="note">
-      <p><strong>These dates are averages.</strong> {zonesMeta.note}</p>
+      <p><strong>Where these dates come from.</strong> {zonesMeta.note}</p>
+      <p>
+        You can enter your own frost dates in the
+        <a href="/planting-calendar/">interactive calendar</a> and every window on it
+        recalculates from your numbers. Look up your local averages on the
+        <a
+          href="https://www.climate.gov/news-features/understanding-climate/interactive-map-average-date-last-spring-freeze-across-united"
+          rel="noopener"
+          target="_blank">NOAA last-spring-freeze map</a
+        >. Note that an &ldquo;average&rdquo; frost date is the point where the chance of
+        freezing drops below 50 percent, so for tender crops it is worth waiting a week or two
+        past it.
+      </p>
     </div>
 
     <p>

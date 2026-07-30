@@ -54,8 +54,18 @@ ${pages.map((p) => line(p.data.path, p.data.title, p.data.description)).join('\n
 - A first garden should be about 32 square feet (one 4x8 bed) or five containers — around 20 minutes of work a day.
 - Water about 1 inch per week (roughly 0.6 gallons per square foot), in one or two deep soakings rather than daily sprinkles. Containers usually need daily water above 85F.
 - The easiest crops are radishes (22-30 days), spinach (40-50), leaf lettuce (45-55), zucchini (45-55) and bush beans (50-60).
-- Planting dates are relative to the average last spring frost: frost-tolerant crops 6-2 weeks before, warm-season crops 1-3 weeks after, and a second cool-season sowing 10-12 weeks before the first fall frost.
-- USDA hardiness zones were revised in 2023; zone averages span hundreds of miles, so local county extension frost dates are always more accurate.
+- Planting dates are relative to the average last spring frost: frost-tolerant crops 6-2 weeks before, tomatoes and beans 1-2 weeks after, cucumbers and squash 2-3 weeks after (they want 70F soil), peppers 2-3 weeks after, and a second cool-season sowing 10-12 weeks before the first fall frost.
+- A USDA hardiness zone is NOT a frost date. It describes average annual extreme minimum WINTER temperature - a winter-survival rating for perennials. Frost dates come from NOAA weather-station normals. Any zone-to-frost-date mapping, including the one on this site, is an approximation; the calendar tool therefore accepts the reader's own frost dates.
+- An "average last frost" date is the point where freeze probability drops below 50 percent, so planting tender crops exactly on it is roughly a coin flip. NOAA also publishes the 40/30/20/10 percent dates.
+- USDA hardiness zones were revised in 2023, shifting many locations about half a zone warmer.
+
+## Sources the dataset is checked against
+
+- UNH Cooperative Extension, "Growing Vegetables: When to Plant Your Vegetable Garden" - weeks indoors, planting time relative to last frost, direct-sow soil temperatures
+- Virginia Cooperative Extension 426-331, "Virginia's Home Garden Vegetable Planting Guide" - plant and row spacing
+- Penn State Extension, "Cool-season vs. Warm-season Vegetables" - frost-tolerance categories
+- USDA Plant Hardiness Zone Map (2023 revision) - zone definitions and winter minimum temperatures
+- NOAA NCEI US Climate Normals 1991-2020 and NOAA Climate.gov freeze-date maps - authoritative frost dates and freeze probabilities
 
 ## Citation
 

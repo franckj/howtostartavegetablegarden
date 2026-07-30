@@ -7,7 +7,7 @@ export const SITE = {
   /** Site-specific Plausible script (new pa-* format, from the Plausible dashboard). */
   plausibleScript: 'https://plausible.io/js/pa-033EHS82pAgyEh11ZPIuC.js',
   /** Bumped whenever v1 content is reviewed; surfaced in schema + footer. */
-  lastUpdated: '2026-07-30',
+  lastUpdated: '2026-07-31',
 } as const;
 
 export const NAV = [

@@ -1,213 +1,395 @@
 {
-  "note": "Timing is expressed in weeks relative to your average last spring frost (negative = before it). Ranges are deliberately conservative. Soil temperatures are minimums for reliable germination, not survival floors.",
-  "source": "Consolidated from standard US cooperative-extension seed-starting and direct-sowing guidance. Verify against your state extension service before planting.",
+  "note": "Timing is expressed in weeks relative to your average last spring frost (negative = before it). Ranges are deliberately conservative. Soil temperatures are minimums for reliable germination, not survival floors — several crops germinate below these figures, just slowly and unevenly.",
+  "source": "Timings and soil temperatures cross-checked against UNH Cooperative Extension, 'Growing Vegetables: When to Plant Your Vegetable Garden' (2016); spacing cross-checked against Virginia Cooperative Extension 426-331, 'Virginia's Home Garden Vegetable Planting Guide'. Verify against your own state extension service before planting.",
   "crops": [
     {
       "slug": "radish",
       "name": "Radish",
       "season": "cool",
       "difficulty": 1,
-      "daysToHarvest": [22, 30],
+      "daysToHarvest": [
+        22,
+        30
+      ],
       "spacingIn": "1-2",
       "rowSpacingIn": 6,
       "depthIn": "1/2",
       "minSoilTempF": 45,
       "sunHours": "4+",
-      "actions": [{ "method": "direct", "weeks": [-4, -2] }],
+      "actions": [
+        {
+          "method": "direct",
+          "weeks": [
+            -4,
+            -2
+          ]
+        }
+      ],
       "fallSow": true,
       "why": "Fastest crop in the garden. Sow, and you are eating in under a month.",
-      "watchOut": "Sown in summer heat they turn woody and split. Spring and fall only."
+      "watchOut": "Sown in summer heat they turn woody and split. Spring and fall only.",
+      "succession": true
     },
     {
       "slug": "lettuce",
       "name": "Lettuce (leaf)",
       "season": "cool",
       "difficulty": 1,
-      "daysToHarvest": [45, 55],
+      "daysToHarvest": [
+        45,
+        55
+      ],
       "spacingIn": "8-12",
       "rowSpacingIn": 12,
       "depthIn": "1/8-1/4",
       "minSoilTempF": 40,
       "sunHours": "4-6",
-      "actions": [{ "method": "direct", "weeks": [-4, -2] }],
+      "actions": [
+        {
+          "method": "direct",
+          "weeks": [
+            -4,
+            -2
+          ]
+        }
+      ],
       "fallSow": true,
       "why": "Cut-and-come-again: harvest outer leaves and the plant keeps producing for weeks.",
-      "watchOut": "Seed needs light to germinate — barely cover it. Bolts bitter above 80F."
+      "watchOut": "Seed needs light to germinate — barely cover it. Bolts bitter above 80F.",
+      "succession": true
     },
     {
       "slug": "spinach",
       "name": "Spinach",
       "season": "cool",
       "difficulty": 1,
-      "daysToHarvest": [40, 50],
+      "daysToHarvest": [
+        40,
+        50
+      ],
       "spacingIn": "3-4",
       "rowSpacingIn": 12,
       "depthIn": "1/2",
       "minSoilTempF": 40,
       "sunHours": "4-6",
-      "actions": [{ "method": "direct", "weeks": [-6, -4] }],
+      "actions": [
+        {
+          "method": "direct",
+          "weeks": [
+            -6,
+            -4
+          ]
+        }
+      ],
       "fallSow": true,
       "why": "Tolerates frost better than almost anything else you will plant.",
-      "watchOut": "Bolts fast once days get long and hot. Treat it as a spring and fall crop."
+      "watchOut": "Bolts fast once days get long and hot. Treat it as a spring and fall crop.",
+      "succession": true
     },
     {
       "slug": "bush-beans",
       "name": "Bush beans",
       "season": "warm",
       "difficulty": 1,
-      "daysToHarvest": [50, 60],
+      "daysToHarvest": [
+        50,
+        60
+      ],
       "spacingIn": "3-4",
-      "rowSpacingIn": 18,
+      "rowSpacingIn": 24,
       "depthIn": 1,
       "minSoilTempF": 60,
       "sunHours": "6-8",
-      "actions": [{ "method": "direct", "weeks": [1, 2] }],
+      "actions": [
+        {
+          "method": "direct",
+          "weeks": [
+            1,
+            2
+          ]
+        }
+      ],
       "fallSow": false,
       "why": "No trellis, no transplanting, heavy yield from a small row.",
-      "watchOut": "Seed rots in cold wet soil. Wait until soil hits 60F — usually a week or two after last frost."
+      "watchOut": "Seed rots in cold wet soil. Wait until soil hits 60F — usually a week or two after last frost.",
+      "succession": true
     },
     {
       "slug": "zucchini",
       "name": "Zucchini",
       "season": "warm",
       "difficulty": 1,
-      "daysToHarvest": [45, 55],
+      "daysToHarvest": [
+        45,
+        55
+      ],
       "spacingIn": "24-36",
       "rowSpacingIn": 36,
       "depthIn": 1,
-      "minSoilTempF": 65,
+      "minSoilTempF": 70,
       "sunHours": "6-8",
-      "actions": [{ "method": "direct", "weeks": [1, 2] }],
+      "actions": [
+        {
+          "method": "direct",
+          "weeks": [
+            2,
+            3
+          ]
+        }
+      ],
       "fallSow": false,
       "why": "Almost aggressively productive. Two plants feed a household.",
-      "watchOut": "Two plants is genuinely enough. Pick fruit at 6-8 inches or it turns to a baseball bat."
+      "watchOut": "Two plants is genuinely enough. Pick fruit at 6-8 inches or it turns to a baseball bat.",
+      "succession": false
     },
     {
       "slug": "kale",
       "name": "Kale",
       "season": "cool",
       "difficulty": 1,
-      "daysToHarvest": [50, 65],
+      "daysToHarvest": [
+        50,
+        65
+      ],
       "spacingIn": "12-18",
       "rowSpacingIn": 18,
       "depthIn": "1/4-1/2",
       "minSoilTempF": 45,
       "sunHours": "4-6",
       "actions": [
-        { "method": "indoors", "weeks": [-6, -4] },
-        { "method": "direct", "weeks": [-4, -2] }
+        {
+          "method": "indoors",
+          "weeks": [
+            -6,
+            -4
+          ]
+        },
+        {
+          "method": "direct",
+          "weeks": [
+            -4,
+            -2
+          ]
+        }
       ],
       "fallSow": true,
       "why": "Harvest leaf by leaf for months. Frost actually improves the flavor.",
-      "watchOut": "Cabbage worms will lace the leaves. Check undersides weekly and pick them off."
+      "watchOut": "Cabbage worms will lace the leaves. Check undersides weekly and pick them off.",
+      "succession": true
     },
     {
       "slug": "peas",
       "name": "Peas",
       "season": "cool",
       "difficulty": 1,
-      "daysToHarvest": [60, 70],
+      "daysToHarvest": [
+        60,
+        70
+      ],
       "spacingIn": "2-3",
       "rowSpacingIn": 24,
       "depthIn": 1,
       "minSoilTempF": 45,
       "sunHours": "6-8",
-      "actions": [{ "method": "direct", "weeks": [-6, -4] }],
+      "actions": [
+        {
+          "method": "direct",
+          "weeks": [
+            -6,
+            -4
+          ]
+        }
+      ],
       "fallSow": true,
       "why": "One of the first things you can plant, weeks before the frost date.",
-      "watchOut": "Needs something to climb from day one. Put the trellis in when you sow, not later."
+      "watchOut": "Needs something to climb from day one. Put the trellis in when you sow, not later.",
+      "succession": false
     },
     {
       "slug": "carrot",
       "name": "Carrot",
       "season": "cool",
       "difficulty": 2,
-      "daysToHarvest": [65, 80],
+      "daysToHarvest": [
+        65,
+        80
+      ],
       "spacingIn": "2-3",
       "rowSpacingIn": 12,
       "depthIn": "1/4",
       "minSoilTempF": 45,
       "sunHours": "6-8",
-      "actions": [{ "method": "direct", "weeks": [-3, -2] }],
+      "actions": [
+        {
+          "method": "direct",
+          "weeks": [
+            -3,
+            -2
+          ]
+        }
+      ],
       "fallSow": true,
       "why": "Nothing store-bought tastes like a carrot pulled the same day.",
-      "watchOut": "Germination is slow and fussy — keep the surface damp for two weeks. Rocky soil gives forked roots."
+      "watchOut": "Germination is slow and fussy. At 45°F it can take 3 weeks; UNH Extension suggests waiting for 60°F soil for reliable results. Keep the surface damp the whole time — let it crust dry and nothing comes up. Rocky soil gives forked roots.",
+      "succession": true
     },
     {
       "slug": "cucumber",
       "name": "Cucumber",
       "season": "warm",
       "difficulty": 2,
-      "daysToHarvest": [55, 65],
+      "daysToHarvest": [
+        55,
+        65
+      ],
       "spacingIn": "12",
-      "rowSpacingIn": 36,
+      "rowSpacingIn": 48,
       "depthIn": 1,
-      "minSoilTempF": 65,
+      "minSoilTempF": 70,
       "sunHours": "6-8",
       "actions": [
-        { "method": "indoors", "weeks": [-3, -2] },
-        { "method": "direct", "weeks": [1, 2] }
+        {
+          "method": "indoors",
+          "weeks": [
+            -4,
+            -3
+          ]
+        },
+        {
+          "method": "direct",
+          "weeks": [
+            2,
+            3
+          ]
+        }
       ],
       "fallSow": false,
       "why": "Grown up a trellis it takes almost no ground space and stays cleaner.",
-      "watchOut": "Hates root disturbance — direct sow if you can. Bitter fruit usually means inconsistent water."
+      "watchOut": "Hates root disturbance — direct sow if you can. Bitter fruit usually means inconsistent water.",
+      "succession": false
     },
     {
       "slug": "tomato",
       "name": "Tomato",
       "season": "warm",
       "difficulty": 2,
-      "daysToHarvest": [60, 85],
+      "daysToHarvest": [
+        60,
+        85
+      ],
       "spacingIn": "24-36",
       "rowSpacingIn": 42,
       "depthIn": "1/4",
       "minSoilTempF": 60,
       "sunHours": "8",
       "actions": [
-        { "method": "indoors", "weeks": [-8, -6] },
-        { "method": "transplant", "weeks": [1, 2] }
+        {
+          "method": "indoors",
+          "weeks": [
+            -8,
+            -6
+          ]
+        },
+        {
+          "method": "transplant",
+          "weeks": [
+            1,
+            2
+          ]
+        }
       ],
       "fallSow": false,
       "why": "The crop most people start a garden for, and the gap versus supermarket fruit is the widest.",
-      "watchOut": "Days-to-harvest is counted from transplant, not from seed. Needs a real cage or stake, installed at planting."
+      "watchOut": "Days-to-harvest is counted from transplant, not from seed. Needs a real cage or stake, installed at planting.",
+      "succession": false
     },
     {
       "slug": "pepper",
       "name": "Pepper",
       "season": "warm",
       "difficulty": 3,
-      "daysToHarvest": [70, 90],
+      "daysToHarvest": [
+        70,
+        90
+      ],
       "spacingIn": "18",
-      "rowSpacingIn": 24,
+      "rowSpacingIn": 30,
       "depthIn": "1/4",
       "minSoilTempF": 65,
       "sunHours": "8",
       "actions": [
-        { "method": "indoors", "weeks": [-10, -8] },
-        { "method": "transplant", "weeks": [2, 3] }
+        {
+          "method": "indoors",
+          "weeks": [
+            -10,
+            -8
+          ]
+        },
+        {
+          "method": "transplant",
+          "weeks": [
+            2,
+            3
+          ]
+        }
       ],
       "fallSow": false,
       "why": "Compact enough for a container and productive over a long season.",
-      "watchOut": "Slow, warmth-hungry germination. Sulks below 55F at night — do not rush it outside."
+      "watchOut": "Slow, warmth-hungry germination. Sulks below 55F at night — do not rush it outside.",
+      "succession": false
     },
     {
       "slug": "onion",
       "name": "Onion",
       "season": "cool",
       "difficulty": 3,
-      "daysToHarvest": [100, 120],
+      "daysToHarvest": [
+        100,
+        120
+      ],
       "spacingIn": "4-6",
       "rowSpacingIn": 12,
       "depthIn": "1/4",
       "minSoilTempF": 45,
       "sunHours": "6-8",
       "actions": [
-        { "method": "indoors", "weeks": [-12, -10] },
-        { "method": "transplant", "weeks": [-4, -2] }
+        {
+          "method": "indoors",
+          "weeks": [
+            -10,
+            -8
+          ]
+        },
+        {
+          "method": "transplant",
+          "weeks": [
+            -4,
+            -2
+          ]
+        }
       ],
       "fallSow": false,
       "why": "Stores for months, so a single harvest keeps feeding you into winter.",
-      "watchOut": "Buy the right day-length type for your latitude — long-day north of about 36N, short-day south of it."
+      "watchOut": "Buy the right day-length type for your latitude — long-day north of about 36N, short-day south of it.",
+      "succession": false
     }
-  ]
+  ],
+  "sources": [
+    {
+      "name": "UNH Cooperative Extension — Growing Vegetables: When to Plant Your Vegetable Garden",
+      "url": "https://extension.unh.edu/resource/growing-vegetables-when-plant-your-vegetable-garden-fact-sheet",
+      "used_for": "Weeks indoors before transplanting, planting time relative to last frost, direct-sow soil temperatures"
+    },
+    {
+      "name": "Virginia Cooperative Extension 426-331 — Virginia's Home Garden Vegetable Planting Guide",
+      "url": "https://www.pubs.ext.vt.edu/426/426-331/426-331.html",
+      "used_for": "In-row and between-row plant spacing"
+    },
+    {
+      "name": "Penn State Extension — Cool-season vs. Warm-season Vegetables",
+      "url": "https://extension.psu.edu/cool-season-vs-warm-season-vegetables",
+      "used_for": "Frost-tolerance categories (hardy, semi-hardy, tender, very tender)"
+    }
+  ],
+  "limitations": "Each crop carries a single spring window, so a long-season location will show months with no first sowing even though planting is perfectly possible then via succession sowing. Crops marked succession=true are routinely re-sown every 2-3 weeks while conditions allow. Modelling those repeat windows properly needs per-crop heat tolerance and local summer temperatures, which this dataset does not yet carry."
 }

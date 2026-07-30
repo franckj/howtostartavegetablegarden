@@ -11,6 +11,7 @@ changes, schema changes. It is the source of truth.
 - **Live:** https://howtostartavegetablegarden.com (apex + www)
 - **Pages URL:** https://howtostartavegetablegarden.pages.dev
 - **v1 shipped:** 2026-07-30 — 18 routes
+- **Fact-check pass 1:** 2026-07-31 — calendar dataset corrected against extension sources
 - Domain registered 2026-07-29 at Spaceship, zone `503472023b8afc3b3d7470e0db12a766` in the
   Cloudflare **Templatery** account (`caaea080dc96ef6541c3f5091718fe1e`)
 
@@ -44,6 +45,27 @@ Two gotchas, both already handled:
   `window.__plausible = true` via an init script. A silent verification run is not a failure.
 
 No cookies, so no consent banner. Cookie-free status is asserted in the privacy policy.
+
+## Content accuracy — what pass 1 established
+
+Verified against cooperative-extension publications on 2026-07-31 (sources are listed in
+`zones.json` / `crops.json` under `sources`, and rendered on the calendar page):
+
+- **A hardiness zone is NOT a frost date.** It is average annual extreme minimum *winter*
+  temperature — a winter-survival rating for perennials. Frost dates come from NOAA station
+  normals. The site said otherwise on the homepage and the calendar; both are now corrected,
+  and this is the single most important thing not to reintroduce.
+- **An "average last frost" is the 50%-freeze-probability date**, so planting tender crops on
+  it is near a coin flip. NOAA also publishes the 40/30/20/10% dates.
+- Because the zone→frost-date mapping is an approximation, **the tool now accepts the reader's
+  own frost dates** and recalculates every window from them. `windowsFor(lastFrostDay,
+  firstFrostDay)` in `calendar.ts` is shared by the zone pages and the browser island, so the
+  two can never disagree.
+- Corrected against UNH Extension: onion indoors 10-12 → **8-10 weeks**; cucumber indoors 2-3 →
+  **3-4 weeks**; zucchini and cucumber direct-sow **+2 to +3 weeks** at **70°F** (was +1 to +2
+  at 65°F). Row spacings widened for beans, cucumber and pepper per VCE 426-331.
+- Confirmed correct and left alone: tomato (6-8 wks indoors, +1-2), pepper (8-10, +2-3), radish
+  (-2 to -4), spinach (-3 to -6), peas ("as soon as soil thaws"), lettuce, kale, carrot spacing.
 
 ## Hard rules
 
@@ -93,12 +115,18 @@ best practices 100, SEO 100 on home, spoke and calendar. No horizontal overflow 
 watering, beginner mistakes, garden pests, community gardens. Nothing links to them yet, so
 each is just a new file in `src/content/guides/` + a `GUIDE_LINKS` entry.
 
-**Content accuracy — the real risk.** v1 numbers are conservative and internally consistent
-but have **not** been verified line-by-line against extension-service sources. The planting
-calendar carries the most exposure: offset-from-frost-date logic cannot know whether the
-ground has thawed, which is why zones 3-5 get an explicit soil-workability caveat. Run the
-Part 2 upgrade cycle in `htsavg-execution-kit.md` (research → draft → edit against a fact
-base), homepage and calendar first.
+**Succession sowing is not modelled — the biggest remaining data gap.** Each crop carries a
+single spring window, so long-season locations show months with no first sowing even though
+planting is fine then. Zone 7 showed "nothing in May, June" before this was reworded. The copy
+now says "no *first* sowing window falls in X" and names the succession crops, which is honest
+but not a fix. A real fix needs per-crop heat tolerance (the bolting threshold) plus local
+summer temperatures, so repeat windows can be generated while conditions allow. That is the
+next research cycle. `crops.json` carries a `succession` flag and a `limitations` field already.
+
+**Still unverified.** Days-to-harvest, seed depth and sun-hour figures were not checked against
+a source in pass 1 — only timings, soil temperatures and spacings were. The cost figures on the
+homepage are 2026 US retail estimates and have no source at all. Spoke prose beyond the numbers
+corrected in pass 1 has not been through an edit pass.
 
 **www is not redirected to apex.** Both hostnames serve 200 with identical content; the
 canonical tag on every page points at the apex, which Google honours, so this is safe but not

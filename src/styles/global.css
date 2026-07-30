@@ -816,3 +816,88 @@ caption {
     transition: none !important;
   }
 }
+
+/* ---------- calendar: frost-date override ---------- */
+
+.cal__override {
+  border-top: 1px solid var(--border);
+  margin-top: var(--sp-4);
+}
+
+.cal__override > summary {
+  cursor: pointer;
+  padding: var(--sp-4) 0 var(--sp-2);
+  font-size: var(--fs-sm);
+  font-weight: 640;
+  color: var(--leaf-dark);
+  list-style: none;
+}
+
+.cal__override > summary::-webkit-details-marker {
+  display: none;
+}
+
+.cal__override > summary::before {
+  content: '+ ';
+  font-weight: 400;
+}
+
+.cal__override[open] > summary::before {
+  content: '\2212 ';
+}
+
+.cal__override > summary:hover {
+  text-decoration: underline;
+}
+
+.cal__override-body {
+  padding-bottom: var(--sp-4);
+}
+
+.cal__override-body > p {
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+}
+
+.cal__field input[type='date'] {
+  font: inherit;
+  font-size: var(--fs-sm);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--cream);
+  color: var(--ink);
+  width: 100%;
+  min-height: 44px;
+}
+
+.cal__field input[type='date']:focus-visible {
+  outline: 2px solid var(--leaf);
+  outline-offset: 1px;
+}
+
+.cal__reset {
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 620;
+  padding: var(--sp-3) var(--sp-5);
+  min-height: 44px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--white);
+  color: var(--ink-soft);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cal__reset:hover {
+  border-color: var(--leaf-border);
+  background: var(--leaf-light);
+  color: var(--leaf-dark);
+}
+
+.cal__hint {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  margin: var(--sp-3) 0 0;
+}

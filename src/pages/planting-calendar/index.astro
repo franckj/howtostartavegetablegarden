@@ -4,11 +4,11 @@ import AnswerBox from '@/components/AnswerBox.astro';
 import Faq from '@/components/Faq.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import CalendarTool from '@/components/CalendarTool.astro';
-import { zones, crops, zonesMeta, cropsMeta } from '@/lib/calendar';
+import { zones, crops, zonesMeta, cropsMeta, dataSources } from '@/lib/calendar';
 import { SITE, faqSchema, breadcrumbSchema, humanDate } from '@/lib/site';
 
 const path = '/planting-calendar/';
-const dateModified = '2026-07-30';
+const dateModified = '2026-07-31';
 
 const title = 'Vegetable Planting Calendar by USDA Zone (3-10)';
 const description =
@@ -26,11 +26,15 @@ const faqs = [
   },
   {
     q: 'What does my hardiness zone actually tell me?',
-    a: 'It describes your average annual minimum winter temperature, in 10&deg;F bands. That is a good proxy for your frost dates and season length, which is what planting dates depend on, but it says nothing about summer heat, humidity or rainfall — so a zone 8 in Texas and a zone 8 in Oregon plant on similar dates but face very different summers.',
+    a: 'Only your average annual <em>extreme minimum winter</em> temperature, in 10&deg;F bands. It is a winter-survival rating for perennials — it is not a frost-date band, and it says nothing about summer heat, humidity or rainfall. A zone 8 in Texas and a zone 8 in Oregon share a winter low and face completely different summers.',
+  },
+  {
+    q: 'If zones are not frost dates, why use a zone at all?',
+    a: 'Because it is a reasonable first guess and most people know their zone, while few know their frost dates. But a zone is genuinely a proxy here, not a source. If you have your local averages — from the NOAA freeze-date map or your county extension office — enter them in the tool above and every window recalculates from your numbers instead of ours.',
   },
   {
     q: 'Are these planting dates exact?',
-    a: 'No, and no zone-based calendar can be. A single zone spans hundreds of miles, and elevation alone can shift a frost date by two weeks. Treat these windows as a starting point and confirm your local average frost dates with your county cooperative extension office.',
+    a: 'No, and no zone-based calendar can be. A single zone spans hundreds of miles, elevation alone can shift a frost date by two weeks, and the "average last frost" is by definition the date the chance of freezing drops below 50 percent — so planting on it is close to a coin flip. For tender crops, waiting a week or two past it is the safer read.',
   },
   {
     q: 'What is the difference between direct sowing and starting indoors?',
@@ -114,7 +118,14 @@ const datasetSchema = {
           href="https://planthardiness.ars.usda.gov/"
           rel="noopener"
           target="_blank">USDA Plant Hardiness Zone Map</a
-        >, which was last revised in 2023.
+        >, last revised in 2023.
+      </p>
+      <p>
+        One caveat worth reading before you plant anything: a hardiness zone describes
+        <strong>winter lows</strong>, not frost dates. It is a useful default and most people
+        know theirs, but it is a proxy. If you know your own average frost dates, the tool
+        takes them directly &mdash; open &ldquo;use your own frost dates&rdquo; below the
+        dropdowns.
       </p>
     </AnswerBox>
 
@@ -184,10 +195,38 @@ const datasetSchema = {
       two-week buffer.
     </p>
     <p>{cropsMeta.note}</p>
+    <p class="note">
+      <strong>Known limitation.</strong> {cropsMeta.limitations}
+    </p>
     <p>
       Crops covered: {crops.map((c) => c.name).join(', ')}. The full depth and spacing table
       is on <a href="/">the main guide</a>, and the data is free to reuse with attribution
       (CC BY 4.0).
+    </p>
+
+    <h2 id="sources">Where the numbers come from</h2>
+    <p>
+      Crop timings, soil temperatures and spacings are cross-checked against cooperative
+      extension publications. Frost dates by zone are the weakest link in any calendar like
+      this one &mdash; they are conventional approximations rather than official figures,
+      which is exactly why the tool lets you substitute your own.
+    </p>
+    <ul>
+      {
+        dataSources.map((src) => (
+          <li>
+            <a href={src.url} rel="noopener" target="_blank">
+              {src.name}
+            </a>{' '}
+            &mdash; {src.used_for}.
+          </li>
+        ))
+      }
+    </ul>
+    <p class="note">
+      <strong>Nothing here replaces local advice.</strong> Your county cooperative extension
+      office knows your frost dates, your soil and which varieties perform three streets away.
+      Search &ldquo;cooperative extension&rdquo; plus your county name.
     </p>
 
     <Faq faqs={faqs} />

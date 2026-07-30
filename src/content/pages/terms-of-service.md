@@ -55,10 +55,6 @@ Guides link to third-party sites — the USDA, cooperative extension services, a
 
 Pages are revised and occasionally removed as content is improved. These terms may change too, and the "last updated" date at the top of this page will reflect it. Continuing to use the site after a change means you accept the revised terms.
 
-## Governing law
-
-These terms are governed by the laws of France, where the site operator is based, without prejudice to any mandatory consumer protections available to you under the law of your own country of residence.
-
 ## Contact
 
 Questions about these terms: hello@howtostartavegetablegarden.com

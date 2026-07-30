@@ -1,6 +1,6 @@
 {
-  "note": "Average last spring frost / first fall frost by USDA hardiness zone. Zone-wide averages only — local dates vary by hundreds of miles within a zone and by elevation. Always confirm against your county extension office or the nearest NOAA station.",
-  "source": "Derived from USDA Plant Hardiness Zone Map (2023 revision) minimum-temperature bands and NOAA 1991-2020 climate normals for frost/freeze probability.",
+  "note": "A USDA hardiness zone describes average annual extreme minimum WINTER temperature — it is a winter-survival rating for perennials, not a frost-date band. The frost dates below are widely-used approximations for each zone, not official USDA figures, and a single zone spans hundreds of miles. Treat them as a default guess and replace them with your own local averages wherever you have them.",
+  "source": "Zone temperature bands: USDA Plant Hardiness Zone Map, 2023 revision. Frost dates: conventional per-zone approximations, to be superseded by station-level data from NOAA NCEI 1991-2020 Climate Normals (which also give the 40%, 30%, 20% and 10% freeze-probability dates) or your county cooperative extension office.",
   "zones": [
     {
       "zone": 3,
@@ -89,6 +89,23 @@
       "seasonDays": 339,
       "regions": "South Florida, Florida Keys, Hawaii, southernmost coastal California",
       "summary": "Effectively frost-free. Treat the cool months as your main season and skip cool-season crops entirely from June through September."
+    }
+  ],
+  "sources": [
+    {
+      "name": "USDA Plant Hardiness Zone Map (2023 revision)",
+      "url": "https://planthardiness.ars.usda.gov/",
+      "used_for": "Zone definitions and winter minimum-temperature bands"
+    },
+    {
+      "name": "NOAA Climate.gov — average date of last spring freeze (interactive map)",
+      "url": "https://www.climate.gov/news-features/understanding-climate/interactive-map-average-date-last-spring-freeze-across-united",
+      "used_for": "Authoritative station-level frost dates; the 'average' date is where freeze probability drops below 50%"
+    },
+    {
+      "name": "NOAA NCEI — US Climate Normals 1991-2020",
+      "url": "https://www.ncei.noaa.gov/access/search/data-search/normals-annualseasonal-1991-2020",
+      "used_for": "Freeze-probability thresholds (50/40/30/20/10%) for ~15,000 stations"
     }
   ]
 }

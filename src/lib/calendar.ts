@@ -21,6 +21,8 @@ export interface Crop {
   sunHours: string;
   actions: CropAction[];
   fallSow: boolean;
+  /** Routinely re-sown every 2-3 weeks through the season. */
+  succession: boolean;
   why: string;
   watchOut: string;
 }
@@ -39,8 +41,24 @@ export interface Zone {
 
 export const zones = zonesData.zones as Zone[];
 export const crops = cropsData.crops as Crop[];
+export interface DataSource {
+  name: string;
+  url: string;
+  used_for: string;
+}
+
 export const zonesMeta = { note: zonesData.note, source: zonesData.source };
-export const cropsMeta = { note: cropsData.note, source: cropsData.source };
+export const cropsMeta = {
+  note: cropsData.note,
+  source: cropsData.source,
+  limitations: cropsData.limitations,
+};
+
+/** Every source the dataset was checked against, for the citations block. */
+export const dataSources: DataSource[] = [
+  ...(zonesData.sources as DataSource[]),
+  ...(cropsData.sources as DataSource[]),
+];
 
 export const MONTHS = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -109,17 +127,21 @@ export interface WindowEntry {
 }
 
 /**
- * Every planting window for one zone: each crop action offset from the zone's
- * last frost, plus a fall sowing for cool-season crops backed off the first
- * frost by days-to-harvest plus a two-week buffer.
+ * Every planting window for a pair of frost dates: each crop action offset from
+ * the last spring frost, plus a fall sowing for cool-season crops backed off the
+ * first fall frost by days-to-harvest plus a two-week buffer.
+ *
+ * Takes raw day-of-year values rather than a Zone so the same derivation serves
+ * the zone pages and a reader's own frost dates in the browser. A hardiness zone
+ * is only ever a default guess at these two numbers — see zones.json.
  */
-export function windowsForZone(zone: Zone): WindowEntry[] {
+export function windowsFor(lastFrostDay: number, firstFrostDay: number): WindowEntry[] {
   const out: WindowEntry[] = [];
 
   for (const crop of crops) {
     for (const action of crop.actions) {
-      const startDay = zone.lastFrostDay + action.weeks[0] * 7;
-      const endDay = zone.lastFrostDay + action.weeks[1] * 7;
+      const startDay = lastFrostDay + action.weeks[0] * 7;
+      const endDay = lastFrostDay + action.weeks[1] * 7;
       out.push({
         crop,
         method: action.method,
@@ -133,7 +155,7 @@ export function windowsForZone(zone: Zone): WindowEntry[] {
 
     if (crop.fallSow) {
       // Back off the first frost by the slowest maturity plus a 14-day buffer.
-      const endDay = zone.firstFrostDay - (crop.daysToHarvest[1] + 14);
+      const endDay = firstFrostDay - (crop.daysToHarvest[1] + 14);
       const startDay = endDay - 14;
       out.push({
         crop,
@@ -150,17 +172,22 @@ export function windowsForZone(zone: Zone): WindowEntry[] {
   return out;
 }
 
+/** Convenience wrapper: a zone is just a default pair of frost dates. */
+export function windowsForZone(zone: Zone): WindowEntry[] {
+  return windowsFor(zone.lastFrostDay, zone.firstFrostDay);
+}
+
 export interface MonthPlan {
   month: number;
   name: string;
   entries: WindowEntry[];
 }
 
-/** Group a zone's windows by every month they touch. */
-export function calendarForZone(zone: Zone): MonthPlan[] {
+/** Group planting windows by every month they touch. */
+export function monthsFrom(windows: WindowEntry[]): MonthPlan[] {
   const buckets: WindowEntry[][] = Array.from({ length: 12 }, () => []);
 
-  for (const entry of windowsForZone(zone)) {
+  for (const entry of windows) {
     for (const m of monthsSpanned(entry.startDay, entry.endDay)) {
       buckets[m].push(entry);
     }
@@ -176,6 +203,10 @@ export function calendarForZone(zone: Zone): MonthPlan[] {
   }));
 }
 
+export function calendarForZone(zone: Zone): MonthPlan[] {
+  return monthsFrom(windowsForZone(zone));
+}
+
 /** One row per crop for a zone's summary table. */
 export interface CropRow {
   crop: Crop;
@@ -186,8 +217,9 @@ export interface CropRow {
 }
 
 export function cropRowsForZone(zone: Zone): CropRow[] {
+  const all = windowsForZone(zone);
   return crops.map((crop) => {
-    const w = windowsForZone(zone).filter((e) => e.crop.slug === crop.slug);
+    const w = all.filter((e) => e.crop.slug === crop.slug);
     const indoors = w.find((e) => e.method === 'indoors');
     const outdoors = w.find((e) => e.method === 'direct' && !e.fall) ?? w.find((e) => e.method === 'transplant');
     const fall = w.find((e) => e.fall);
@@ -205,26 +237,4 @@ export function cropRowsForZone(zone: Zone): CropRow[] {
       harvest: `${formatDay(harvestFrom)} - ${formatDay(harvestTo)}`,
     };
   });
-}
-
-/** Serialisable payload for the interactive island. */
-export function calendarPayload() {
-  return {
-    zones: zones.map((z) => ({
-      zone: z.zone,
-      lastFrost: z.lastFrost,
-      firstFrost: z.firstFrost,
-      summary: z.summary,
-      regions: z.regions,
-      months: calendarForZone(z).map((m) => ({
-        name: m.name,
-        entries: m.entries.map((e) => ({
-          crop: e.crop.name,
-          label: e.label,
-          window: e.window,
-          season: e.crop.season,
-        })),
-      })),
-    })),
-  };
 }

@@ -10,6 +10,7 @@ changes, schema changes. It is the source of truth.
 
 - **Live:** https://howtostartavegetablegarden.com (apex + www)
 - **Pages URL:** https://howtostartavegetablegarden.pages.dev
+- **Repo:** git@github.com:franckj/howtostartavegetablegarden.git (branch `main`, SSH)
 - **v1 shipped:** 2026-07-30 — 18 routes
 - **Fact-check pass 1:** 2026-07-31 — calendar dataset corrected against extension sources
 - **Succession sowing:** 2026-07-31 — repeating sowing runs; fixed the empty-month defect
@@ -26,10 +27,35 @@ npx wrangler pages deploy dist --project-name howtostartavegetablegarden --branc
 Wrangler OAuth only — **never ask Franck for a `CLOUDFLARE_API_TOKEN` to deploy.** A
 DNS-scoped token is only needed for DNS record changes (OAuth has no DNS permission).
 
-Direct upload, so there is no commit→deploy hook. Git integration would be a one-time
-dashboard click (Pages → Settings → Builds & deployments → Connect to Git).
+Direct upload, so there is no commit→deploy hook — **pushing to GitHub does not deploy.**
+Deploy and push are two separate steps. Connecting Git is a one-time dashboard click
+(Pages → project → Settings → Builds & deployments → Connect to Git) if you want
+push-to-deploy; there is no CLI for it.
 
 After a meaningful content change: `node scripts/indexnow.mjs` (key file already deployed).
+
+## Header, footer and nav
+
+- Header: logo left, site title as two stacked spans (`.brand__name`), nav links + green CTA
+  right. **Below 780px `.nav` is `display: none`** — mobile is logo + button only, by request.
+  Adding a nav item means editing `NAV` in `src/lib/site.ts`; it will not show on mobile.
+- `NAV_CTA` is the green button, always visible.
+- Footer sits on `--leaf-dark` and has its own on-dark token ramp (`--footer-*`) in
+  `tokens.css`. Do not reuse the light-theme text colours there.
+- **Footer prose links must stay underlined** (`.site-footer p a`). Colour alone fails WCAG
+  1.4.1 and Lighthouse catches it as `link-in-text-block`. Footer list links are standalone and
+  stay undecorated.
+
+## Ads and affiliate links
+
+Nothing is affiliate-linked yet. Toolkit items in `src/data/resources.json` carry
+`affiliate: null`; fill one in and `/resources/` renders it with `rel="noopener sponsored"` and
+shows the disclosure block automatically (`hasAffiliates` drives it).
+
+**Before adding any ad network**, update `src/content/pages/privacy-policy.md` first — it
+currently states plainly that no ad network is running and that the cookie-free claim will be
+corrected before one is added. The About page and footer already say ads and affiliate links
+may appear. FTC rules want the disclosure above the links, which is how it renders.
 
 ## Analytics
 

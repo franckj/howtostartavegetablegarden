@@ -72,6 +72,15 @@ No cookies, so no consent banner. Cookie-free status is asserted in the privacy 
 Schema: `WebSite` + `Organization` + `WebPage` sitewide; `HowTo` + `FAQPage` on home;
 `Dataset` + `FAQPage` on calendar pages; `FAQPage` + `BreadcrumbList` on spokes.
 
+## Launch checklist — done
+
+- Deployed, apex + www live with valid SSL (2026-07-30)
+- Plausible verified sending (see Analytics above)
+- Google Search Console: verified, sitemap submitted
+- Bing Webmaster Tools: verified, sitemap submitted
+- IndexNow: 17 URLs submitted, 202 accepted (`node scripts/indexnow.mjs`)
+- Sitemap serves 17 apex URLs; only `/404.html` carries `noindex`
+
 ## Measured at launch
 
 Lighthouse (local preview, Playwright Chromium): performance 100, accessibility 100,
@@ -91,8 +100,12 @@ ground has thawed, which is why zones 3-5 get an explicit soil-workability cavea
 Part 2 upgrade cycle in `htsavg-execution-kit.md` (research → draft → edit against a fact
 base), homepage and calendar first.
 
-**Launch tasks needing Franck's accounts:** Google Search Console verify + submit sitemap;
-Bing Webmaster Tools (feeds ChatGPT/Copilot). IndexNow already pinged (17 URLs, 202).
+**www is not redirected to apex.** Both hostnames serve 200 with identical content; the
+canonical tag on every page points at the apex, which Google honours, so this is safe but not
+ideal. The clean fix is one Cloudflare Redirect Rule (dashboard: Rules -> Redirect Rules,
+hostname eq `www.howtostartavegetablegarden.com` -> 301 to apex, preserve path). Deliberately
+NOT done with a Pages `functions/_middleware.ts`, which would put a Worker in front of every
+request on an otherwise fully static site.
 
 **Confirm:** the terms page states governing law is France, inferred from Franck being the
 Paris-based operator. Change `src/content/pages/terms-of-service.md` if that is wrong.

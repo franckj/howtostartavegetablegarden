@@ -1,0 +1,23 @@
+---
+interface Props {
+  links: readonly { href: string; title: string; blurb: string }[];
+  heading?: string;
+  id?: string;
+}
+
+const { links, heading = 'Next steps', id = 'next-steps' } = Astro.props;
+---
+
+<section aria-labelledby={`${id}-heading`}>
+  <h2 id={id}><span id={`${id}-heading`}>{heading}</span></h2>
+  <div class="cards">
+    {
+      links.map((l) => (
+        <a class="card" href={l.href}>
+          <h3>{l.title}</h3>
+          <p>{l.blurb}</p>
+        </a>
+      ))
+    }
+  </div>
+</section>

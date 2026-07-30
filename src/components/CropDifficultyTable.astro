@@ -1,0 +1,63 @@
+---
+import { crops } from '@/lib/calendar';
+
+const DIFFICULTY: Record<number, { label: string; cls: string }> = {
+  1: { label: 'Very easy', cls: 'pill--easy' },
+  2: { label: 'Easy', cls: 'pill--medium' },
+  3: { label: 'Needs care', cls: 'pill--harder' },
+};
+
+/** Fastest first — an early harvest is what keeps a beginner going. */
+const ranked = [...crops].sort(
+  (a, b) => a.difficulty - b.difficulty || a.daysToHarvest[0] - b.daysToHarvest[0]
+);
+
+const startMethod = (c: (typeof crops)[number]) => {
+  const indoors = c.actions.find((a) => a.method === 'indoors');
+  const direct = c.actions.find((a) => a.method === 'direct');
+  if (direct && !indoors) return 'Direct sow';
+  if (direct && indoors) return 'Direct sow or start indoors';
+  return 'Start indoors, then transplant';
+};
+---
+
+<div class="table-wrap">
+  <table>
+    <caption>
+      Ranked easiest first, then fastest. Days to harvest are counted from sowing, except
+      tomatoes and peppers which are counted from transplanting.
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Crop</th>
+        <th scope="col">Difficulty</th>
+        <th scope="col">Season</th>
+        <th scope="col">How to start it</th>
+        <th scope="col">Days to harvest</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        ranked.map((c, i) => (
+          <tr>
+            <td>{i + 1}</td>
+            <th scope="row" style="text-align:left;font-weight:600;background:none">{c.name}</th>
+            <td>
+              <span class={`pill ${DIFFICULTY[c.difficulty].cls}`}>
+                {DIFFICULTY[c.difficulty].label}
+              </span>
+            </td>
+            <td>
+              <span class={`pill ${c.season === 'cool' ? 'pill--cool' : 'pill--warm'}`}>
+                {c.season === 'cool' ? 'Cool season' : 'Warm season'}
+              </span>
+            </td>
+            <td style="white-space:normal">{startMethod(c)}</td>
+            <td>{c.daysToHarvest[0]}-{c.daysToHarvest[1]}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

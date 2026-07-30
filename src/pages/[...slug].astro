@@ -1,0 +1,95 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AnswerBox from '@/components/AnswerBox.astro';
+import Toc from '@/components/Toc.astro';
+import Faq from '@/components/Faq.astro';
+import NextSteps from '@/components/NextSteps.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { SITE, GUIDE_LINKS, faqSchema, breadcrumbSchema, humanDate } from '@/lib/site';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const guides = await getCollection('guides', (e) => e.id !== 'home');
+  const pages = await getCollection('pages');
+
+  return [
+    ...guides.map((entry) => ({
+      params: { slug: entry.data.path.replace(/^\/|\/$/g, '') },
+      props: { entry, kind: 'guide' as const },
+    })),
+    ...pages.map((entry) => ({
+      params: { slug: entry.data.path.replace(/^\/|\/$/g, '') },
+      props: { entry, kind: 'page' as const },
+    })),
+  ];
+};
+
+const { entry, kind } = Astro.props;
+const { Content, headings } = await render(entry);
+const d: any = entry.data;
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: d.crumb ?? d.h1, path: d.path },
+];
+
+const tocItems = headings.filter((h) => h.depth === 2).map((h) => ({ id: h.slug, label: h.text }));
+
+const related =
+  kind === 'guide'
+    ? d.related
+        .map((slug: string) => GUIDE_LINKS.find((g) => g.href === `/${slug}/`))
+        .filter(Boolean)
+    : [];
+
+// Always offer the calendar as a third card — it is the site's most useful page.
+const nextLinks =
+  related.length > 0
+    ? [...related, GUIDE_LINKS.find((g) => g.href === '/planting-calendar/')!]
+    : [];
+
+const schema =
+  kind === 'guide'
+    ? [faqSchema(d.faqs), breadcrumbSchema(crumbs)]
+    : [breadcrumbSchema(crumbs)];
+---
+
+<BaseLayout
+  title={d.title}
+  description={d.description}
+  path={d.path}
+  dateModified={d.dateModified}
+  schema={schema}
+  noindex={kind === 'page' && d.noindex}
+>
+  <Breadcrumbs items={crumbs} />
+
+  <div class="wrap page-head prose">
+    {d.eyebrow && <p class="eyebrow">{d.eyebrow}</p>}
+    <h1>{d.h1}</h1>
+    <p class="updated">Last updated {humanDate(d.dateModified)}</p>
+  </div>
+
+  <div class="wrap prose">
+    {
+      kind === 'guide' && (
+        <AnswerBox label={d.answerLabel}>
+          {d.answer.map((p: string) => (
+            <p>{p}</p>
+          ))}
+        </AnswerBox>
+      )
+    }
+
+    {kind === 'guide' && d.toc && tocItems.length > 2 && <Toc items={tocItems} ordered={false} />}
+
+    <article>
+      <Content />
+    </article>
+
+    {kind === 'guide' && <Faq faqs={d.faqs} />}
+
+    {nextLinks.length > 0 && <NextSteps links={nextLinks} heading="Keep going" />}
+  </div>
+</BaseLayout>

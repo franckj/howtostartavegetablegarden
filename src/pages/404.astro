@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import NextSteps from '@/components/NextSteps.astro';
+import { GUIDE_LINKS } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="That page does not exist. Start with the beginner's guide or the planting calendar."
+  path="/404/"
+  noindex={true}
+>
+  <div class="wrap page-head prose">
+    <p class="eyebrow">404</p>
+    <h1>That page has not sprouted</h1>
+  </div>
+
+  <div class="wrap prose">
+    <p class="lede">
+      The page you asked for does not exist — it may have been renamed, or the link may be
+      wrong. Everything on the site is one of these:
+    </p>
+
+    <NextSteps links={GUIDE_LINKS} heading="Where to go instead" />
+
+    <p>
+      Still stuck? Start at <a href="/">how to start a vegetable garden</a>, which links to
+      every other page.
+    </p>
+  </div>
+</BaseLayout>

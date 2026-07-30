@@ -1,0 +1,119 @@
+---
+import { getEntry, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AnswerBox from '@/components/AnswerBox.astro';
+import Toc from '@/components/Toc.astro';
+import Faq from '@/components/Faq.astro';
+import NextSteps from '@/components/NextSteps.astro';
+import { SITE, GUIDE_LINKS, faqSchema, humanDate } from '@/lib/site';
+
+const entry = await getEntry('guides', 'home');
+if (!entry) throw new Error('Missing src/content/guides/home.mdx');
+
+const { Content, headings } = await render(entry);
+const d = entry.data;
+
+const h2s = headings.filter((h) => h.depth === 2);
+
+// Markdown headings, plus the two sections rendered by this page rather than the body.
+const tocItems = [
+  ...h2s.map((h) => ({ id: h.slug, label: h.text })),
+  { id: 'what-it-costs-to-start', label: 'What it costs to start' },
+  { id: 'faq-heading', label: 'Frequently asked questions' },
+];
+
+// Fail the build rather than ship HowTo schema pointing at anchors that do not exist.
+const slugs = new Set(h2s.map((h) => h.slug));
+for (const step of d.howTo!.steps) {
+  if (!slugs.has(step.anchor)) {
+    throw new Error(
+      `HowTo step "${step.name}" has anchor "${step.anchor}" but no matching H2 was rendered. ` +
+        `Available: ${[...slugs].join(', ')}`
+    );
+  }
+}
+
+const howToSchema = {
+  '@type': 'HowTo',
+  '@id': `${SITE.origin}/#howto`,
+  name: d.howTo!.name,
+  description: d.description,
+  totalTime: d.howTo!.totalTime,
+  estimatedCost: {
+    '@type': 'MonetaryAmount',
+    currency: 'USD',
+    value: d.howTo!.estimatedCost,
+  },
+  supply: d.howTo!.supply.map((s) => ({ '@type': 'HowToSupply', name: s })),
+  tool: d.howTo!.tool.map((t) => ({ '@type': 'HowToTool', name: t })),
+  step: d.howTo!.steps.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: s.name,
+    text: s.text,
+    url: `${SITE.origin}/#${s.anchor}`,
+  })),
+};
+---
+
+<BaseLayout
+  title={d.title}
+  description={d.description}
+  path="/"
+  dateModified={d.dateModified}
+  ogType="website"
+  schema={[howToSchema, faqSchema(d.faqs)]}
+>
+  <div class="wrap page-head prose">
+    {d.eyebrow && <p class="eyebrow">{d.eyebrow}</p>}
+    <h1>{d.h1}</h1>
+    <p class="updated">Last updated {humanDate(d.dateModified)}</p>
+  </div>
+
+  <div class="wrap prose">
+    <AnswerBox label={d.answerLabel}>
+      {d.answer.map((p) => <p>{p}</p>)}
+    </AnswerBox>
+
+    <Toc items={tocItems} heading="On this page" ordered={false} />
+
+    <article>
+      <Content />
+    </article>
+
+    <section aria-labelledby="cost-heading">
+      <h2 id="what-it-costs-to-start"><span id="cost-heading">What it costs to start</span></h2>
+      <p>
+        Three realistic budgets for a first garden. Prices are 2026 US retail estimates and
+        vary by region; soil is the line item that decides everything.
+      </p>
+      <div class="cost">
+        {
+          d.costs!.map((c) => (
+            <div class="cost__card">
+              <h3>{c.label}</h3>
+              <p class="cost__total">{c.total}</p>
+              <ul>
+                {c.items.map((i) => (
+                  <li>
+                    <span>{i.item}</span>
+                    <span>{i.price}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <p class="note">
+        <strong>Year two costs a fraction of year one.</strong> The bed, tools, hose and
+        cage are one-time purchases. Recurring costs are seeds, compost and mulch — roughly
+        $40 to $70 a season for a 4x8 bed.
+      </p>
+    </section>
+
+    <Faq faqs={d.faqs} />
+
+    <NextSteps links={GUIDE_LINKS} heading="Where to go next" />
+  </div>
+</BaseLayout>

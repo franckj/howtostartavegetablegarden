@@ -1,0 +1,53 @@
+:root {
+  /* Palette — warm earth: leaf greens on cream, soil brown as the only accent */
+  --cream: #fbf9f4;
+  --sand: #f3eee4;
+  --sand-2: #eae3d5;
+  --ink: #1f2a20;
+  --ink-soft: #3c4a3d;
+  --muted: #5f6b5e;
+  --leaf: #2f6b3f;
+  --leaf-dark: #234e2f;
+  --leaf-light: #eaf2e6;
+  --leaf-border: #c3d9bd;
+  --soil: #7a5330;
+  --soil-light: #f6efe6;
+  --border: #e3dccc;
+  --border-strong: #d2c8b3;
+  --white: #ffffff;
+
+  /* Difficulty pills */
+  --easy: #2f6b3f;
+  --medium: #8a6520;
+  --harder: #99502c;
+
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+  --fs-h1: clamp(2rem, 5vw, 2.9rem);
+  --fs-h2: clamp(1.45rem, 3vw, 1.85rem);
+  --fs-h3: clamp(1.12rem, 2vw, 1.25rem);
+  --fs-body: 1.0625rem;
+  --fs-sm: 0.9375rem;
+  --fs-xs: 0.8125rem;
+  --lh-body: 1.68;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 88px;
+
+  --r-sm: 5px;
+  --r-md: 9px;
+  --r-lg: 14px;
+  --r-full: 999px;
+
+  --wrap: 1080px;
+  --prose: 704px;
+}

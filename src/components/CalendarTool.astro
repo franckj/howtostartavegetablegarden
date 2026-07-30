@@ -1,0 +1,124 @@
+---
+import { calendarPayload, MONTHS } from '@/lib/calendar';
+
+const payload = calendarPayload();
+---
+
+<div class="cal" id="calendar-tool">
+  <div class="cal__controls">
+    <div class="cal__field">
+      <label for="cal-zone">Your USDA zone</label>
+      <select id="cal-zone">
+        {
+          payload.zones.map((z) => (
+            <option value={z.zone} selected={z.zone === 6}>
+              Zone {z.zone}
+            </option>
+          ))
+        }
+      </select>
+    </div>
+    <div class="cal__field">
+      <label for="cal-month">Month</label>
+      <select id="cal-month">
+        {MONTHS.map((m, i) => <option value={i}>{m}</option>)}
+      </select>
+    </div>
+  </div>
+
+  <p class="cal__meta" id="cal-meta"></p>
+
+  <div class="cal__out" id="cal-out" aria-live="polite"></div>
+
+  <noscript>
+    <div class="note">
+      <p>
+        <strong>This tool needs JavaScript.</strong> The same information is on the static
+        zone pages — pick yours:
+        {
+          payload.zones.map((z, i) => (
+            <>
+              {i > 0 && ', '}
+              <a href={`/planting-calendar/zone-${z.zone}/`}>zone {z.zone}</a>
+            </>
+          ))
+        }.
+      </p>
+    </div>
+  </noscript>
+</div>
+
+<script type="application/json" id="cal-data" set:html={JSON.stringify(payload)} />
+
+<script>
+  interface Entry {
+    crop: string;
+    label: string;
+    window: string;
+    season: 'cool' | 'warm';
+  }
+  interface ZoneData {
+    zone: number;
+    lastFrost: string;
+    firstFrost: string;
+    summary: string;
+    regions: string;
+    months: { name: string; entries: Entry[] }[];
+  }
+
+  const dataEl = document.getElementById('cal-data');
+  const zoneSel = document.getElementById('cal-zone') as HTMLSelectElement | null;
+  const monthSel = document.getElementById('cal-month') as HTMLSelectElement | null;
+  const out = document.getElementById('cal-out');
+  const meta = document.getElementById('cal-meta');
+
+  if (dataEl && zoneSel && monthSel && out && meta) {
+    const zones: ZoneData[] = JSON.parse(dataEl.textContent || '{"zones":[]}').zones;
+    const STORE = 'htsavg:zone';
+
+    const saved = localStorage.getItem(STORE);
+    if (saved && zones.some((z) => String(z.zone) === saved)) zoneSel.value = saved;
+    monthSel.value = String(new Date().getMonth());
+
+    const esc = (s: string) =>
+      s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+    function render() {
+      const zone = zones.find((z) => String(z.zone) === zoneSel!.value);
+      if (!zone) return;
+      const month = zone.months[Number(monthSel!.value)];
+
+      meta!.innerHTML =
+        `Zone ${zone.zone} averages its last spring frost around <strong>${esc(zone.lastFrost)}</strong> ` +
+        `and its first fall frost around <strong>${esc(zone.firstFrost)}</strong>. ` +
+        `<a href="/planting-calendar/zone-${zone.zone}/">See the full zone ${zone.zone} calendar</a>.`;
+
+      if (!month || month.entries.length === 0) {
+        out!.innerHTML =
+          `<p class="cal__empty">Nothing to plant outdoors in ${esc(month ? month.name : '')} in zone ${zone.zone}. ` +
+          `Use the time to plan beds, order seeds, or start a compost pile.</p>`;
+        return;
+      }
+
+      const rows = month.entries
+        .map(
+          (e) =>
+            `<li><span class="cal__crop">${esc(e.crop)}</span>` +
+            `<span class="cal__action">${esc(e.label)}</span>` +
+            `<span class="cal__window">${esc(e.window)}</span></li>`
+        )
+        .join('');
+
+      out!.innerHTML =
+        `<h3 class="mt-0">${esc(month.name)} in zone ${zone.zone}</h3>` +
+        `<ul class="cal__list">${rows}</ul>`;
+    }
+
+    zoneSel.addEventListener('change', () => {
+      localStorage.setItem(STORE, zoneSel.value);
+      render();
+    });
+    monthSel.addEventListener('change', render);
+    render();
+  }
+</script>

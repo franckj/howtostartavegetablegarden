@@ -1,0 +1,35 @@
+---
+import { crops, cropsMeta } from '@/lib/calendar';
+---
+
+<figure class="table-wrap" style="margin-left:0;margin-right:0">
+  <table>
+    <caption>{cropsMeta.source} Depths follow the seed packet where they differ.</caption>
+    <thead>
+      <tr>
+        <th scope="col">Crop</th>
+        <th scope="col">Sun (hrs)</th>
+        <th scope="col">Seed depth</th>
+        <th scope="col">Space between plants</th>
+        <th scope="col">Between rows</th>
+        <th scope="col">Min soil temp</th>
+        <th scope="col">Days to harvest</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        crops.map((c) => (
+          <tr>
+            <th scope="row" style="text-align:left;font-weight:600;background:none">{c.name}</th>
+            <td>{c.sunHours}</td>
+            <td>{c.depthIn}"</td>
+            <td>{c.spacingIn}"</td>
+            <td>{c.rowSpacingIn}"</td>
+            <td>{c.minSoilTempF}&deg;F</td>
+            <td>{c.daysToHarvest[0]}-{c.daysToHarvest[1]}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</figure>

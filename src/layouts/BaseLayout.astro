@@ -1,0 +1,157 @@
+---
+import '@/styles/tokens.css';
+import '@/styles/global.css';
+import { SITE, NAV, FOOTER_LEGAL, GUIDE_LINKS, humanDate } from '@/lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  /** ISO date, e.g. "2026-07-30" */
+  dateModified?: string;
+  /** Extra JSON-LD nodes merged into the sitewide @graph. */
+  schema?: unknown[];
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  dateModified = SITE.lastUpdated,
+  schema = [],
+  ogType = 'article',
+  noindex = false,
+} = Astro.props;
+
+const canonical = `${SITE.origin}${path}`;
+const ogImage = `${SITE.origin}/og-image.png`;
+
+const graph = [
+  {
+    '@type': 'WebSite',
+    '@id': `${SITE.origin}/#website`,
+    url: `${SITE.origin}/`,
+    name: SITE.name,
+    description: SITE.tagline,
+    inLanguage: 'en-US',
+    publisher: { '@id': `${SITE.origin}/#organization` },
+  },
+  {
+    '@type': 'Organization',
+    '@id': `${SITE.origin}/#organization`,
+    name: SITE.name,
+    url: `${SITE.origin}/`,
+    email: SITE.email,
+    description: SITE.tagline,
+  },
+  {
+    '@type': 'WebPage',
+    '@id': `${canonical}#webpage`,
+    url: canonical,
+    name: title,
+    description,
+    isPartOf: { '@id': `${SITE.origin}/#website` },
+    dateModified,
+    inLanguage: 'en-US',
+  },
+  ...schema,
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}
+    />
+
+    <script defer data-domain={SITE.plausibleDomain} src="https://plausible.io/js/script.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap site-header__inner">
+        <a class="brand" href="/">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M12 21c0-5 0-8 0-8"
+              stroke="#7a5330"
+              stroke-width="1.8"
+              stroke-linecap="round"></path>
+            <path
+              d="M12 13c-4.2 0-6.6-2.4-6.6-6.2C9.6 6.8 12 9.2 12 13Z"
+              fill="#2f6b3f"></path>
+            <path
+              d="M12 13c4.2 0 6.6-2.4 6.6-6.2C14.4 6.8 12 9.2 12 13Z"
+              fill="#3f8a52"></path>
+          </svg>
+          {SITE.name}
+        </a>
+        <nav class="nav" aria-label="Primary">
+          {NAV.map((item) => <a href={item.href}>{item.label}</a>)}
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="site-footer__grid">
+          <div>
+            <h2>Guides</h2>
+            <ul>
+              {GUIDE_LINKS.map((g) => <li><a href={g.href}>{g.title}</a></li>)}
+            </ul>
+          </div>
+          <div>
+            <h2>Site</h2>
+            <ul>
+              {FOOTER_LEGAL.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+            </ul>
+          </div>
+          <div>
+            <h2>About this site</h2>
+            <p>
+              Free, ad-light guides to growing real food in a small space. No sign-up, no
+              course, no fake expert bios.
+            </p>
+          </div>
+        </div>
+        <div class="site-footer__base">
+          <span>&copy; {new Date().getFullYear()} {SITE.domain}</span>
+          <span>Last updated {humanDate(dateModified)}</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

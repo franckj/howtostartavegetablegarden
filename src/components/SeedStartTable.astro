@@ -1,0 +1,57 @@
+---
+import { crops } from '@/lib/calendar';
+
+/** Only crops the dataset says are worth starting under a light. */
+const startable = crops
+  .filter((c) => c.actions.some((a) => a.method === 'indoors'))
+  .map((c) => {
+    const indoors = c.actions.find((a) => a.method === 'indoors')!;
+    const out = c.actions.find((a) => a.method === 'transplant' || a.method === 'direct')!;
+    return { crop: c, indoors, out };
+  })
+  .sort((a, b) => a.indoors.weeks[0] - b.indoors.weeks[0]);
+
+/** "-8 to -6 weeks" reads better as "6 to 8 weeks before". */
+const beforeFrost = (weeks: [number, number]) =>
+  `${Math.abs(weeks[1])} to ${Math.abs(weeks[0])} weeks before`;
+
+const outTiming = (weeks: [number, number]) => {
+  if (weeks[0] < 0) return `${Math.abs(weeks[1])} to ${Math.abs(weeks[0])} weeks before`;
+  return `${weeks[0]} to ${weeks[1]} weeks after`;
+};
+---
+
+<div class="table-wrap">
+  <table>
+    <caption>
+      Timing is relative to your average last spring frost. Get your zone's date from the
+      <a href="/planting-calendar/">planting calendar</a>.
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">Crop</th>
+        <th scope="col">Sow indoors</th>
+        <th scope="col">Move outdoors</th>
+        <th scope="col">Seed depth</th>
+        <th scope="col">Min soil temp</th>
+        <th scope="col">Final spacing</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        startable.map(({ crop, indoors, out }) => (
+          <tr>
+            <th scope="row" style="text-align:left;font-weight:600;background:none">
+              {crop.name}
+            </th>
+            <td>{beforeFrost(indoors.weeks)} last frost</td>
+            <td>{outTiming(out.weeks)} last frost</td>
+            <td>{crop.depthIn}"</td>
+            <td>{crop.minSoilTempF}&deg;F</td>
+            <td>{crop.spacingIn}"</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

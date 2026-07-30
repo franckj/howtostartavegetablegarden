@@ -1,0 +1,257 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AnswerBox from '@/components/AnswerBox.astro';
+import Toc from '@/components/Toc.astro';
+import Faq from '@/components/Faq.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import NextSteps from '@/components/NextSteps.astro';
+import { zones, calendarForZone, cropRowsForZone, zonesMeta } from '@/lib/calendar';
+import { SITE, GUIDE_LINKS, faqSchema, breadcrumbSchema, humanDate } from '@/lib/site';
+
+export const getStaticPaths: GetStaticPaths = () =>
+  zones.map((zone) => ({ params: { zone: String(zone.zone) }, props: { zone } }));
+
+const { zone } = Astro.props;
+const path = `/planting-calendar/zone-${zone.zone}/`;
+const dateModified = '2026-07-30';
+
+const months = calendarForZone(zone);
+const rows = cropRowsForZone(zone);
+const activeMonths = months.filter((m) => m.entries.length > 0);
+
+const title = `Zone ${zone.zone} Planting Calendar: What to Plant Each Month`;
+const description = `Zone ${zone.zone} planting dates for 12 beginner vegetables. Last frost around ${zone.lastFrost}, first frost around ${zone.firstFrost}, ${zone.seasonDays} frost-free days.`;
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Planting calendar', path: '/planting-calendar/' },
+  { name: `Zone ${zone.zone}`, path },
+];
+
+const tocItems = [
+  { id: 'month-by-month', label: 'Month by month' },
+  { id: 'crop-by-crop', label: 'Every crop, sowing to harvest' },
+  { id: 'notes', label: `Growing in zone ${zone.zone}` },
+];
+
+/** Zones 3-5 thaw late enough that the frost date alone can mislead. */
+const coldZone = zone.zone <= 5;
+
+const faqs = [
+  {
+    q: `When is the last frost in zone ${zone.zone}?`,
+    a: `Zone ${zone.zone} averages its last spring frost around ${zone.lastFrost} and its first fall frost around ${zone.firstFrost}, giving roughly ${zone.seasonDays} frost-free days. These are zone-wide averages across a very large area, so confirm your local dates with your county cooperative extension office before committing to them.`,
+  },
+  {
+    q: `What can I plant now in zone ${zone.zone}?`,
+    a: `Use the month-by-month table on this page. The pattern is: frost-tolerant crops like peas, spinach and radishes go in 6 to 2 weeks before ${zone.lastFrost}; warm-season crops like beans, zucchini and tomatoes go in 1 to 3 weeks after it; and cool-season crops get a second sowing about 10 to 12 weeks before ${zone.firstFrost}.`,
+  },
+  {
+    q: `Can I grow tomatoes in zone ${zone.zone}?`,
+    a: `Yes. In zone ${zone.zone}, start tomato seed indoors 6 to 8 weeks before ${zone.lastFrost} or buy a seedling, then transplant 1 to 2 weeks after the last frost once nights stay above 50&deg;F. With ${zone.seasonDays} frost-free days there is ${zone.seasonDays < 140 ? 'enough season for early and mid-season varieties, though large beefsteak types are a gamble — choose cherry or early varieties rated under 70 days' : 'comfortable room for any variety, including large beefsteak types'}.`,
+  },
+  {
+    q: `How many harvests can I get in zone ${zone.zone}?`,
+    a: `${zone.seasonDays < 140 ? 'One main round plus a tight fall sowing of the fastest crops. Radishes, spinach and lettuce can still be squeezed in after an early crop comes out.' : zone.seasonDays < 220 ? 'Two full rounds: a spring planting of cool-season crops, a summer planting of warm-season crops, and a fall sowing of greens and roots in the same beds.' : 'Two to three rounds a year, with the cool-season crops moved to autumn and late winter rather than midsummer, when heat rather than frost becomes the limiting factor.'}`,
+  },
+  {
+    q: `Does a raised bed change these dates in zone ${zone.zone}?`,
+    a: 'Yes, in spring. A raised bed warms 2 to 3 weeks earlier than open ground, so you can bring the early sowings forward by up to two weeks. Autumn dates are unchanged, since the first frost arrives on the same day regardless of your setup.',
+  },
+];
+
+const zoneSchema = {
+  '@type': 'Dataset',
+  '@id': `${SITE.origin}${path}#dataset`,
+  name: `Zone ${zone.zone} vegetable planting windows`,
+  description: `Sowing, transplanting and harvest windows for 12 beginner vegetable crops in USDA hardiness zone ${zone.zone}, derived from an average last frost of ${zone.lastFrost} and first frost of ${zone.firstFrost}.`,
+  url: `${SITE.origin}${path}`,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  creator: { '@id': `${SITE.origin}/#organization` },
+  isPartOf: { '@id': `${SITE.origin}/planting-calendar/#dataset` },
+  dateModified,
+  isAccessibleForFree: true,
+  spatialCoverage: { '@type': 'Place', name: `USDA hardiness zone ${zone.zone}, United States` },
+};
+---
+
+<BaseLayout
+  {title}
+  {description}
+  {path}
+  {dateModified}
+  schema={[zoneSchema, faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+  <Breadcrumbs items={crumbs} />
+
+  <div class="wrap page-head prose">
+    <p class="eyebrow">Planting calendar</p>
+    <h1>Zone {zone.zone} Planting Calendar: What to Plant Each Month</h1>
+    <p class="updated">Last updated {humanDate(dateModified)}</p>
+  </div>
+
+  <div class="wrap prose">
+    <AnswerBox label={`Zone ${zone.zone} at a glance`}>
+      <p>
+        Zone {zone.zone} averages its last spring frost around <strong>{zone.lastFrost}</strong>
+        and its first fall frost around <strong>{zone.firstFrost}</strong> — about
+        <strong>{zone.seasonDays} frost-free days</strong>, with winter lows of {zone.minTempF}&deg;F.
+        {zone.summary}
+      </p>
+      <p>
+        Sow frost-tolerant crops (peas, spinach, radishes, lettuce, kale, carrots) 6 to 2 weeks
+        before {zone.lastFrost}. Plant warm-season crops (beans, zucchini, cucumbers, tomatoes,
+        peppers) 1 to 3 weeks after it. Sow a second round of greens and roots about 10 to 12
+        weeks before {zone.firstFrost}.
+      </p>
+    </AnswerBox>
+
+    <Toc items={tocItems} ordered={false} />
+
+    <p>
+      Typical regions in zone {zone.zone}: {zone.regions}.
+    </p>
+
+    <h2 id="month-by-month">Month by month in zone {zone.zone}</h2>
+    <p>
+      {activeMonths.length} of the 12 months have something to plant in zone {zone.zone}. Each
+      window is the span in which that sowing or transplanting can safely happen.
+    </p>
+
+    {
+      months.map((m) =>
+        m.entries.length === 0 ? null : (
+          <>
+            <h3 id={m.name.toLowerCase()}>{m.name}</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Crop</th>
+                    <th scope="col">What to do</th>
+                    <th scope="col">Window</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {m.entries.map((e) => (
+                    <tr>
+                      <th scope="row" style="text-align:left;font-weight:600;background:none">
+                        {e.crop.name}
+                      </th>
+                      <td style="white-space:normal">{e.label}</td>
+                      <td>{e.window}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )
+      )
+    }
+
+    {
+      months.filter((m) => m.entries.length === 0).length > 0 && (
+        <p class="note">
+          <strong>Nothing to plant outdoors in zone {zone.zone} during{' '}
+          {months
+            .filter((m) => m.entries.length === 0)
+            .map((m) => m.name)
+            .join(', ')}.</strong> Use those months to plan beds, order seed, build a compost
+          pile, or start long-season crops under a light indoors.
+        </p>
+      )
+    }
+
+    <h2 id="crop-by-crop">Every crop, sowing to harvest</h2>
+    <p>
+      One row per crop, with the indoor start where it applies, the outdoor planting window,
+      the second fall sowing where the season allows it, and the earliest realistic harvest.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <caption>
+          Harvest dates assume the earliest outdoor planting in the window and the crop's
+          published days-to-harvest range. Weather moves all of it.
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Crop</th>
+            <th scope="col">Start indoors</th>
+            <th scope="col">Plant outdoors</th>
+            <th scope="col">Fall sowing</th>
+            <th scope="col">Harvest from</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map((r) => (
+              <tr>
+                <th scope="row" style="text-align:left;font-weight:600;background:none">
+                  {r.crop.name}
+                </th>
+                <td>{r.indoors ?? '-'}</td>
+                <td style="white-space:normal">{r.outdoors}</td>
+                <td>{r.fall ?? '-'}</td>
+                <td>{r.harvest}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="notes">Growing in zone {zone.zone}</h2>
+    <p>{zone.summary}</p>
+
+    {
+      coldZone && (
+        <div class="note">
+          <p>
+            <strong>Watch the soil, not just the calendar.</strong> In zone {zone.zone} the
+            earliest spring windows above assume the ground has thawed and is workable. In a
+            late spring it may still be frozen or waterlogged on those dates — if you cannot
+            crumble a handful of soil in your fist, wait. A raised bed, which warms 2 to 3
+            weeks earlier than open ground, is the reliable way to hit the early dates here.
+          </p>
+        </div>
+      )
+    }
+
+    {
+      zone.zone >= 8 && (
+        <div class="note">
+          <p>
+            <strong>Heat is your limiting factor, not frost.</strong> With {zone.seasonDays}{' '}
+            frost-free days, the hard part of the zone {zone.zone} year is midsummer. Lettuce
+            and spinach bolt bitter above 80&deg;F, so move them to autumn and late winter
+            rather than fighting July. The fall sowing dates above are the important ones here.
+          </p>
+        </div>
+      )
+    }
+
+    <div class="note">
+      <p><strong>These dates are averages.</strong> {zonesMeta.note}</p>
+    </div>
+
+    <p>
+      Other zones: {
+        zones
+          .filter((z) => z.zone !== zone.zone)
+          .map((z, i) => (
+            <>
+              {i > 0 && ', '}
+              <a href={`/planting-calendar/zone-${z.zone}/`}>zone {z.zone}</a>
+            </>
+          ))
+      }. Or use the <a href="/planting-calendar/">interactive calendar</a> to check a single
+      month.
+    </p>
+
+    <Faq faqs={faqs} heading={`Zone ${zone.zone} questions`} />
+
+    <NextSteps links={GUIDE_LINKS.filter((g) => g.href !== '/planting-calendar/')} heading="Keep going" />
+  </div>
+</BaseLayout>

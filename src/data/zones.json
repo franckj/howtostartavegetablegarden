@@ -1,0 +1,94 @@
+{
+  "note": "Average last spring frost / first fall frost by USDA hardiness zone. Zone-wide averages only — local dates vary by hundreds of miles within a zone and by elevation. Always confirm against your county extension office or the nearest NOAA station.",
+  "source": "Derived from USDA Plant Hardiness Zone Map (2023 revision) minimum-temperature bands and NOAA 1991-2020 climate normals for frost/freeze probability.",
+  "zones": [
+    {
+      "zone": 3,
+      "minTempF": "-40 to -30",
+      "lastFrost": "May 15",
+      "firstFrost": "September 15",
+      "lastFrostDay": 135,
+      "firstFrostDay": 258,
+      "seasonDays": 123,
+      "regions": "Northern Minnesota, northern North Dakota, interior Alaska, high-elevation Rockies",
+      "summary": "One of the shortest growing seasons in the continental US. Short-season varieties and transplants matter more here than anywhere else."
+    },
+    {
+      "zone": 4,
+      "minTempF": "-30 to -20",
+      "lastFrost": "May 10",
+      "firstFrost": "September 25",
+      "lastFrostDay": 130,
+      "firstFrostDay": 268,
+      "seasonDays": 138,
+      "regions": "Minnesota, Wisconsin, northern Michigan, Vermont, Maine, Montana",
+      "summary": "A real but tight season. Tomatoes and peppers need an indoor head start to ripen before the September frost."
+    },
+    {
+      "zone": 5,
+      "minTempF": "-20 to -10",
+      "lastFrost": "April 30",
+      "firstFrost": "October 10",
+      "lastFrostDay": 120,
+      "firstFrostDay": 283,
+      "seasonDays": 163,
+      "regions": "Iowa, Nebraska, Illinois, Ohio, upstate New York, Massachusetts, Colorado Front Range",
+      "summary": "Comfortable for nearly every beginner crop, with room for a spring planting and a fall planting of greens."
+    },
+    {
+      "zone": 6,
+      "minTempF": "-10 to 0",
+      "lastFrost": "April 20",
+      "firstFrost": "October 20",
+      "lastFrostDay": 110,
+      "firstFrostDay": 293,
+      "seasonDays": 183,
+      "regions": "Kansas City, St. Louis, Philadelphia, southern New England, Pacific Northwest interior",
+      "summary": "Roughly six frost-free months. You can plant a spring crop, a summer crop, and a fall crop of the same bed."
+    },
+    {
+      "zone": 7,
+      "minTempF": "0 to 10",
+      "lastFrost": "April 5",
+      "firstFrost": "November 1",
+      "lastFrostDay": 95,
+      "firstFrostDay": 305,
+      "seasonDays": 210,
+      "regions": "Virginia, Tennessee, Oklahoma, northern Georgia, Seattle, Portland",
+      "summary": "Seven months frost-free. Mid-summer heat, not frost, becomes the limiting factor for lettuce and spinach."
+    },
+    {
+      "zone": 8,
+      "minTempF": "10 to 20",
+      "lastFrost": "March 20",
+      "firstFrost": "November 15",
+      "lastFrostDay": 79,
+      "firstFrostDay": 319,
+      "seasonDays": 240,
+      "regions": "Atlanta, Dallas, Austin, coastal Carolinas, central California, Willamette Valley",
+      "summary": "Eight frost-free months, but July and August are hostile to cool-season crops. Plant greens in fall and late winter instead of summer."
+    },
+    {
+      "zone": 9,
+      "minTempF": "20 to 30",
+      "lastFrost": "February 20",
+      "firstFrost": "December 10",
+      "lastFrostDay": 51,
+      "firstFrostDay": 344,
+      "seasonDays": 293,
+      "regions": "Houston, Orlando, Phoenix, coastal Southern California",
+      "summary": "Nearly year-round growing, with an inverted calendar: winter is the prime season for greens and root crops, summer is the hard part."
+    },
+    {
+      "zone": 10,
+      "minTempF": "30 to 40",
+      "lastFrost": "January 20",
+      "firstFrost": "December 25",
+      "lastFrostDay": 20,
+      "firstFrostDay": 359,
+      "seasonDays": 339,
+      "regions": "South Florida, Florida Keys, Hawaii, southernmost coastal California",
+      "summary": "Effectively frost-free. Treat the cool months as your main season and skip cool-season crops entirely from June through September."
+    }
+  ]
+}

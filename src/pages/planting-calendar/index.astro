@@ -1,0 +1,195 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AnswerBox from '@/components/AnswerBox.astro';
+import Faq from '@/components/Faq.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import CalendarTool from '@/components/CalendarTool.astro';
+import { zones, crops, zonesMeta, cropsMeta } from '@/lib/calendar';
+import { SITE, faqSchema, breadcrumbSchema, humanDate } from '@/lib/site';
+
+const path = '/planting-calendar/';
+const dateModified = '2026-07-30';
+
+const title = 'Vegetable Planting Calendar by USDA Zone (3-10)';
+const description =
+  'Pick your USDA zone and month to see what to sow indoors, direct sow or transplant. Covers 12 beginner crops across zones 3 to 10.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Planting calendar', path },
+];
+
+const faqs = [
+  {
+    q: 'How do I find my USDA hardiness zone?',
+    a: 'Enter your ZIP code on the USDA Plant Hardiness Zone Map at planthardiness.ars.usda.gov. The map was revised in 2023, so a zone you looked up more than a few years ago may have shifted about half a zone warmer.',
+  },
+  {
+    q: 'What does my hardiness zone actually tell me?',
+    a: 'It describes your average annual minimum winter temperature, in 10&deg;F bands. That is a good proxy for your frost dates and season length, which is what planting dates depend on, but it says nothing about summer heat, humidity or rainfall — so a zone 8 in Texas and a zone 8 in Oregon plant on similar dates but face very different summers.',
+  },
+  {
+    q: 'Are these planting dates exact?',
+    a: 'No, and no zone-based calendar can be. A single zone spans hundreds of miles, and elevation alone can shift a frost date by two weeks. Treat these windows as a starting point and confirm your local average frost dates with your county cooperative extension office.',
+  },
+  {
+    q: 'What is the difference between direct sowing and starting indoors?',
+    a: 'Direct sowing means planting seed straight into its final position outdoors, which suits fast crops and anything root-based. Starting indoors means germinating under a light 6 to 12 weeks early and transplanting later, which is only worth it for long-season crops like tomatoes, peppers and onions.',
+  },
+  {
+    q: 'Can I plant a second crop in the same season?',
+    a: 'Yes, and the calendar shows it. Cool-season crops like radishes, lettuce, spinach, kale, peas and carrots can be sown again roughly 10 to 12 weeks before your first fall frost, and many taste better after a light frost. Zone 5 and warmer usually get two full rounds; zone 3 gets a tight one.',
+  },
+  {
+    q: 'Why does the calendar for zones 9 and 10 look inverted?',
+    a: 'Because it is. In zones 9 and 10 the limiting factor is summer heat rather than winter frost, so the prime season for greens and root crops runs from autumn through early spring, and June to September is the hard part of the year.',
+  },
+];
+
+const datasetSchema = {
+  '@type': 'Dataset',
+  '@id': `${SITE.origin}${path}#dataset`,
+  name: 'US vegetable planting windows by USDA hardiness zone',
+  description:
+    'Sowing, transplanting and harvest windows for 12 common beginner vegetable crops across USDA hardiness zones 3 to 10, derived from average last-spring and first-fall frost dates.',
+  url: `${SITE.origin}${path}`,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  creator: { '@id': `${SITE.origin}/#organization` },
+  dateModified,
+  isAccessibleForFree: true,
+  keywords: [
+    'planting calendar',
+    'USDA hardiness zone',
+    'frost dates',
+    'vegetable gardening',
+    'sowing dates',
+  ],
+  spatialCoverage: { '@type': 'Place', name: 'United States' },
+  variableMeasured: [
+    'USDA hardiness zone',
+    'average last spring frost date',
+    'average first fall frost date',
+    'frost-free days',
+    'indoor sowing window',
+    'direct sowing window',
+    'transplant window',
+    'fall sowing window',
+    'days to harvest',
+  ],
+  distribution: [
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'text/html',
+      contentUrl: `${SITE.origin}${path}`,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  {title}
+  {description}
+  {path}
+  {dateModified}
+  schema={[datasetSchema, faqSchema(faqs), breadcrumbSchema(crumbs)]}
+>
+  <Breadcrumbs items={crumbs} />
+
+  <div class="wrap page-head prose">
+    <p class="eyebrow">Free tool</p>
+    <h1>Vegetable Planting Calendar by USDA Zone</h1>
+    <p class="updated">Last updated {humanDate(dateModified)}</p>
+  </div>
+
+  <div class="wrap prose">
+    <AnswerBox label="How to use this">
+      <p>
+        Pick your USDA hardiness zone and a month to see exactly what to start indoors,
+        direct sow or transplant that month. Windows are calculated from each zone's average
+        last spring frost and first fall frost, across the 12 crops most first gardens grow.
+      </p>
+      <p>
+        Do not know your zone? Enter your ZIP code on the
+        <a
+          href="https://planthardiness.ars.usda.gov/"
+          rel="noopener"
+          target="_blank">USDA Plant Hardiness Zone Map</a
+        >, which was last revised in 2023.
+      </p>
+    </AnswerBox>
+
+    <h2 id="what-to-plant">What to plant this month</h2>
+    <CalendarTool />
+
+    <h2 id="zone-pages">Full calendar for your zone</h2>
+    <p>
+      Each zone page has the complete month-by-month table, every crop's sowing and harvest
+      window, and the frost dates behind them.
+    </p>
+    <div class="zone-grid">
+      {
+        zones.map((z) => (
+          <a href={`/planting-calendar/zone-${z.zone}/`}>
+            Zone {z.zone}
+            <small>{z.seasonDays} frost-free days</small>
+          </a>
+        ))
+      }
+    </div>
+
+    <h2 id="frost-dates">Frost dates and season length by zone</h2>
+    <div class="table-wrap">
+      <table>
+        <caption>{zonesMeta.source}</caption>
+        <thead>
+          <tr>
+            <th scope="col">Zone</th>
+            <th scope="col">Winter low</th>
+            <th scope="col">Avg last spring frost</th>
+            <th scope="col">Avg first fall frost</th>
+            <th scope="col">Frost-free days</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            zones.map((z) => (
+              <tr>
+                <th scope="row" style="text-align:left;font-weight:600;background:none">
+                  <a href={`/planting-calendar/zone-${z.zone}/`}>Zone {z.zone}</a>
+                </th>
+                <td>{z.minTempF}&deg;F</td>
+                <td>{z.lastFrost}</td>
+                <td>{z.firstFrost}</td>
+                <td>{z.seasonDays}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <p>
+        <strong>These are zone-wide averages.</strong> {zonesMeta.note}
+      </p>
+    </div>
+
+    <h2 id="dataset">What is in the dataset</h2>
+    <p>
+      The calendar covers <strong>{crops.length} crops</strong> across
+      <strong>{zones.length} zones</strong>. Each crop carries its sowing method and timing
+      offset in weeks from the last frost, seed depth, plant and row spacing, minimum
+      germination soil temperature, sun requirement and days to harvest. Fall sowing windows
+      are calculated by backing off the first fall frost by the crop's slowest maturity plus a
+      two-week buffer.
+    </p>
+    <p>{cropsMeta.note}</p>
+    <p>
+      Crops covered: {crops.map((c) => c.name).join(', ')}. The full depth and spacing table
+      is on <a href="/">the main guide</a>, and the data is free to reuse with attribution
+      (CC BY 4.0).
+    </p>
+
+    <Faq faqs={faqs} />
+  </div>
+</BaseLayout>

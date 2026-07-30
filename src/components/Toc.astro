@@ -1,0 +1,28 @@
+---
+interface Props {
+  items: readonly { id: string; label: string }[];
+  heading?: string;
+  ordered?: boolean;
+}
+
+const { items, heading = 'On this page', ordered = true } = Astro.props;
+---
+
+<nav class="toc" aria-labelledby="toc-heading">
+  <h2 id="toc-heading">{heading}</h2>
+  {
+    ordered ? (
+      <ol>
+        {items.map((i) => (
+          <li><a href={`#${i.id}`}>{i.label}</a></li>
+        ))}
+      </ol>
+    ) : (
+      <ol style="list-style:none;padding-left:0">
+        {items.map((i) => (
+          <li><a href={`#${i.id}`}>{i.label}</a></li>
+        ))}
+      </ol>
+    )
+  }
+</nav>

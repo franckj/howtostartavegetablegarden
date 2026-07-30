@@ -37,10 +37,6 @@ Two things worth knowing:
 
 **We are still checking our own work.** If something here contradicts your local extension service, trust them and please [tell us](/contact/). Corrections are the most useful mail we get, and they change the page.
 
-## No author personas
-
-No bylines, no stock photo of someone in a straw hat, no invented credentials. The site is published anonymously and the advice stands or falls on whether it works in your garden.
-
 ## How the site pays for itself
 
 Hosting and a domain cost money; the guides are free and always will be. There is no newsletter, no course, no membership and no sign-up wall.

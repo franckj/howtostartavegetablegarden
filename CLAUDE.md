@@ -94,6 +94,25 @@ caught: the zone page still guarded month sections on `m.entries.length === 0`, 
 only re-sow rows rendered nothing — the original defect, resurfacing silently. Guard on
 `m.entries.length === 0 && m.resow.length === 0`.
 
+## Google site name and favicon
+
+Google's site-name line comes from, in priority order: `WebSite` structured data `name`,
+then `og:site_name`, then `<title>`. Google states the `WebSite` node must be on the **home
+page** — "the domain or subdomain root URI, not subdirectories" — so `BaseLayout.astro` emits
+it only when `path === '/'`. Other pages reference it by `@id`, which is fine.
+
+**Never set `alternateName` to the bare domain.** Google treats `alternateName` as the fallback
+it reaches for when confidence in `name` is low, so listing the domain there invites the exact
+"howtostartavegetablegarden.com" title we want replaced. v1 briefly shipped this; removed.
+
+Favicons: Google looks for `/favicon.ico` by name and often falls back to a generic globe when
+only an SVG is declared. `scripts/favicon-gen.mjs` generates `favicon.ico` (16/32/48 — 48 is
+Google's stated minimum), `favicon-96.png` and `apple-touch-icon.png` from the same mark as
+`favicon.svg`. Re-run it if the mark changes.
+
+Both of these take **days to weeks** to appear in results — crawling, not caching. Requesting
+indexing on the homepage in Search Console is the only way to nudge it.
+
 ## Table styling gotcha
 
 The first column of most tables is a `<th scope="row">` for accessibility. **Every `tbody td`

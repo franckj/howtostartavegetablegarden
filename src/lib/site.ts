@@ -10,11 +10,15 @@ export const SITE = {
   lastUpdated: '2026-07-31',
 } as const;
 
+/** Desktop-only header links. Hidden on mobile, where only the CTA shows. */
 export const NAV = [
-  { href: '/', label: 'Start here' },
   { href: '/planting-calendar/', label: 'Planting calendar' },
-  { href: '/easiest-vegetables-for-beginners/', label: 'Easiest vegetables' },
+  { href: '/glossary/', label: 'Glossary' },
+  { href: '/resources/', label: 'Resources' },
 ] as const;
+
+/** The green button, always visible including on mobile. */
+export const NAV_CTA = { href: '/', label: 'Start here' } as const;
 
 export const GUIDE_LINKS = [
   {
@@ -41,6 +45,8 @@ export const GUIDE_LINKS = [
 
 export const FOOTER_LEGAL = [
   { href: '/about/', label: 'About' },
+  { href: '/glossary/', label: 'Glossary' },
+  { href: '/resources/', label: 'Resources' },
   { href: '/contact/', label: 'Contact' },
   { href: '/privacy-policy/', label: 'Privacy policy' },
   { href: '/terms-of-service/', label: 'Terms of service' },

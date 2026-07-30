@@ -13,6 +13,13 @@
   --soil: #7a5330;
   --soil-light: #f6efe6;
   --border: #e3dccc;
+
+  /* Footer sits on --leaf-dark, so it needs its own on-dark ramp. */
+  --footer-text: #d8e6d5;
+  --footer-heading: #a8cfa4;
+  --footer-link: #eaf2e6;
+  --footer-muted: #a9c2a6;
+  --footer-rule: rgba(255, 255, 255, 0.16);
   --border-strong: #d2c8b3;
   --white: #ffffff;
 

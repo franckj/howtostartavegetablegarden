@@ -1,0 +1,98 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AnswerBox from '@/components/AnswerBox.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import NextSteps from '@/components/NextSteps.astro';
+import glossaryData from '@/data/glossary.json';
+import { SITE, GUIDE_LINKS, breadcrumbSchema, humanDate } from '@/lib/site';
+
+const path = '/glossary/';
+const dateModified = '2026-07-31';
+const terms = glossaryData.terms;
+
+const title = 'Vegetable Gardening Glossary: 25 Terms in Plain English';
+const description =
+  'What bolting, hardening off, damping off, thinning and 21 other gardening terms actually mean — and why each one matters in your first year.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Glossary', path },
+];
+
+const schema = [
+  {
+    '@type': 'DefinedTermSet',
+    '@id': `${SITE.origin}${path}#termset`,
+    name: 'Vegetable Gardening Glossary',
+    description,
+    url: `${SITE.origin}${path}`,
+    inLanguage: 'en-US',
+    hasDefinedTerm: terms.map((t) => ({
+      '@type': 'DefinedTerm',
+      '@id': `${SITE.origin}${path}#${t.slug}`,
+      name: t.term,
+      description: `${t.definition} ${t.why}`,
+      inDefinedTermSet: { '@id': `${SITE.origin}${path}#termset` },
+    })),
+  },
+  breadcrumbSchema(crumbs),
+];
+---
+
+<BaseLayout {title} {description} {path} {dateModified} schema={schema}>
+  <Breadcrumbs items={crumbs} />
+
+  <div class="wrap page-head prose">
+    <p class="eyebrow">Reference</p>
+    <h1>Vegetable Gardening Glossary</h1>
+    <p class="updated">Last updated {humanDate(dateModified)}</p>
+  </div>
+
+  <div class="wrap prose">
+    <AnswerBox label="What this is">
+      <p>
+        Every gardening term you will meet on a seed packet or in a guide, explained in plain
+        English &mdash; with a line on <em>why it matters</em>, because knowing that bolting
+        means flowering is less useful than knowing it is why your lettuce turned bitter.
+      </p>
+      <p>
+        {terms.length} terms, alphabetical. Nothing here assumes you already know another term
+        to understand this one.
+      </p>
+    </AnswerBox>
+
+    <nav class="jump" aria-labelledby="jump-heading">
+      <h2 id="jump-heading">Jump to a term</h2>
+      <ul>
+        {terms.map((t) => <li><a href={`#${t.slug}`}>{t.term}</a></li>)}
+      </ul>
+    </nav>
+
+    <dl class="glossary">
+      {
+        terms.map((t) => (
+          <div class="glossary__item" id={t.slug}>
+            <dt>{t.term}</dt>
+            <dd>
+              <p>{t.definition}</p>
+              <p class="glossary__why">
+                <strong>Why it matters:</strong> {t.why}
+              </p>
+              <a class="glossary__top" href="#jump-heading">Back to the list</a>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <div class="note">
+      <p>
+        <strong>Missing a term?</strong>
+        <a href={`mailto:${SITE.email}`}>Tell us</a> and we will add it. If you had to look
+        something up to read one of our guides, that is our problem to fix, not yours.
+      </p>
+    </div>
+
+    <NextSteps links={GUIDE_LINKS} heading="Put it to use" />
+  </div>
+</BaseLayout>

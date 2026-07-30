@@ -4,14 +4,14 @@ description: "What this site collects and what it does not: no cookies, no accou
 h1: "Privacy Policy"
 crumb: "Privacy policy"
 path: "/privacy-policy/"
-dateModified: "2026-07-30"
+dateModified: "2026-07-31"
 ---
 
 This policy explains what howtostartavegetablegarden.com collects when you read it. The short version: no cookies, no account, no email list, and no advertising trackers.
 
 ## What we do not collect
 
-- **No cookies.** This site sets none, for any purpose, which is why you are not being asked to dismiss a consent banner.
+- **No cookies.** This site sets none, for any purpose, which is why you are not being asked to dismiss a consent banner. (See the advertising section below — if that ever changes, this line changes with it.)
 - **No accounts or sign-ups.** There is nothing to register for.
 - **No email list.** There is no newsletter and no form that captures an address.
 - **No contact forms.** If you email us, we have your address because you sent it — nothing more.
@@ -37,7 +37,11 @@ Guides link to external sources such as the USDA Plant Hardiness Zone Map and co
 
 ## Advertising and affiliate links
 
-The site currently carries no advertising and no affiliate links. If that changes, this policy will be updated before any such content is published, and any advertising or affiliate relationship will be disclosed on the page where it appears.
+This site may carry advertising and affiliate links to cover the cost of running it. Where it does, that is disclosed on the page where it appears.
+
+**Affiliate links** are ordinary links. If you follow one and buy something, we may earn a small commission at no extra cost to you. They set no cookies of ours and send us no information about you — the retailer at the other end handles the purchase under its own privacy policy, so read theirs if that matters to you.
+
+**Advertising**, if and when it is added, may involve a third-party ad network that sets its own cookies or uses similar technology to measure and target ads. **No ad network is running on this site today.** If one is added, this policy will be updated first to name it and explain your choices, and the cookie-free statement above will be corrected at the same time rather than left standing.
 
 ## Your rights
 

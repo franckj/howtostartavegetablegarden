@@ -4,10 +4,12 @@ description: "How to reach us with a correction, a question, or a suggestion for
 h1: "Contact"
 crumb: "Contact"
 path: "/contact/"
-dateModified: "2026-07-30"
+dateModified: "2026-07-31"
 ---
 
 Email is the only channel: **hello@howtostartavegetablegarden.com**
+
+Questions and requests are both welcome, and there is no such thing as too basic a question here. If something on the site lost you, that is useful for us to know.
 
 There is no contact form on purpose — forms mean spam handling and a third-party script on every page, and neither improves the site.
 

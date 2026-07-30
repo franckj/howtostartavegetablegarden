@@ -1,0 +1,223 @@
+{
+  "note": "Every external link here is a plain link. Nothing on this page is affiliate-linked yet — the `affiliate` field on toolkit items is null until real programme URLs exist. Fill those in and the disclosure renders automatically.",
+  "groups": [
+    {
+      "id": "local-info",
+      "title": "Find your local information first",
+      "blurb": "No national site can tell you your frost dates or which varieties do well three streets away. These can.",
+      "items": [
+        {
+          "name": "Cooperative Extension Service directory",
+          "url": "https://www.nifa.usda.gov/about-nifa/how-we-work/extension/land-grant-university-website-directory",
+          "free": true,
+          "what": "Every US state runs a free public gardening advice service through its land-grant university, staffed by people who know your county's soil, pests and frost dates.",
+          "why": "This is the single most useful bookmark on the page. Most run a free helpline, many offer soil tests for $15 to $25, and their advice beats anything general — including ours."
+        },
+        {
+          "name": "NOAA average last spring freeze map",
+          "url": "https://www.climate.gov/news-features/understanding-climate/interactive-map-average-date-last-spring-freeze-across-united",
+          "free": true,
+          "what": "Interactive map of the date your chance of a freezing night drops below 50 percent, from weather-station records.",
+          "why": "Your real frost date, rather than one inferred from a hardiness zone. Put it into our planting calendar and every window recalculates."
+        },
+        {
+          "name": "USDA Plant Hardiness Zone Map",
+          "url": "https://planthardiness.ars.usda.gov/",
+          "free": true,
+          "what": "Enter a ZIP code, get your zone. Revised in 2023, so re-check one you looked up years ago.",
+          "why": "Useful for choosing perennials and as a rough starting point. Remember it describes winter lows, not frost dates."
+        },
+        {
+          "name": "USDA Local Food Directories",
+          "url": "https://www.usdalocalfoodportal.com/",
+          "free": true,
+          "what": "Official searchable listings of farmers markets, CSAs, food hubs and on-farm markets near you.",
+          "why": "Growers at a farmers market will happily tell you what does well locally. It is the fastest shortcut to local knowledge there is."
+        },
+        {
+          "name": "American Community Gardening Association",
+          "url": "https://www.communitygarden.org/",
+          "free": true,
+          "what": "Directory and resources for community gardens across the US and Canada.",
+          "why": "A plot in a community garden gives you experienced neighbours, shared tools and someone to water while you are away. Hard to beat in a first year."
+        },
+        {
+          "name": "Buy Nothing Project",
+          "url": "https://buynothingproject.org/",
+          "free": true,
+          "what": "Hyper-local gift networks where neighbours pass on things they no longer need.",
+          "why": "Pots, tools, spare seedlings and leftover compost circulate constantly in spring. A genuinely good way to start a garden for almost nothing."
+        }
+      ]
+    },
+    {
+      "id": "apps",
+      "title": "Apps and online tools",
+      "blurb": "Worth having on your phone. We have not been paid to list any of these.",
+      "items": [
+        {
+          "name": "iNaturalist",
+          "url": "https://www.inaturalist.org/",
+          "free": true,
+          "what": "Photograph a plant or insect and get an identification, confirmed by a community of naturalists.",
+          "why": "The best free way to work out whether the beetle on your squash is a problem before you do anything about it."
+        },
+        {
+          "name": "Our planting calendar",
+          "url": "/planting-calendar/",
+          "free": true,
+          "internal": true,
+          "what": "Pick your zone or enter your own frost dates to see what to sow, start indoors or transplant each month.",
+          "why": "Built to accept your real frost dates rather than guessing them from your zone."
+        },
+        {
+          "name": "GrowVeg Garden Planner",
+          "url": "https://www.growveg.com/",
+          "free": false,
+          "what": "Drag-and-drop bed planner that handles spacing and crop rotation for you, with a free trial and a paid subscription after it.",
+          "why": "Genuinely useful once you are planning more than one bed. Overkill for a first 4x8."
+        },
+        {
+          "name": "A notes app you already have",
+          "url": null,
+          "free": true,
+          "what": "One note per season: what you planted, when, and what happened.",
+          "why": "Not a joke, and not a product. Next February that note is worth more than any book or app on this page."
+        }
+      ]
+    },
+    {
+      "id": "seeds",
+      "title": "Where to get seed",
+      "blurb": "All of these ship across the US and publish germination rates and days-to-harvest properly.",
+      "items": [
+        {
+          "name": "Your local seed library",
+          "url": null,
+          "free": true,
+          "what": "Many public libraries lend seed for free, the way they lend books. Search your library's site for 'seed library'.",
+          "why": "Free, and the varieties on offer are usually ones that already do well in your area."
+        },
+        {
+          "name": "Johnny's Selected Seeds",
+          "url": "https://www.johnnyseeds.com/",
+          "free": false,
+          "what": "Employee-owned supplier used by market growers. Detailed growing information on every variety.",
+          "why": "The variety notes are more useful than most gardening books, and free to read whether or not you buy."
+        },
+        {
+          "name": "Baker Creek Heirloom Seeds",
+          "url": "https://www.rareseeds.com/",
+          "free": false,
+          "what": "Very large heirloom and open-pollinated catalogue.",
+          "why": "Where to look once you want varieties no garden centre stocks. Heirlooms can be less disease-resistant, so mix in a modern variety in year one."
+        },
+        {
+          "name": "Botanical Interests",
+          "url": "https://www.botanicalinterests.com/",
+          "free": false,
+          "what": "Packets printed with sowing instructions inside and out.",
+          "why": "The packets themselves teach you. Good choice for a genuine beginner."
+        }
+      ]
+    },
+    {
+      "id": "learning",
+      "title": "Learning more",
+      "items": [
+        {
+          "name": "Your state extension's vegetable guide",
+          "url": "https://www.nifa.usda.gov/about-nifa/how-we-work/extension/land-grant-university-website-directory",
+          "free": true,
+          "what": "Nearly every extension service publishes a free regional vegetable growing guide as a PDF.",
+          "why": "Written for your climate by people paid to be accurate, not to sell you anything. Start here before buying a book."
+        },
+        {
+          "name": "Our glossary",
+          "url": "/glossary/",
+          "free": true,
+          "internal": true,
+          "what": "Plain-English definitions of the terms seed packets and guides assume you know.",
+          "why": "If a guide loses you at 'harden off before setting out transplants', start here."
+        }
+      ]
+    }
+  ],
+  "toolkit": {
+    "id": "starter-kit",
+    "title": "The starter tool kit",
+    "blurb": "What you actually need in year one, and what to skip. Prices are 2026 US retail estimates and vary a lot by region.",
+    "skip": [
+      "Tillers and cultivators — a garden fork does the job on a 4x8 bed",
+      "Kneeling stools, tool belts and aprons — nice, not needed",
+      "Seed-starting kits with domes and heat mats, unless you are growing peppers",
+      "Anything sold as a complete 'garden starter set' — usually four times the component cost with thin steel"
+    ],
+    "items": [
+      {
+        "name": "Hand trowel",
+        "price": "$8 - $15",
+        "essential": true,
+        "what": "For planting seedlings and digging small holes.",
+        "buying": "Get one forged from a single piece of steel. The failure point on cheap trowels is where the blade meets the handle.",
+        "affiliate": null
+      },
+      {
+        "name": "Garden fork or spade",
+        "price": "$25 - $45",
+        "essential": true,
+        "what": "For loosening the top 8 to 12 inches of soil and turning in compost.",
+        "buying": "A fork beats a spade in most soils and is far less work in clay. Check the handle is wood or fibreglass, not hollow tube.",
+        "affiliate": null
+      },
+      {
+        "name": "Watering can or hose wand",
+        "price": "$10 - $35",
+        "essential": true,
+        "what": "For watering the soil without blasting seedlings out of it.",
+        "buying": "A rose or wand head matters more than the vessel. A bare hose end will wash out a row of carrot seed.",
+        "affiliate": null
+      },
+      {
+        "name": "Gloves",
+        "price": "$8 - $18",
+        "essential": true,
+        "what": "For weeding, handling compost and anything thorny.",
+        "buying": "Nitrile-coated fabric gloves fit closely enough to handle seed. Leather is overkill for vegetables.",
+        "affiliate": null
+      },
+      {
+        "name": "Pruning snips",
+        "price": "$12 - $25",
+        "essential": true,
+        "what": "For harvesting, thinning at soil level and cutting twine.",
+        "buying": "Bypass snips, not anvil. Anvil blades crush stems instead of cutting them.",
+        "affiliate": null
+      },
+      {
+        "name": "Soil thermometer",
+        "price": "$8 - $15",
+        "essential": false,
+        "what": "For knowing when soil is actually warm enough to sow.",
+        "buying": "The cheapest one is fine. This is the tool that answers 'why did my beans never come up' before it happens.",
+        "affiliate": null
+      },
+      {
+        "name": "Tomato cages or stakes",
+        "price": "$5 - $20 each",
+        "essential": false,
+        "what": "Support for tomatoes, installed at planting time.",
+        "buying": "Buy sturdier than looks necessary. The flimsy conical cages sold everywhere collapse under an indeterminate tomato by August.",
+        "affiliate": null
+      },
+      {
+        "name": "Garden twine",
+        "price": "$4 - $8",
+        "essential": false,
+        "what": "For tying plants to supports and marking straight rows.",
+        "buying": "Jute or hemp so it can go on the compost heap at the end of the season.",
+        "affiliate": null
+      }
+    ]
+  }
+}

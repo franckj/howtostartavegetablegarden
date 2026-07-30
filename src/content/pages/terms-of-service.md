@@ -4,7 +4,7 @@ description: "Terms for using howtostartavegetablegarden.com, including the gard
 h1: "Terms of Service"
 crumb: "Terms of service"
 path: "/terms-of-service/"
-dateModified: "2026-07-30"
+dateModified: "2026-07-31"
 ---
 
 By using howtostartavegetablegarden.com you agree to these terms. If you do not agree with them, please do not use the site.
@@ -47,9 +47,11 @@ The written guides, page layouts and design are copyright of the site operator.
 
 **The planting dataset is different.** The planting windows, frost dates and crop data behind the [planting calendar](/planting-calendar/) are published under a [Creative Commons Attribution 4.0 licence](https://creativecommons.org/licenses/by/4.0/). Reuse it freely, including commercially, with attribution to howtostartavegetablegarden.com.
 
-## External links
+## External links and affiliate links
 
-Guides link to third-party sites — the USDA, cooperative extension services, and similar. We do not control those sites and are not responsible for their content or availability. A link is not an endorsement.
+Guides link to third-party sites — the USDA, cooperative extension services, seed suppliers and similar. We do not control those sites and are not responsible for their content, availability, or the terms on which they sell anything.
+
+Some links may be affiliate links, meaning we may earn a commission if you buy through them, at no extra cost to you. Affiliate links are disclosed on the page where they appear. A link is not an endorsement of a retailer, and any purchase you make is between you and that retailer.
 
 ## Changes to the site and these terms
 

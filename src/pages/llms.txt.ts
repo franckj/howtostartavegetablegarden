@@ -43,6 +43,11 @@ ${zones
 
 ${spokes.map((g) => line(g.data.path, g.data.h1, g.data.description)).join('\n')}
 
+## Reference
+
+- [Vegetable Gardening Glossary](${SITE.origin}/glossary/): 25 gardening terms in plain English, each with why it matters in practice. Marked up as DefinedTermSet.
+- [Resources for a First Vegetable Garden](${SITE.origin}/resources/): Free local help (US cooperative extension, NOAA frost dates, community gardens), where to get seed, useful apps, and a starter tool kit with what to skip.
+
 ## Site
 
 ${pages.map((p) => line(p.data.path, p.data.title, p.data.description)).join('\n')}

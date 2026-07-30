@@ -1,44 +1,54 @@
 ---
 title: "About This Site"
-description: "Why this site exists: free, plain-English guides to growing real food in a small space, and getting outside while you do it."
+description: "Why this site exists: kind, plain-English help for first-time vegetable gardeners, with real numbers and no assumption that you already know the words."
 h1: "About This Site"
 crumb: "About"
 path: "/about/"
-dateModified: "2026-07-30"
+dateModified: "2026-07-31"
 ---
 
-This site exists to get first-time gardeners from "I would like to grow some vegetables" to eating something they grew, with as little wasted money and dead seedlings as possible.
+Everyone who grows food killed some plants first. That is not a discouraging fact, it is the reassuring one — it means the people whose gardens look effortless got there by losing a tray of seedlings to a cold night, or letting the carrots dry out, or planting six zucchini and drowning in them by August.
+
+This site exists to make your first season a bit kinder than that.
 
 ## What we are trying to do
 
-**Help people grow real food.** Not a lifestyle, not a hobby with a subscription attached — actual vegetables you eat. Food you grew yourself is food you know everything about: no long transport chain, no wondering what was sprayed on it, harvested the day you eat it. That is worth something, and it is achievable on a balcony.
+**Assume nothing.** Most gardening advice quietly assumes you already know what "harden off before setting out transplants" means. If a sentence here needs a term you might not have met, it links to [the glossary](/glossary/). If you had to look something up to follow one of our guides, that is our problem to fix, not a gap in you.
 
-**Keep it organic and low-input.** Every technique on this site works without synthetic pesticides. Compost, mulch, hand-picking pests, and choosing the right crop for your conditions do almost all of the work. Not because organic is a brand, but because a beginner garden genuinely does not need chemicals, and the fewer inputs you depend on, the cheaper and simpler this gets.
+**Give you the actual numbers.** Six to eight hours of sun. Two inches of mulch. One inch of water a week. Twenty-two to thirty days for a radish. Vague advice is what makes beginners fail, because you cannot act on "plant after the soil warms" without knowing what warm means.
 
-**Get people outside.** Twenty minutes a day in the open air, hands in soil, paying attention to weather and light. For a lot of people that turns out to be the real reason they keep gardening, and the vegetables become a bonus.
+**Be honest about what we do not know.** Every planting date on this site comes from average frost dates, and averages are blunt across a country this size. So we say so, we cite where the numbers come from, and the [planting calendar](/planting-calendar/) lets you enter your own frost dates instead of ours. Where something is a rough rule rather than a sourced fact, it says that too.
 
-**Point people toward each other.** Gardening looks like a solitary thing and is not. Community gardens, seed libraries, farmers markets, buy-nothing groups and the neighbour with the good tomatoes will teach you more in one season than any website — including this one. A local gardener knows your actual frost dates, your soil, and which varieties do well three streets away. We will keep telling you to go find those people.
+**Help you grow real food.** Food you grew is food you know everything about — no long transport chain, no wondering what was sprayed on it, picked the day you eat it. Everything here works without synthetic pesticides, not as a badge but because a beginner garden genuinely does not need them.
 
-## How the content is made
+**Get you outside, and point you toward other people.** Twenty minutes a day with your hands in soil turns out to be the reason a lot of people keep gardening; the vegetables become a bonus. And gardening looks solitary but is not. Your county extension office, a community garden, a seed library, the neighbour with the good tomatoes — any of them will teach you more in one season than we can, because they know your soil and your weather. We will keep saying so. [The resources page](/resources/) is mostly a list of how to find them.
 
-Guides are built around specific numbers — dates, depths, spacings, temperatures, costs — because vague advice is what makes beginners fail. Where a number depends on where you live, it is expressed relative to your USDA hardiness zone and average frost dates rather than as a single national date.
+## Start small. Genuinely small.
 
-Two honest caveats:
+If you take one thing from this site: **one 4x8 bed, or five containers, and three or four crops.** The most common way a first garden fails is being too big to keep up with in July. A small garden you actually tend beats an ambitious one you abandon, and there is no prize for scale.
 
-**Zone averages are averages.** A hardiness zone spans hundreds of miles, and elevation alone can move a frost date by two weeks. Every planting date here is a starting point, and your county cooperative extension office has the local numbers that beat ours.
+## How the guides are written
 
-**Pages get revised.** Each page carries a "last updated" date. Guides are reviewed and tightened against university extension sources over time, and the date changes when the content does.
+Guides are built around specific, checkable numbers, cross-checked against university cooperative extension publications — the sources are listed on the pages that use them. Each page carries a "last updated" date that changes when the content does, and pages get revised as they are checked more carefully.
+
+Two things worth knowing:
+
+**Where numbers came from a source, we name it. Where they did not, we say that too.** Some figures on this site are still our own conservative estimates rather than sourced facts — cost ranges, for instance. We would rather tell you which is which.
+
+**We are still checking our own work.** If something here contradicts your local extension service, trust them and please [tell us](/contact/). Corrections are the most useful mail we get, and they change the page.
 
 ## No author personas
 
-There are no bylines here, no stock photos of someone in a straw hat, and no invented credentials. The site is published anonymously and the advice stands or falls on whether it works in your garden.
-
-If something here is wrong, out of date, or contradicts your local extension service, tell us — [the contact page](/contact/) has the address. Corrections are the most useful mail we get.
+No bylines, no stock photo of someone in a straw hat, no invented credentials. The site is published anonymously and the advice stands or falls on whether it works in your garden.
 
 ## How the site pays for itself
 
-Hosting and a domain cost money; the guides are free and always will be. Any future advertising or affiliate links will be labelled as such on the page where they appear. There is no newsletter, no course, no membership and no lead magnet.
+Hosting and a domain cost money; the guides are free and always will be. There is no newsletter, no course, no membership and no sign-up wall.
+
+There can be ads and affiliate links on this site to support the making of the website. If we ever earn a commission on something, it is labelled where it appears, and it does not change what we recommend — the [tool kit page](/resources/) has a "what to skip" list that costs us money to publish, and it stays.
 
 ## Start here
 
-If you are new, start with [how to start a vegetable garden](/) — it is the full nine-step guide. Then get your dates from the [planting calendar for your zone](/planting-calendar/) and pick three or four crops from [the easiest vegetables for beginners](/easiest-vegetables-for-beginners/).
+New to this? Start with [how to start a vegetable garden](/) — the full nine-step guide. Then get your dates from the [planting calendar for your zone](/planting-calendar/) and pick three or four crops from [the easiest vegetables for beginners](/easiest-vegetables-for-beginners/).
+
+Questions or requests: [contact us](/contact/). We read everything.

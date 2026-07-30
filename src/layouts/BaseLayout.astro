@@ -1,7 +1,7 @@
 ---
 import '@/styles/tokens.css';
 import '@/styles/global.css';
-import { SITE, NAV, FOOTER_LEGAL, GUIDE_LINKS, humanDate } from '@/lib/site';
+import { SITE, NAV, NAV_CTA, FOOTER_LEGAL, GUIDE_LINKS, humanDate } from '@/lib/site';
 
 interface Props {
   title: string;
@@ -134,7 +134,13 @@ const graph = [
     <header class="site-header">
       <div class="wrap site-header__inner">
         <a class="brand" href="/">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <svg
+            class="brand__mark"
+            width="34"
+            height="34"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true">
             <path
               d="M12 21c0-5 0-8 0-8"
               stroke="#7a5330"
@@ -147,11 +153,19 @@ const graph = [
               d="M12 13c4.2 0 6.6-2.4 6.6-6.2C14.4 6.8 12 9.2 12 13Z"
               fill="#3f8a52"></path>
           </svg>
-          {SITE.name}
+          {/* Two deliberate lines rather than relying on where the text happens to wrap. */}
+          <span class="brand__name">
+            <span>How to Start a</span>
+            <span>Vegetable Garden</span>
+          </span>
         </a>
-        <nav class="nav" aria-label="Primary">
-          {NAV.map((item) => <a href={item.href}>{item.label}</a>)}
-        </nav>
+
+        <div class="site-header__right">
+          <nav class="nav" aria-label="Primary">
+            {NAV.map((item) => <a href={item.href}>{item.label}</a>)}
+          </nav>
+          <a class="btn btn--cta" href={NAV_CTA.href}>{NAV_CTA.label}</a>
+        </div>
       </div>
     </header>
 
@@ -174,11 +188,21 @@ const graph = [
               {FOOTER_LEGAL.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
             </ul>
           </div>
-          <div>
+          <div class="site-footer__sig">
             <h2>About this site</h2>
             <p>
-              Free, ad-light guides to growing real food in a small space. No sign-up, no
-              course, no fake expert bios.
+              Everyone who grows food started out killing a few plants. This site is here to
+              make your first season kinder than that &mdash; plain steps, real numbers, and no
+              assumption that you already know what any of it means.
+            </p>
+            <p>
+              <a href={`mailto:${SITE.email}`}>Contact us</a> for questions and requests. If
+              something here is unclear or wrong, we would genuinely rather know.
+            </p>
+            <p class="site-footer__disclosure">
+              There can be ads and affiliate links on this site to support the making of the
+              website. They never change what we recommend, and anything affiliate-linked is
+              labelled where it appears.
             </p>
           </div>
         </div>

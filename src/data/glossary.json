@@ -1,0 +1,155 @@
+{
+  "note": "Plain-English definitions of the terms a first-year gardener meets on seed packets, in extension guides and on this site. Each entry says what it means and why it matters, not just what it is.",
+  "terms": [
+    {
+      "term": "Annual",
+      "slug": "annual",
+      "definition": "A plant that completes its whole life — seed, growth, flower, seed again — in one season, then dies. Almost everything in a vegetable garden is an annual, which is why you sow again each year.",
+      "why": "It means an empty bed in autumn is normal, not a failure."
+    },
+    {
+      "term": "Bolting",
+      "slug": "bolting",
+      "definition": "When a leafy or root crop suddenly shoots up a flower stalk and stops making the part you wanted to eat. Heat and lengthening days trigger it. Lettuce and spinach turn bitter once it happens.",
+      "why": "It is the single most common reason a spring crop of greens 'goes wrong' in June."
+    },
+    {
+      "term": "Cool-season crop",
+      "slug": "cool-season-crop",
+      "definition": "A crop that grows best in spring and autumn temperatures and tolerates some frost — peas, spinach, lettuce, radishes, kale, carrots, onions.",
+      "why": "These go in weeks before your last frost, and they are what you plant again in late summer for autumn."
+    },
+    {
+      "term": "Cotyledon (seed leaf)",
+      "slug": "cotyledon",
+      "definition": "The first one or two rounded leaves a seedling puts out. They came packed inside the seed and rarely look like the adult plant. The next pair are the 'true leaves'.",
+      "why": "Thinning and potting-on advice is usually keyed to true leaves, not these."
+    },
+    {
+      "term": "Damping off",
+      "slug": "damping-off",
+      "definition": "A fungal problem that makes healthy-looking seedlings collapse at the soil line overnight. Caused by soil that stays too wet with too little air movement.",
+      "why": "It is the main way indoor seed-starting fails, and it is prevented rather than cured."
+    },
+    {
+      "term": "Days to harvest (days to maturity)",
+      "slug": "days-to-harvest",
+      "definition": "The rough number of days from sowing until you can pick. For tomatoes and peppers it is counted from the day you transplant, not from seed — the seed packet will say which.",
+      "why": "It is how you work out whether a crop can finish before your first autumn frost."
+    },
+    {
+      "term": "Determinate / indeterminate",
+      "slug": "determinate-indeterminate",
+      "definition": "Tomato growth habits. Determinate varieties grow to a set size and ripen most of their fruit at once. Indeterminate ones keep growing and keep fruiting until frost.",
+      "why": "Determinate suits containers and batch cooking; indeterminate suits a steady supply but needs real support."
+    },
+    {
+      "term": "Direct sow",
+      "slug": "direct-sow",
+      "definition": "Planting seed straight into the ground or container where it will grow, instead of starting it indoors and moving it.",
+      "why": "Fast crops and root crops nearly always do better this way — carrots especially resent being moved."
+    },
+    {
+      "term": "First frost / last frost",
+      "slug": "frost-dates",
+      "definition": "The average dates of the last freezing night in spring and the first in autumn. Every planting date in gardening is expressed relative to them.",
+      "why": "An 'average' date is where the chance of frost drops below 50 percent, so it is a coin flip, not a guarantee. Waiting a week past it is the safer read for tender crops."
+    },
+    {
+      "term": "Frost tolerance: hardy, half-hardy, tender",
+      "slug": "frost-tolerance",
+      "definition": "How much cold a crop survives. Hardy crops go out as soon as the soil can be worked; half-hardy about 2 to 3 weeks before the last frost; tender crops only after it; very tender 2 to 3 weeks after.",
+      "why": "Getting this wrong is how a whole tray of seedlings dies in one night."
+    },
+    {
+      "term": "Germination",
+      "slug": "germination",
+      "definition": "The moment a seed wakes up and sprouts. It depends far more on soil temperature and steady moisture than on the calendar.",
+      "why": "Cold soil is why seed 'never came up' — beans rot below 60°F, cucumbers and squash want 70°F."
+    },
+    {
+      "term": "Hardening off",
+      "slug": "hardening-off",
+      "definition": "Gradually introducing indoor-raised seedlings to outdoor sun, wind and cold over 7 to 10 days before planting them out.",
+      "why": "Skip it and indoor leaves scorch or wilt beyond recovery within a day or two. It is not optional."
+    },
+    {
+      "term": "Hardiness zone (USDA)",
+      "slug": "hardiness-zone",
+      "definition": "A number from 3 to 10 describing your average coldest winter temperature. It is a winter-survival rating for perennials.",
+      "why": "It is not a frost-date band, even though nearly every gardening site treats it as one. Use it as a first guess, then get your real frost dates from a weather station near you."
+    },
+    {
+      "term": "Mulch",
+      "slug": "mulch",
+      "definition": "A 2-inch layer of straw, shredded leaves or bark spread over the soil surface around plants, kept an inch clear of the stems.",
+      "why": "It holds moisture, suppresses most weeds and steadies soil temperature. The highest-value half hour in the whole garden."
+    },
+    {
+      "term": "Perennial",
+      "slug": "perennial",
+      "definition": "A plant that lives for several years, dying back and returning each season. Asparagus, rhubarb and most herbs are perennial.",
+      "why": "Perennials need a permanent spot, so plan them at the edge of a bed where you will not dig them up."
+    },
+    {
+      "term": "pH",
+      "slug": "ph",
+      "definition": "How acidic or alkaline your soil is, on a scale where 7 is neutral. Most vegetables want 6.0 to 7.0.",
+      "why": "Well outside that range, plants cannot take up nutrients even when the nutrients are present — which looks like a feeding problem but is not."
+    },
+    {
+      "term": "Potting on",
+      "slug": "potting-on",
+      "definition": "Moving a seedling into a larger pot when its roots fill the one it is in, usually 3 to 4 weeks after sowing.",
+      "why": "A root-bound seedling stalls, and a stalled seedling is outperformed by one sown weeks later."
+    },
+    {
+      "term": "Potting mix vs garden soil vs compost",
+      "slug": "potting-mix",
+      "definition": "Potting mix is a light, sterile blend for containers. Garden soil is what is in the ground. Compost is decomposed organic matter used to improve either.",
+      "why": "Garden soil compacts into a brick in a pot and drowns roots. Potting mix in a large raised bed is expensive and drains too fast. They are not interchangeable."
+    },
+    {
+      "term": "Seed-starting mix",
+      "slug": "seed-starting-mix",
+      "definition": "A finer, faster-draining, sterile mix made specifically for germinating seed indoors.",
+      "why": "It is the main defence against damping off, and unlike garden soil it carries no weed seeds or pathogens indoors."
+    },
+    {
+      "term": "Side-dressing",
+      "slug": "side-dressing",
+      "definition": "Scattering a little fertiliser or compost along the row beside growing plants, mid-season, then watering it in.",
+      "why": "It feeds hungry crops like tomatoes and squash at the point they need it, without disturbing roots."
+    },
+    {
+      "term": "Succession sowing",
+      "slug": "succession-sowing",
+      "definition": "Sowing a short row of the same crop every couple of weeks instead of the whole packet at once.",
+      "why": "You get a steady supply rather than thirty radishes in one week. The easiest way to get more from a small bed."
+    },
+    {
+      "term": "Thinning",
+      "slug": "thinning",
+      "definition": "Pulling out surplus seedlings so the ones left have their full spacing. Snip at soil level for crops that dislike root disturbance.",
+      "why": "It feels wasteful and beginners skip it. Crowded plants compete for light and water and all of them underperform."
+    },
+    {
+      "term": "Transplant",
+      "slug": "transplant",
+      "definition": "As a verb, moving a young plant into its final position. As a noun, the young plant itself — also called a seedling, start or plug.",
+      "why": "'Set out transplants after last frost' on a seed packet means this."
+    },
+    {
+      "term": "True leaves",
+      "slug": "true-leaves",
+      "definition": "The leaves that appear after the rounded seed leaves and actually look like the adult plant.",
+      "why": "'Thin once seedlings have their first true leaves' is the standard cue for thinning and potting on."
+    },
+    {
+      "term": "Warm-season crop",
+      "slug": "warm-season-crop",
+      "definition": "A crop that needs warm soil and warm nights and dies at the first frost — tomatoes, peppers, beans, cucumbers, squash.",
+      "why": "These wait until after your last frost, and rushing them into cold soil gains you nothing."
+    }
+  ]
+}

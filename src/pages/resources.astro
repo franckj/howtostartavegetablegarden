@@ -1,0 +1,201 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AnswerBox from '@/components/AnswerBox.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import NextSteps from '@/components/NextSteps.astro';
+import data from '@/data/resources.json';
+import { SITE, GUIDE_LINKS, breadcrumbSchema, humanDate } from '@/lib/site';
+
+const path = '/resources/';
+const dateModified = '2026-07-31';
+const { groups, toolkit } = data;
+
+const title = 'Gardening Resources: Tools, Seed, Apps and Local Help';
+const description =
+  'The free local resources worth finding first, where to get seed, apps that help, and the starter tool kit a first-year vegetable garden actually needs.';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Resources', path },
+];
+
+const jump = [
+  ...groups.map((g) => ({ id: g.id, label: g.title })),
+  { id: toolkit.id, label: toolkit.title },
+];
+
+/** True once any toolkit item has a real affiliate URL. */
+const hasAffiliates = toolkit.items.some((i) => i.affiliate);
+
+const schema = [
+  {
+    '@type': 'ItemList',
+    '@id': `${SITE.origin}${path}#toolkit`,
+    name: toolkit.title,
+    description: toolkit.blurb,
+    itemListElement: toolkit.items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      description: item.what,
+    })),
+  },
+  breadcrumbSchema(crumbs),
+];
+---
+
+<BaseLayout {title} {description} {path} {dateModified} schema={schema}>
+  <Breadcrumbs items={crumbs} />
+
+  <div class="wrap page-head prose">
+    <p class="eyebrow">Reference</p>
+    <h1>Resources for a First Vegetable Garden</h1>
+    <p class="updated">Last updated {humanDate(dateModified)}</p>
+  </div>
+
+  <div class="wrap prose">
+    <AnswerBox label="Start with the free stuff">
+      <p>
+        Before buying anything, find your local information: your
+        <a href="#local-info">cooperative extension service</a> gives free advice from people
+        who know your county, and your real frost dates come from a weather station near you.
+        Both are free, and both beat any national guide including this one.
+      </p>
+      <p>
+        Then, if you want it, <a href="#starter-kit">the starter tool kit</a> &mdash; five
+        things you genuinely need, three that are nice, and the list of what to skip.
+      </p>
+    </AnswerBox>
+
+    <nav class="jump" aria-labelledby="jump-heading">
+      <h2 id="jump-heading">On this page</h2>
+      <ul>
+        {jump.map((j) => <li><a href={`#${j.id}`}>{j.label}</a></li>)}
+      </ul>
+    </nav>
+
+    {
+      groups.map((g) => (
+        <section class="resource-group" id={g.id}>
+          <h2>{g.title}</h2>
+          {g.blurb && <p>{g.blurb}</p>}
+          {g.items.map((item) => (
+            <div class="resource">
+              <h3>
+                {item.url ? (
+                  <a
+                    href={item.url}
+                    rel={item.internal ? undefined : 'noopener'}
+                    target={item.internal ? undefined : '_blank'}>
+                    {item.name}
+                  </a>
+                ) : (
+                  item.name
+                )}
+                {item.free && <span class="resource__free">Free</span>}
+              </h3>
+              <p>{item.what}</p>
+              <p class="resource__meta">{item.why}</p>
+            </div>
+          ))}
+        </section>
+      ))
+    }
+
+    <section class="resource-group" id={toolkit.id}>
+      <h2>{toolkit.title}</h2>
+      <p>{toolkit.blurb}</p>
+
+      {
+        hasAffiliates && (
+          <div class="affiliate">
+            <span class="affiliate__label">Affiliate disclosure</span>
+            <p>
+              Some links in this section are affiliate links, meaning we may earn a small
+              commission if you buy through them at no extra cost to you. It helps pay for the
+              hosting that keeps this site free. It does not change what we recommend &mdash;
+              every item below is here because a first garden needs it, and the "skip these"
+              list costs us money to publish.
+            </p>
+          </div>
+        )
+      }
+
+      <h3>The five you actually need</h3>
+      {
+        toolkit.items
+          .filter((i) => i.essential)
+          .map((item) => (
+            <div class="resource">
+              <h3>
+                {item.affiliate ? (
+                  <a href={item.affiliate} rel="noopener sponsored" target="_blank">
+                    {item.name}
+                  </a>
+                ) : (
+                  item.name
+                )}
+                <span class="resource__free" style="background:var(--sand);color:var(--ink-soft)">
+                  {item.price}
+                </span>
+              </h3>
+              <p>{item.what}</p>
+              <p class="resource__meta"><strong>What to look for:</strong> {item.buying}</p>
+            </div>
+          ))
+      }
+
+      <h3>Nice to have, not year one</h3>
+      {
+        toolkit.items
+          .filter((i) => !i.essential)
+          .map((item) => (
+            <div class="resource">
+              <h3>
+                {item.affiliate ? (
+                  <a href={item.affiliate} rel="noopener sponsored" target="_blank">
+                    {item.name}
+                  </a>
+                ) : (
+                  item.name
+                )}
+                <span class="resource__free" style="background:var(--sand);color:var(--ink-soft)">
+                  {item.price}
+                </span>
+              </h3>
+              <p>{item.what}</p>
+              <p class="resource__meta"><strong>What to look for:</strong> {item.buying}</p>
+            </div>
+          ))
+      }
+
+      <h3>What to skip</h3>
+      <p>
+        Nobody needs these in a first year, whatever the garden centre display suggests.
+      </p>
+      <ul>
+        {toolkit.skip.map((s) => <li>{s}</li>)}
+      </ul>
+
+      <div class="note">
+        <p>
+          <strong>Borrow before you buy.</strong> A
+          <a href="https://buynothingproject.org/" rel="noopener" target="_blank">
+            Buy Nothing group</a
+          >, a neighbour, or a community garden shed will cover most of this for nothing, and
+          you will find out what you actually reach for before spending anything.
+        </p>
+      </div>
+    </section>
+
+    <div class="note">
+      <p>
+        <strong>Know a resource we have missed?</strong>
+        <a href={`mailto:${SITE.email}`}>Send it over</a>. We are especially interested in
+        free and local things &mdash; seed libraries, tool lending, community plots.
+      </p>
+    </div>
+
+    <NextSteps links={GUIDE_LINKS} heading="Get growing" />
+  </div>
+</BaseLayout>

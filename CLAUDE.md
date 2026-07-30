@@ -166,15 +166,16 @@ Do not paper over it with inline `style=` on the `th` (v1 did, in five files; re
    `home.mdx`. The build asserts this and fails loudly — that is intentional.
 6. Trailing slashes everywhere. Internal links must end in `/`.
 
-## Routes (v1)
+## Routes (20)
 
 `/` · `/planting-calendar/` · `/planting-calendar/zone-3/` … `zone-10/` ·
 `/easiest-vegetables-for-beginners/` · `/raised-beds-vs-containers-vs-in-ground/` ·
-`/starting-seeds-indoors/` · `/about/` · `/contact/` · `/privacy-policy/` ·
-`/terms-of-service/` · `/404.html` · `/llms.txt`
+`/starting-seeds-indoors/` · `/glossary/` · `/resources/` · `/about/` · `/contact/` ·
+`/privacy-policy/` · `/terms-of-service/` · `/404.html` · `/llms.txt`
 
-Schema: `WebSite` + `Organization` + `WebPage` sitewide; `HowTo` + `FAQPage` on home;
-`Dataset` + `FAQPage` on calendar pages; `FAQPage` + `BreadcrumbList` on spokes.
+Schema: `Organization` + `WebPage` sitewide, `WebSite` on the homepage only (see the site-name
+section); `HowTo` + `FAQPage` on home; `Dataset` + `FAQPage` on calendar pages; `FAQPage` +
+`BreadcrumbList` on spokes; `DefinedTermSet` on the glossary; `ItemList` on resources.
 
 ## Launch checklist — done
 

@@ -42,7 +42,7 @@ const startMethod = (c: (typeof crops)[number]) => {
         ranked.map((c, i) => (
           <tr>
             <td>{i + 1}</td>
-            <th scope="row" style="text-align:left;font-weight:600;background:none">{c.name}</th>
+            <th scope="row">{c.name}</th>
             <td>
               <span class={`pill ${DIFFICULTY[c.difficulty].cls}`}>
                 {DIFFICULTY[c.difficulty].label}

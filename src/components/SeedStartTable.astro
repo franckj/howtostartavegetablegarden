@@ -41,7 +41,7 @@ const outTiming = (weeks: [number, number]) => {
       {
         startable.map(({ crop, indoors, out }) => (
           <tr>
-            <th scope="row" style="text-align:left;font-weight:600;background:none">
+            <th scope="row">
               {crop.name}
             </th>
             <td>{beforeFrost(indoors.weeks)} last frost</td>

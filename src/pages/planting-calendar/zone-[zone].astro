@@ -146,7 +146,7 @@ const zoneSchema = {
                 <tbody>
                   {m.entries.map((e) => (
                     <tr>
-                      <th scope="row" style="text-align:left;font-weight:600;background:none">
+                      <th scope="row">
                         {e.crop.name}
                       </th>
                       <td style="white-space:normal">{e.label}</td>
@@ -155,7 +155,7 @@ const zoneSchema = {
                   ))}
                   {m.resow.map((r) => (
                     <tr>
-                      <th scope="row" style="text-align:left;font-weight:600;background:none">
+                      <th scope="row">
                         {r.crop.name}
                       </th>
                       <td style="white-space:normal">
@@ -218,7 +218,7 @@ const zoneSchema = {
           {
             rows.map((r) => (
               <tr>
-                <th scope="row" style="text-align:left;font-weight:600;background:none">
+                <th scope="row">
                   {r.crop.name}
                 </th>
                 <td>{r.indoors ?? '-'}</td>

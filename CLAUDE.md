@@ -94,6 +94,16 @@ caught: the zone page still guarded month sections on `m.entries.length === 0`, 
 only re-sow rows rendered nothing — the original defect, resurfacing silently. Guard on
 `m.entries.length === 0 && m.resow.length === 0`.
 
+## Table styling gotcha
+
+The first column of most tables is a `<th scope="row">` for accessibility. **Every `tbody td`
+rule in `global.css` must also list `tbody th`.** A `td`-only selector leaves row headers with
+browser defaults — 1px padding, `vertical-align: middle`, no zebra stripe — which renders as
+crop names jammed against the table border, misaligned against their own row, and a stripe that
+covers only two of three cells. That shipped in v1 and Franck caught it.
+
+Do not paper over it with inline `style=` on the `th` (v1 did, in five files; removed).
+
 ## Hard rules
 
 1. **All planting dates come from `src/data/zones.json` + `src/data/crops.json`.** Never

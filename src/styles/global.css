@@ -372,22 +372,32 @@ thead th {
   white-space: nowrap;
 }
 
-tbody td {
+/* Every rule below must cover `th` as well as `td`. The first column of most
+   tables here is a `<th scope="row">` for accessibility, and a `tbody td`-only
+   selector leaves it with no padding, browser-default vertical-align: middle,
+   and no zebra stripe — which reads as broken alignment. */
+tbody td,
+tbody th {
   padding: var(--sp-3) var(--sp-4);
   border-bottom: 1px solid var(--border);
   vertical-align: top;
   color: var(--ink-soft);
 }
 
-tbody tr:last-child td {
+tbody tr:last-child td,
+tbody tr:last-child th {
   border-bottom: 0;
 }
 
-tbody tr:nth-child(even) td {
+tbody tr:nth-child(even) td,
+tbody tr:nth-child(even) th {
   background: #fdfcf9;
 }
 
+/* Row headers and plain first cells both read as the row's label. */
+tbody th,
 tbody td:first-child {
+  text-align: left;
   color: var(--ink);
   font-weight: 600;
   white-space: nowrap;

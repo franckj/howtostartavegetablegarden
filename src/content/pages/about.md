@@ -33,7 +33,7 @@ Guides are built around specific, checkable numbers, cross-checked against unive
 
 Two things worth knowing:
 
-**Where numbers came from a source, we name it. Where they did not, we say that too.** Some figures on this site are still our own conservative estimates rather than sourced facts — cost ranges, for instance. We would rather tell you which is which.
+**Where numbers came from a source, we name it. Where they did not, we say that too.** Planting dates, soil temperatures, spacing, seed depth, days to harvest and sunlight are all cross-checked against university extension publications, and the [planting calendar](/planting-calendar/) lists exactly which source covers what. The cost estimates are the one exception — no extension service publishes tool prices, so those are our own figures and the page says so plainly.
 
 **We are still checking our own work.** If something here contradicts your local extension service, trust them and please [tell us](/contact/). Corrections are the most useful mail we get, and they change the page.
 

@@ -218,10 +218,17 @@ Deliberately excluded: peas (heat-limited to spring and autumn), cucumber (resen
 disturbance, one or two sowings is the norm), zucchini (two plants already outproduce a
 household). Revisit if the crop list grows.
 
-**Still unverified.** Days-to-harvest, seed depth and sun-hour figures were not checked against
-a source in pass 1 — only timings, soil temperatures and spacings were. The cost figures on the
-homepage are 2026 US retail estimates and have no source at all. Spoke prose beyond the numbers
-corrected in pass 1 has not been through an edit pass.
+**Fact-check pass 2 (2026-07-31) closed the data debt.** Days-to-harvest, seed depth and sun
+hours are now checked against Penn State Extension (depth, days to maturity), NC State Extension
+(days to harvest, sunlight) and the NC State Extension Gardener Handbook. Corrections applied to
+8 crops' days-to-harvest, carrot depth, and every crop's sun figure — the old 6-8 hours for
+fruiting crops understated NC State's "at least 8, better with 10".
+
+**The only unsourced numbers left are the homepage cost estimates**, and they are now explicitly
+labelled as the site's own estimates on the page itself, in `llms.txt` and on the About page. No
+extension service publishes tool and material prices. Do not quietly present them as sourced.
+
+Still not done: spoke prose beyond the corrected numbers has not had a full editorial pass.
 
 **www is not redirected to apex.** Both hostnames serve 200 with identical content; the
 canonical tag on every page points at the apex, which Google honours, so this is safe but not

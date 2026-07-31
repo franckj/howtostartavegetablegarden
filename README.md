@@ -173,9 +173,13 @@ been checked line-by-line against extension-service publications**. The planting
 carries the most risk, since offset-from-frost-date logic cannot know whether your ground has
 thawed — zones 3-5 get an explicit soil-workability caveat for that reason.
 
-Pass 1 (2026-07-31) checked timings, soil temperatures and spacings against UNH Extension,
-Virginia Cooperative Extension and Penn State Extension, and corrected four errors. Still
-unverified: days-to-harvest, seed depth, sun hours, and every cost figure.
+Pass 1 (2026-07-31) checked sowing times, soil temperatures and spacings against UNH Extension
+and Virginia Cooperative Extension, correcting four errors. Pass 2 (2026-07-31) checked planting
+depth, days-to-harvest and sunlight against Penn State Extension and NC State Extension,
+correcting 8 crops' days-to-harvest, carrot depth and every sun figure.
+
+The only unsourced numbers left are the homepage cost estimates, labelled as such on the page.
+`src/data/*.json` carries a `sources` array naming what each source was used for.
 
 The upgrade cycle (research → draft → edit against a fact base) is in
 `htsavg-execution-kit.md`, Part 2. Homepage and planting calendar first.

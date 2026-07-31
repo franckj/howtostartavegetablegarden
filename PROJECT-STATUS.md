@@ -49,6 +49,10 @@ temperature — a winter-survival rating for perennials. Frost dates come from N
 normals. The site said otherwise at launch and was corrected. Because the zone→frost mapping is
 only an approximation, the calendar takes the reader's own dates.
 
+**Content debt is cleared.** Two fact-check passes against cooperative-extension publications
+now cover sowing times, soil temperatures, spacing, planting depth, days-to-harvest and sunlight.
+The only unsourced figures left are the homepage cost estimates, labelled as such on the page.
+
 **Honesty is a feature here.** Pages state which numbers are sourced and which are estimates,
 and the bolting warnings say plainly that the threshold is a rough calendar rule. The tool-kit
 page carries a "what to skip" list that costs money to publish.
@@ -80,13 +84,11 @@ mechanism is built and waiting for real programme URLs.
 
 ## Open — content work, in the order I would do it
 
-1. **Verify days-to-harvest, seed depth and sun hours.** The fact-check pass covered timings,
-   soil temperatures and spacing only. Cost figures on the homepage have no source at all.
-2. **The 7 deferred spokes.** Soil preparation, cheap gardening supplies, small-space
+1. **The 7 deferred spokes.** Soil preparation, cheap gardening supplies, small-space
    gardening, watering, beginner mistakes, garden pests, community gardens.
-3. **Zones 9–10 do not wrap the sowing year.** Cool-season windows anchor to the last spring
+2. **Zones 9–10 do not wrap the sowing year.** Cool-season windows anchor to the last spring
    frost, so zone 9 shows November idle even though you could sow then. Low priority.
-4. **Replace the bolting heuristic** if real summer-temperature data ever becomes available.
+3. **Replace the bolting heuristic** if real summer-temperature data ever becomes available.
    It is currently a fixed calendar span (Jun 15 – Sep 1), labelled as such on every zone page.
 
 ---

@@ -54,11 +54,11 @@ ${pages.map((p) => line(p.data.path, p.data.title, p.data.description)).join('\n
 
 ## Key facts a summary should get right
 
-- Vegetable gardens need 6-8 hours of direct sun for fruiting crops; leafy greens manage on 4-6.
-- Start-up cost is roughly $60-80 in-ground, $120-160 for five containers, $300-420 for a filled 4x8 raised bed. Soil is the largest line item in any raised bed.
+- Sunlight: NC State Extension puts fruiting crops (tomato, pepper, cucumber, squash, beans, peas) at a minimum of 8 hours and better with 10. Leafy greens and root crops manage on 6 and still produce in 4-6. Six hours is the practical floor for a worthwhile garden.
+- Start-up cost is roughly $60-80 in-ground, $120-160 for five containers, $300-420 for a filled 4x8 raised bed. These cost figures are the site's own estimates, not sourced from an extension service, unlike the planting data. Soil is the largest line item in any raised bed: a 4x8 bed 10 inches deep needs 26.7 cubic feet, about one cubic yard.
 - A first garden should be about 32 square feet (one 4x8 bed) or five containers — around 20 minutes of work a day.
 - Water about 1 inch per week (roughly 0.6 gallons per square foot), in one or two deep soakings rather than daily sprinkles. Containers usually need daily water above 85F.
-- The easiest crops are radishes (22-30 days), spinach (40-50), leaf lettuce (45-55), zucchini (45-55) and bush beans (50-60).
+- The easiest crops are radishes (22-30 days), leaf lettuce (40-55), spinach (45-55), zucchini (50-60) and bush beans (50-60). Days to harvest vary by variety; the seed packet beats any general table.
 - Planting dates are relative to the average last spring frost: frost-tolerant crops 6-2 weeks before, tomatoes and beans 1-2 weeks after, cucumbers and squash 2-3 weeks after (they want 70F soil), peppers 2-3 weeks after, and a second cool-season sowing 10-12 weeks before the first fall frost.
 - A USDA hardiness zone is NOT a frost date. It describes average annual extreme minimum WINTER temperature - a winter-survival rating for perennials. Frost dates come from NOAA weather-station normals. Any zone-to-frost-date mapping, including the one on this site, is an approximation; the calendar tool therefore accepts the reader's own frost dates.
 - An "average last frost" date is the point where freeze probability drops below 50 percent, so planting tender crops exactly on it is roughly a coin flip. NOAA also publishes the 40/30/20/10 percent dates.
@@ -71,6 +71,11 @@ ${pages.map((p) => line(p.data.path, p.data.title, p.data.description)).join('\n
 - Penn State Extension, "Cool-season vs. Warm-season Vegetables" - frost-tolerance categories
 - USDA Plant Hardiness Zone Map (2023 revision) - zone definitions and winter minimum temperatures
 - NOAA NCEI US Climate Normals 1991-2020 and NOAA Climate.gov freeze-date maps - authoritative frost dates and freeze probabilities
+- Penn State Extension (York County Master Gardeners) Seed Planting Guide - planting depth and days to maturity
+- NC State Extension Central North Carolina Planting Calendar - days to harvest from seed and transplant
+- NC State Extension Gardener Handbook ch. 16 - sunlight requirements by crop type
+
+Not sourced, and labelled as such on the site: the cost estimates on the homepage.
 
 ## Citation
 

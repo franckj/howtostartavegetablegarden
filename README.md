@@ -17,9 +17,9 @@ npm run preview    # serve dist/ locally
 Node 20+. The build fails loudly on content errors (see "Build-time guardrails" below), so a
 green build means the structured data is intact.
 
-## What is deployed (v1)
+## What is deployed
 
-18 routes:
+20 routes:
 
 | Route | Source | Schema |
 |---|---|---|
@@ -29,11 +29,15 @@ green build means the structured data is intact.
 | `/easiest-vegetables-for-beginners/` | `src/content/guides/*.mdx` | FAQPage + BreadcrumbList |
 | `/raised-beds-vs-containers-vs-in-ground/` | `src/content/guides/*.mdx` | FAQPage + BreadcrumbList |
 | `/starting-seeds-indoors/` | `src/content/guides/*.mdx` | FAQPage + BreadcrumbList |
+| `/glossary/` | `src/pages/glossary.astro` + `src/data/glossary.json` | DefinedTermSet + BreadcrumbList |
+| `/resources/` | `src/pages/resources.astro` + `src/data/resources.json` | ItemList + BreadcrumbList |
 | `/about/`, `/contact/`, `/privacy-policy/`, `/terms-of-service/` | `src/content/pages/*.md` | BreadcrumbList |
 | `/404.html` | `src/pages/404.astro` | — |
 | `/llms.txt` | `src/pages/llms.txt.ts` (generated) | — |
 
-`WebSite` + `Organization` + `WebPage` are emitted sitewide from `BaseLayout.astro`.
+`Organization` + `WebPage` are emitted sitewide from `BaseLayout.astro`. `WebSite` is emitted
+**only on the homepage** — Google requires it there for the site-name feature and states it does
+not belong on subdirectories.
 
 Deferred from the full plan (7 spokes): soil preparation, cheap gardening supplies,
 small-space gardening, watering, beginner mistakes, garden pests, community gardens. Add them
@@ -46,7 +50,9 @@ file is all that is needed.
 src/
   data/zones.json          USDA zones 3-10: frost dates, season length, regions
   data/crops.json          12 crops: sowing offsets in weeks from last frost, depth,
-                           spacing, soil temp, days to harvest, difficulty
+                           spacing, soil temp, days to harvest, difficulty, succession
+  data/glossary.json       25 glossary terms
+  data/resources.json      resource groups + starter tool kit (affiliate URLs go here)
   lib/calendar.ts          derives every planting window from those two files
   lib/site.ts              site constants, nav, footer, FAQ/breadcrumb schema helpers
   lib/rehype-table-wrap.mjs  wraps markdown tables so they scroll instead of the page
@@ -85,7 +91,7 @@ touching a component.
    crumb: "Short breadcrumb label"
    path: "/<slug>/"          # trailing slash required
    eyebrow: "Crop guide"     # optional
-   dateModified: "2026-07-30"
+   dateModified: "2026-07-31"
    answer:                   # snippet-ready direct answer, 1-2 paragraphs
      - "First paragraph."
    faqs:                     # minimum 4 — becomes FAQPage schema
@@ -116,10 +122,24 @@ wrapper automatically.
 
 ## Deploy
 
+**`git push` deploys.** A versioned `pre-push` hook builds the site and deploys it to
+Cloudflare Pages before the push completes, so the live site can never silently lag the repo.
+This project is a Cloudflare *direct upload* project — pushing to GitHub does not deploy on its
+own, which is exactly the trap the hook closes.
+
 ```bash
-npm run build
-npx wrangler pages deploy dist --project-name howtostartavegetablegarden --branch main
+git push                      # build -> deploy -> push
+npm run deploy                # deploy without pushing
+SKIP_DEPLOY=1 git push        # push without deploying
+git push --no-verify          # skip the hook entirely
 ```
+
+If the build fails, the push is aborted, so the repo never holds a broken build. Same if the
+deploy fails, so the repo never gets ahead of what is live.
+
+The hook lives in `.githooks/pre-push` and is enabled by `git config core.hooksPath .githooks`
+— `npm install` sets that automatically via `postinstall`, so a fresh clone is wired up after
+one install.
 
 Uses wrangler OAuth (`npx wrangler login`) — no API token needed for deploying. Project name
 is `howtostartavegetablegarden`; production branch `main`.
@@ -152,6 +172,10 @@ The v1 numbers are conservative, consistent and internally single-sourced, but t
 been checked line-by-line against extension-service publications**. The planting calendar
 carries the most risk, since offset-from-frost-date logic cannot know whether your ground has
 thawed — zones 3-5 get an explicit soil-workability caveat for that reason.
+
+Pass 1 (2026-07-31) checked timings, soil temperatures and spacings against UNH Extension,
+Virginia Cooperative Extension and Penn State Extension, and corrected four errors. Still
+unverified: days-to-harvest, seed depth, sun hours, and every cost figure.
 
 The upgrade cycle (research → draft → edit against a fact base) is in
 `htsavg-execution-kit.md`, Part 2. Homepage and planting calendar first.

@@ -34,7 +34,8 @@ home, about, glossary, resources and a zone page. No horizontal overflow or flus
 from 320px to 1280px. Calendar island: no JS errors, choice persists.
 
 **Done:** deployed · Google Search Console verified + sitemap submitted · Bing Webmaster
-verified · IndexNow submitted (19 URLs, 200) · GitHub pushed.
+verified · IndexNow submitted (19 URLs, 200) · GitHub pushed · `git push` now builds and
+deploys automatically.
 
 ---
 
@@ -68,9 +69,10 @@ mechanism is built and waiting for real programme URLs.
    take days to weeks to appear; this is the only way to nudge it.
 3. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
    fill the `affiliate` fields in `src/data/resources.json`. The disclosure renders itself.
-4. **Optional: connect Git for push-to-deploy.** Pages → project → Settings → Builds &
-   deployments → Connect to Git. Right now deploying and pushing are separate steps, which is
-   easy to forget. No CLI for this one.
+4. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
+   deployments → Connect to Git. Not needed — a `pre-push` hook already makes `git push`
+   build and deploy — but it would move builds onto Cloudflare's infrastructure and add PR
+   previews. **If you connect it, delete `.githooks/pre-push`** or every push deploys twice.
 5. **Optional: www → apex 301.** Rules → Redirect Rules, hostname equals
    `www.howtostartavegetablegarden.com`. Canonical tags already handle it, so cosmetic.
 

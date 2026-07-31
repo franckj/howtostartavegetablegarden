@@ -27,10 +27,19 @@ npx wrangler pages deploy dist --project-name howtostartavegetablegarden --branc
 Wrangler OAuth only — **never ask Franck for a `CLOUDFLARE_API_TOKEN` to deploy.** A
 DNS-scoped token is only needed for DNS record changes (OAuth has no DNS permission).
 
-Direct upload, so there is no commit→deploy hook — **pushing to GitHub does not deploy.**
-Deploy and push are two separate steps. Connecting Git is a one-time dashboard click
-(Pages → project → Settings → Builds & deployments → Connect to Git) if you want
-push-to-deploy; there is no CLI for it.
+**`git push` deploys.** `.githooks/pre-push` builds and deploys before the push completes, so
+the live site cannot silently lag the repo. A failed build or failed deploy aborts the push.
+Non-main pushes build only. Escape hatches: `SKIP_DEPLOY=1 git push`, `git push --no-verify`,
+and `npm run deploy` to deploy without pushing.
+
+Enabled via `core.hooksPath = .githooks` so the hook is versioned; `npm install` sets it
+through `postinstall`.
+
+This exists because Pages here is a **direct-upload** project — pushing to GitHub does not
+deploy on its own. Cloudflare's own Git integration would be the better fix but needs a
+dashboard OAuth flow to install the Cloudflare GitHub App (no project on the account uses it,
+and there is no CLI). If that ever gets connected, delete the hook — do not run both, or every
+push will deploy twice.
 
 After a meaningful content change: `node scripts/indexnow.mjs` (key file already deployed).
 

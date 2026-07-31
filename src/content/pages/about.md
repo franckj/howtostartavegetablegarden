@@ -1,50 +1,74 @@
 ---
 title: "About This Site"
-description: "Why this site exists: kind, plain-English help for first-time vegetable gardeners, with real numbers and no assumption that you already know the words."
+description: "Why this site exists, where every number comes from, and what we will never pretend to be. Plain, sourced help for a first vegetable garden."
 h1: "About This Site"
 crumb: "About"
 path: "/about/"
 dateModified: "2026-07-31"
 ---
 
-Everyone who grows food killed some plants first. That is not a discouraging fact, it is the reassuring one — it means the people whose gardens look effortless got there by losing a tray of seedlings to a cold night, or letting the carrots dry out, or planting six zucchini and drowning in them by August.
+This started with a simple, slightly annoying question: how much sun does a tomato actually need?
 
-This site exists to make your first season a bit kinder than that.
+The answers were everywhere and nowhere. One site said "plenty." Another said "full sun," which only raised the question of what full means. A third gave a number with no reason to believe it. Underneath all of it sat a real answer, published by a university extension service, in a PDF almost nobody outside gardening has ever opened.
 
-## What we are trying to do
+That gap is why this site exists.
 
-**Assume nothing.** Most gardening advice quietly assumes you already know what "harden off before setting out transplants" means. If a sentence here needs a term you might not have met, it links to [the glossary](/glossary/). If you had to look something up to follow one of our guides, that is our problem to fix, not a gap in you.
+## Gardening is not hard. Learning it is.
 
-**Give you the actual numbers.** Six to eight hours of sun. Two inches of mulch. One inch of water a week. Twenty-two to thirty days for a radish. Vague advice is what makes beginners fail, because you cannot act on "plant after the soil warms" without knowing what warm means.
+Growing a radish is genuinely easy. Sow the seed half an inch down, keep it damp, eat it in a month.
 
-**Be honest about what we do not know.** Every planting date on this site comes from average frost dates, and averages are blunt across a country this size. So we say so, we cite where the numbers come from, and the [planting calendar](/planting-calendar/) lets you enter your own frost dates instead of ours. Where something is a rough rule rather than a sourced fact, it says that too.
+Finding out that this is all you have to do — that turns out to be the hard part. Most advice is either too vague to act on ("water regularly") or quietly assumes you already speak the language ("harden off before setting out transplants"). Neither helps when you are standing in a garden centre holding a seed packet, wondering what you have got yourself into.
 
-**Help you grow real food.** Food you grew is food you know everything about — no long transport chain, no wondering what was sprayed on it, picked the day you eat it. Everything here works without synthetic pesticides, not as a badge but because a beginner garden genuinely does not need them.
+So we write the version we wanted. Real numbers. Plain words. And a link to [the glossary](/glossary/) whenever a term turns up that you might not have met. If you had to look something up to follow one of our guides, that is our failure, not a gap in you.
 
-**Get you outside, and point you toward other people.** Twenty minutes a day with your hands in soil turns out to be the reason a lot of people keep gardening; the vegetables become a bonus. And gardening looks solitary but is not. Your county extension office, a community garden, a seed library, the neighbour with the good tomatoes — any of them will teach you more in one season than we can, because they know your soil and your weather. We will keep saying so. [The resources page](/resources/) is mostly a list of how to find them.
+## We have not grown everything, and we will not pretend we have
 
-## Start small. Genuinely small.
+Here is the part most sites leave out.
 
-If you take one thing from this site: **one 4x8 bed, or five containers, and three or four crops.** The most common way a first garden fails is being too big to keep up with in July. A small garden you actually tend beats an ambitious one you abandon, and there is no prize for scale.
+This is not written from a smallholding by someone who has been doing it for thirty years. There is no farm behind it. We are not going to tell you a story about our grandmother's tomatoes.
 
-## How the guides are written
+What we do instead is take the sourcing seriously.
 
-Guides are built around specific, checkable numbers, cross-checked against university cooperative extension publications — the sources are listed on the pages that use them. Each page carries a "last updated" date that changes when the content does, and pages get revised as they are checked more carefully.
+Every planting date, spacing, seed depth, soil temperature, days-to-harvest and sunlight figure here is cross-checked against **US cooperative extension services** — the free public research and advice arms of land-grant universities, staffed by people who spend entire careers on this. Frost dates come from **NOAA weather-station records**, not from a hardiness zone map that was never designed to carry them.
 
-Two things worth knowing:
+We name every source. The [planting calendar](/planting-calendar/) lists which publication was used for what, and the data files behind it carry the same citations.
 
-**Where numbers came from a source, we name it. Where they did not, we say that too.** Planting dates, soil temperatures, spacing, seed depth, days to harvest and sunlight are all cross-checked against university extension publications, and the [planting calendar](/planting-calendar/) lists exactly which source covers what. The cost estimates are the one exception — no extension service publishes tool prices, so those are our own figures and the page says so plainly.
+And where a number is only our own estimate — the costs, mostly, because no extension service publishes tool prices — the page says so, right next to the number. You should always be able to tell "a university researched this" from "we think it is about this much."
 
-**We are still checking our own work.** If something here contradicts your local extension service, trust them and please [tell us](/contact/). Corrections are the most useful mail we get, and they change the page.
+That is the trade. No experience to sell you. Just sources you can check, and plain admission of the ones we do not have.
 
-## How the site pays for itself
+## We change our minds in public
 
-Hosting and a domain cost money; the guides are free and always will be. There is no newsletter, no course, no membership and no sign-up wall.
+We have already corrected ourselves on this site, more than once.
 
-There can be ads and affiliate links on this site to support the making of the website. If we ever earn a commission on something, it is labelled where it appears, and it does not change what we recommend — the [tool kit page](/resources/) has a "what to skip" list that costs us money to publish, and it stays.
+The biggest one: we said a USDA hardiness zone tells you your frost dates. It does not — it describes average winter lows, and that is a different thing entirely. We had it wrong, extension publications set us straight, and now the calendar takes your own frost dates instead of guessing from your zone.
+
+We also had sunlight too low, and eight crops' days-to-harvest too optimistic.
+
+Every page carries a "last updated" date that moves when the content does. If something here contradicts your local extension service, trust them — then please [tell us](/contact/), because corrections are the most useful mail we get.
+
+## Start smaller than you think
+
+If you take one thing from this site, take this: **one 4x8 bed, or five containers, and three or four crops.**
+
+The most common way a first garden fails is being too big to keep up with by July. That is not a discipline problem, it is arithmetic — a garden you can tend in twenty minutes is one you will still be tending in August. There is no prize for scale.
+
+And everyone who grows food killed some plants getting there. That is the reassuring part, not the discouraging one.
+
+## The best advice is local, and it is free
+
+Your county extension office knows your soil, your frost dates, and which varieties do well three streets from your house. We do not, and no national site can.
+
+So we will keep sending you to them — along with community gardens, seed libraries, farmers markets and the neighbour with the good tomatoes. [The resources page](/resources/) is mostly a list of how to find those people. They will teach you more in one season than we can.
+
+## How this stays free
+
+Hosting and a domain cost money. The guides are free and always will be — no newsletter, no course, no membership, nothing to sign up for.
+
+There can be ads and affiliate links here to support the making of the website. If we earn a commission, it is labelled where it appears, and it does not change what we recommend. The [tool kit](/resources/) has a "what to skip" list that costs us money to publish, and it stays.
 
 ## Start here
 
-New to this? Start with [how to start a vegetable garden](/) — the full nine-step guide. Then get your dates from the [planting calendar for your zone](/planting-calendar/) and pick three or four crops from [the easiest vegetables for beginners](/easiest-vegetables-for-beginners/).
+New to this? Begin with [how to start a vegetable garden](/) — the whole thing in nine steps. Then get your dates from the [planting calendar](/planting-calendar/), and pick a few crops from [the easiest vegetables for beginners](/easiest-vegetables-for-beginners/).
 
-Questions or requests: [contact us](/contact/). We read everything.
+Questions, requests, or something we got wrong? [Contact us](/contact/).

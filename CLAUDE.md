@@ -6,6 +6,11 @@ built so the homepage answers the question in the domain. Anonymous site, no aut
 **Update this file after every completed task on this project** — deploys, new pages, data
 changes, schema changes. It is the source of truth.
 
+**Doc layout:** `CLAUDE.md` = technical truth · `PROJECT-STATUS.md` = mutable operating state
+(status, calibration log, ideas queue — the analyst project reads and writes it via a scoped
+PAT) · `PROJECT-BRIEF.md` = strategy context · project knowledge holds stable operator
+instructions only.
+
 ## Status
 
 - **Live:** https://howtostartavegetablegarden.com (apex + www)

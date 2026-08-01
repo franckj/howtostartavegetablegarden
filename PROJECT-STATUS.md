@@ -1,6 +1,6 @@
 # howtostartavegetablegarden.com — status
 
-**Last updated:** 2026-07-31 · **Status:** live, 20 pages, all launch tasks done
+**Last updated:** 2026-08-01 · **Status:** live, 20 pages, first GSC impressions in
 
 - **Live:** https://howtostartavegetablegarden.com (apex + www, valid SSL)
 - **Repo:** https://github.com/franckj/howtostartavegetablegarden (branch `main`)
@@ -98,3 +98,26 @@ mechanism is built and waiting for real programme URLs.
 Impressions in GSC for the exact-match query within 3–7 days. AI citations typically lag
 indexing by 2–6 weeks — watch Plausible for `perplexity.ai` and `chatgpt.com` referrers. Two
 pages were indexed within ~36 hours of launch.
+
+## Calibration log
+
+Append-only. Every entry notes whether the lesson is site-specific or model-generalizable.
+
+| Date | Event | Data | Lesson |
+|------|-------|------|--------|
+| 2026-07-30 | Launch, lean v1, 20 routes | 2 pages indexed within ~36h | Clock starts |
+| 2026-08-01 | First GSC impressions, ~48h post-launch | 9 queries, 0 clicks — all zone/month planting ("what to plant in february zone 8", "zone 6 planting calendar") plus "gardening terms for beginners" | Zone pages + glossary are the SERP entry surface, not the EMD query yet. Tool/reference surface indexes and matches first — likely model-generalizable. Half-zone queries (6b) matched to whole-zone pages; if they persist, add half-zone notes to zone pages, no new pages. |
+
+## Ideas queue (not committed — demand-gated)
+
+**Progress Tracker — "My First Garden" (visitor-side gamification)**
+- Concept: pillar guide converted to a trackable season checklist, zone-aware
+- V1 = printable PDF checklist — same generation path as the zone calendar PDF; ship as page 2
+  of that magnet or as a second magnet to A/B demand
+- V2 (only on demand signal) = interactive island: localStorage progress, Plausible event per
+  step, generated share card for virality. One page, no accounts, no backend
+- Pairs with the Message Box intent question: stall-point data + intent answers = what to
+  build/upgrade next
+- Earliest sensible launch: Jan–Feb 2027, into the spring wave
+- Expand PDF→interactive trigger: PDF download rate + any organic shares/mentions
+- Blueprint note: "checklist-ification of pillar + share card" is model-generalizable

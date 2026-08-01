@@ -1,6 +1,6 @@
 # howtostartavegetablegarden.com — status
 
-**Last updated:** 2026-08-01 · **Status:** live, 20 pages, first GSC impressions in
+**Last updated:** 2026-08-01 (PM) · **Status:** live, 20 pages, first GSC impressions in
 
 - **Live:** https://howtostartavegetablegarden.com (apex + www, valid SSL)
 - **Repo:** https://github.com/franckj/howtostartavegetablegarden (branch `main`)
@@ -107,6 +107,7 @@ Append-only. Every entry notes whether the lesson is site-specific or model-gene
 |------|-------|------|--------|
 | 2026-07-30 | Launch, lean v1, 20 routes | 2 pages indexed within ~36h | Clock starts |
 | 2026-08-01 | First GSC impressions, ~48h post-launch | 9 queries, 0 clicks — all zone/month planting ("what to plant in february zone 8", "zone 6 planting calendar") plus "gardening terms for beginners" | Zone pages + glossary are the SERP entry surface, not the EMD query yet. Tool/reference surface indexes and matches first — likely model-generalizable. Half-zone queries (6b) matched to whole-zone pages; if they persist, add half-zone notes to zone pages, no new pages. |
+| 2026-08-01 | Full GSC 24h export | 29 impressions, 0 clicks, avg pos ~70. Pages: zone-8 (15), zone-6 (8), calendar hub (3), homepage (1 @ pos 11), about (1), glossary (1). 21 queries, ~all zone-intent; 5/21 are half-zone (8b, 6b, 6a×2). One seasonal-intent query: "is it too late to start a vegetable garden" @ 47 | Zone-8 dominates — southern-zone fall-planting season is live NOW, matching July/Aug sowing content. Homepage already at pos 11 on 1 impression. Half-zone trend strengthening: threshold to act = still present in week-2 data. "Too late to start" = real Jul–Aug intent, homepage FAQ candidate. |
 
 ## Ideas queue (not committed — demand-gated)
 

@@ -1,6 +1,6 @@
 # howtostartavegetablegarden.com — status
 
-**Last updated:** 2026-08-01 (PM) · **Status:** live, 20 pages, first GSC impressions in
+**Last updated:** 2026-09-12 · **Status:** live, 20 pages, AdSense tag installed and awaiting review
 
 - **Live:** https://howtostartavegetablegarden.com (apex + www, valid SSL)
 - **Repo:** https://github.com/franckj/howtostartavegetablegarden (branch `main`)
@@ -57,8 +57,10 @@ The only unsourced figures left are the homepage cost estimates, labelled as suc
 and the bolting warnings say plainly that the threshold is a rough calendar rule. The tool-kit
 page carries a "what to skip" list that costs money to publish.
 
-**No ads or affiliate links are live yet** — only the disclosure that they may appear. The
-mechanism is built and waiting for real programme URLs.
+**AdSense went live 2026-09-12** (publisher `ca-pub-3174922327325961`, Auto ads, Google's own
+CMP for EU consent). The privacy policy was rewritten in the same commit — the old "no cookies,
+no ad network" posture is gone, deliberately, and must not be reintroduced. Affiliate links are
+still not live; the disclosure mechanism is built and waiting for real programme URLs.
 
 ---
 
@@ -71,13 +73,16 @@ mechanism is built and waiting for real programme URLs.
    **This is the only real risk item on the project.**
 2. **Request indexing on the homepage in Search Console.** The site-title and favicon fixes
    take days to weeks to appear; this is the only way to nudge it.
-3. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
+3. **Watch for AdSense approval**, then check Core Web Vitals in Search Console once ads
+   actually serve. If CLS goes red, turn the ad load slider down in AdSense — a dashboard
+   lever, not a code change.
+4. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
    fill the `affiliate` fields in `src/data/resources.json`. The disclosure renders itself.
-4. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
+5. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
    deployments → Connect to Git. Not needed — a `pre-push` hook already makes `git push`
    build and deploy — but it would move builds onto Cloudflare's infrastructure and add PR
    previews. **If you connect it, delete `.githooks/pre-push`** or every push deploys twice.
-5. **Optional: www → apex 301.** Rules → Redirect Rules, hostname equals
+6. **Optional: www → apex 301.** Rules → Redirect Rules, hostname equals
    `www.howtostartavegetablegarden.com`. Canonical tags already handle it, so cosmetic.
 
 ---
@@ -107,6 +112,8 @@ Append-only. Every entry notes whether the lesson is site-specific or model-gene
 |------|-------|------|--------|
 | 2026-07-30 | Launch, lean v1, 20 routes | 2 pages indexed within ~36h | Clock starts |
 | 2026-08-01 | First GSC impressions, ~48h post-launch | 9 queries, 0 clicks — all zone/month planting ("what to plant in february zone 8", "zone 6 planting calendar") plus "gardening terms for beginners" | Zone pages + glossary are the SERP entry surface, not the EMD query yet. Tool/reference surface indexes and matches first — likely model-generalizable. Half-zone queries (6b) matched to whole-zone pages; if they persist, add half-zone notes to zone pages, no new pages. |
+| 2026-09-12 | Ahrefs crawl: 5 internal 404s + 1 external 404 | All 5 were `/cdn-cgi/l/email-protection` — Cloudflare Email Address Obfuscation rewriting `mailto:` at the edge. Build output was clean. External: NIFA extension directory moved; `usdalocalfoodportal.com` 403 = USDA bot-block, false positive | **A crawler 404 that does not exist in `dist/` is an edge feature, not a code bug** — check the CDN before the repo. Model-generalizable. Obfuscation also hid the contact address from AI crawlers, working against the E-E-A-T signal the Contact page exists to give. Now off. |
+| 2026-09-12 | AdSense installed, Auto ads | Tag on 19 indexable routes, suppressed on the `noindex` 404. Privacy policy rewritten; Google CMP enabled for EEA/UK/CH consent | Monetization clock starts. Launch Lighthouse 100s predate the ad tag and are now a stale baseline — Auto ads inject post-paint, so re-measure CLS against production before quoting them. Site-specific. |
 | 2026-08-01 | Full GSC 24h export | 29 impressions, 0 clicks, avg pos ~70. Pages: zone-8 (15), zone-6 (8), calendar hub (3), homepage (1 @ pos 11), about (1), glossary (1). 21 queries, ~all zone-intent; 5/21 are half-zone (8b, 6b, 6a×2). One seasonal-intent query: "is it too late to start a vegetable garden" @ 47 | Zone-8 dominates — southern-zone fall-planting season is live NOW, matching July/Aug sowing content. Homepage already at pos 11 on 1 impression. Half-zone trend strengthening: threshold to act = still present in week-2 data. "Too late to start" = real Jul–Aug intent, homepage FAQ candidate. |
 
 ## Ideas queue (not committed — demand-gated)

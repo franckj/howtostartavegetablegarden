@@ -75,11 +75,21 @@ describes the cookies, links Google's ad policies and the opt-outs, and the old 
 claim is narrowed to "no cookies of our own". **The cookie-free claim is gone — do not
 reintroduce it.**
 
-**Open: no CMP is installed.** Google's EU user consent policy requires a Google-certified CMP
-for EEA/UK/Swiss traffic. The privacy policy already promises EU/UK/Swiss readers a consent
-prompt, so that promise is unkept until one is turned on. The free fix is AdSense ->
-Privacy & messaging -> GDPR message (Google's own Funding Choices CMP), enabled in the
-dashboard, no code change. Do this before ads actually start serving.
+**Placement is Auto ads** (dashboard setting, not code). Google injects placements through the
+tag already in `BaseLayout.astro`; there are no `<ins class="adsbygoogle">` units in the repo and
+none are needed. If you ever want manual control, that is when units get added to the templates.
+
+**Consent: Google's own CMP is enabled** (AdSense -> Privacy & messaging -> GDPR message,
+2026-09-12), which satisfies Google's EU user consent policy for EEA/UK/Swiss traffic and makes
+good on the consent prompt the privacy policy promises those readers. It loads dynamically from
+`adsbygoogle.js`, so it does **not** appear in the served HTML — curl/grep cannot verify it and
+its absence there is not a fault. Check it in the AdSense dashboard or a real EU browser session.
+
+**The Lighthouse 100s no longer describe the live site.** Auto ads inject into the DOM after
+paint, so CLS and performance will drop from the launch numbers recorded under "Measured at
+launch" — those were taken on a local preview build with no ad tag. Re-measure against
+production before treating any of them as current, and tune via AdSense's ad load slider and
+the anchor/vignette toggles rather than in code.
 
 Affiliate links: nothing is affiliate-linked yet. Toolkit items in `src/data/resources.json`
 carry `affiliate: null`; fill one in and `/resources/` renders it with `rel="noopener sponsored"`
@@ -217,8 +227,9 @@ section); `HowTo` + `FAQPage` on home; `Dataset` + `FAQPage` on calendar pages; 
 
 ## Measured at launch
 
-Lighthouse (local preview, Playwright Chromium): performance 100, accessibility 100,
-best practices 100, SEO 100 on home, spoke and calendar. No horizontal overflow at 375px or
+Lighthouse (local preview, Playwright Chromium, **pre-AdSense**): performance 100, accessibility
+100, best practices 100, SEO 100 on home, spoke and calendar. Auto ads landed 2026-09-12 and
+these have not been re-measured since — treat them as a v1 baseline, not the current site. No horizontal overflow at 375px or
 768px on any route. Calendar island: no page errors, `localStorage` zone persistence works.
 
 ## Open work

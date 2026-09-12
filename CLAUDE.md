@@ -223,6 +223,13 @@ Deliberately excluded: peas (heat-limited to spring and autumn), cucumber (resen
 disturbance, one or two sowings is the norm), zucchini (two plants already outproduce a
 household). Revisit if the crop list grows.
 
+**External link audit (2026-09-12).** The NIFA extension directory moved —
+`/about-nifa/how-we-work/extension/land-grant-university-website-directory` now 404s and the live
+URL is `/grants/land-grant-university-website-directory`. Updated in both places in
+`resources.json`. `usdalocalfoodportal.com` returns **403 to crawlers and 200 to humans** — USDA
+bot-blocking, a false positive. Do not "fix" it by swapping in an ams.usda.gov URL; those 403 to
+bots too.
+
 **Fact-check pass 2 (2026-07-31) closed the data debt.** Days-to-harvest, seed depth and sun
 hours are now checked against Penn State Extension (depth, days to maturity), NC State Extension
 (days to harvest, sunlight) and the NC State Extension Gardener Handbook. Corrections applied to
@@ -234,6 +241,16 @@ labelled as the site's own estimates on the page itself, in `llms.txt` and on th
 extension service publishes tool and material prices. Do not quietly present them as sourced.
 
 Still not done: spoke prose beyond the corrected numbers has not had a full editorial pass.
+
+**Cloudflare Email Address Obfuscation is ON, and it creates 5 internal 404s.** Scrape Shield
+rewrites every `mailto:` at the edge into `/cdn-cgi/l/email-protection#<hex>`, which returns 404
+to anything without JS. Affects `/contact/`, `/glossary/`, `/resources/`, `/privacy-policy/`,
+`/terms-of-service/` — the build output has plain `mailto:` hrefs, so this is not a code bug and
+cannot be fixed in the repo. Fix: Cloudflare dashboard -> zone `howtostartavegetablegarden.com`
+-> Scrape Shield -> Email Address Obfuscation -> off. (API equivalent needs a token with Zone
+Settings:Edit; the DNS-scoped token will not do it.) Leaving it on also hides the contact
+address from crawlers and AI, which works against the contact/E-E-A-T signal the About and
+Contact pages are there to give.
 
 **www is not redirected to apex.** Both hostnames serve 200 with identical content; the
 canonical tag on every page points at the apex, which Google honours, so this is safe but not

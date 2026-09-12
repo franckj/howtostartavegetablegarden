@@ -242,15 +242,15 @@ extension service publishes tool and material prices. Do not quietly present the
 
 Still not done: spoke prose beyond the corrected numbers has not had a full editorial pass.
 
-**Cloudflare Email Address Obfuscation is ON, and it creates 5 internal 404s.** Scrape Shield
-rewrites every `mailto:` at the edge into `/cdn-cgi/l/email-protection#<hex>`, which returns 404
-to anything without JS. Affects `/contact/`, `/glossary/`, `/resources/`, `/privacy-policy/`,
-`/terms-of-service/` — the build output has plain `mailto:` hrefs, so this is not a code bug and
-cannot be fixed in the repo. Fix: Cloudflare dashboard -> zone `howtostartavegetablegarden.com`
--> Scrape Shield -> Email Address Obfuscation -> off. (API equivalent needs a token with Zone
-Settings:Edit; the DNS-scoped token will not do it.) Leaving it on also hides the contact
-address from crawlers and AI, which works against the contact/E-E-A-T signal the About and
-Contact pages are there to give.
+**Cloudflare Email Address Obfuscation is OFF — keep it that way (2026-09-12).** While it was
+on, Scrape Shield rewrote every `mailto:` at the edge into `/cdn-cgi/l/email-protection#<hex>`,
+which 404s for anything without JS. That produced 5 internal 404s in an Ahrefs crawl
+(`/contact/`, `/glossary/`, `/resources/`, `/privacy-policy/`, `/terms-of-service/`) even though
+the build output had clean `mailto:` hrefs — it is an edge rewrite, invisible in `dist/`.
+Franck turned it off; all five now serve plain `mailto:`. If those 404s ever reappear, this
+setting is the cause, not the code: dashboard -> zone -> Scrape Shield -> Email Address
+Obfuscation. It also hid the contact address from crawlers and AI, working against the
+contact/E-E-A-T signal the About and Contact pages exist to give.
 
 **www is not redirected to apex.** Both hostnames serve 200 with identical content; the
 canonical tag on every page points at the apex, which Google honours, so this is safe but not

@@ -111,6 +111,21 @@ const graph = [
       set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}
     />
 
+    <!-- Google AdSense. is:inline keeps it a plain async script tag; Astro would
+         otherwise bundle it as a module and Google's crawler would not find the
+         tag it looks for during site review. Rendered only when a publisher ID is
+         set, and never on noindex pages (the 404). -->
+    {
+      SITE.adsensePublisherId && !noindex && (
+        <script
+          is:inline
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${SITE.adsensePublisherId}`}
+          crossorigin="anonymous"
+        />
+      )
+    }
+
     <!-- Privacy-friendly analytics by Plausible. is:inline keeps the queue shim as a
          classic script so plausible.init() runs before the async script lands. -->
     <script is:inline async src={SITE.plausibleScript}></script>

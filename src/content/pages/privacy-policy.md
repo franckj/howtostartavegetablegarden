@@ -1,21 +1,21 @@
 ---
 title: "Privacy Policy"
-description: "What this site collects and what it does not: no cookies, no accounts, no email list. Privacy-friendly, aggregate analytics only."
+description: "What this site collects and what it does not: no accounts, no email list, cookieless analytics. Google AdSense advertising and its cookies, explained in full."
 h1: "Privacy Policy"
 crumb: "Privacy policy"
 path: "/privacy-policy/"
-dateModified: "2026-07-31"
+dateModified: "2026-09-12"
 ---
 
-This policy explains what howtostartavegetablegarden.com collects when you read it. The short version: no cookies, no account, no email list, and no advertising trackers.
+This policy explains what howtostartavegetablegarden.com collects when you read it. The short version: no account, no email list, and analytics that do not identify you. The site does carry Google AdSense advertising, which sets its own cookies — that is set out in full in the advertising section below.
 
 ## What we do not collect
 
-- **No cookies.** This site sets none, for any purpose, which is why you are not being asked to dismiss a consent banner. (See the advertising section below — if that ever changes, this line changes with it.)
+- **No cookies of our own.** We set none. Google AdSense sets its own — see the advertising section, which explains what they do and how to turn personalised ads off.
 - **No accounts or sign-ups.** There is nothing to register for.
 - **No email list.** There is no newsletter and no form that captures an address.
 - **No contact forms.** If you email us, we have your address because you sent it — nothing more.
-- **No advertising or social trackers.** No Facebook pixel, no Google Ads tags, no embedded social widgets.
+- **No social trackers.** No Facebook pixel, no embedded social widgets.
 
 ## What is collected
 
@@ -41,11 +41,27 @@ This site may carry advertising and affiliate links to cover the cost of running
 
 **Affiliate links** are ordinary links. If you follow one and buy something, we may earn a small commission at no extra cost to you. They set no cookies of ours and send us no information about you — the retailer at the other end handles the purchase under its own privacy policy, so read theirs if that matters to you.
 
-**Advertising**, if and when it is added, may involve a third-party ad network that sets its own cookies or uses similar technology to measure and target ads. **No ad network is running on this site today.** If one is added, this policy will be updated first to name it and explain your choices, and the cookie-free statement above will be corrected at the same time rather than left standing.
+**Advertising is served by Google AdSense** (publisher ID `ca-pub-3174922327325961`), added on 12 September 2026. Google is a third-party vendor and it, along with its advertising partners, sets cookies and uses similar technologies on this site.
+
+What that means in practice:
+
+- Google uses cookies to serve ads based on your prior visits to this site and to other sites, and to measure how ads perform.
+- Third-party vendors and ad networks working with Google may also serve ads here and set their own cookies.
+- We do not receive, see or store any of this data. It is handled by Google under the [Google Privacy Policy](https://policies.google.com/privacy) and the [Google advertising terms](https://policies.google.com/technologies/ads).
+
+**How to control it:**
+
+- You can opt out of personalised advertising at [Google Ads Settings](https://myadcenter.google.com/).
+- You can opt out of third-party vendors' use of cookies for personalised advertising at [aboutads.info/choices](https://www.aboutads.info/choices/) or [youronlinechoices.eu](https://www.youronlinechoices.eu/) in Europe.
+- Your browser's own cookie controls will block them too, and the site works perfectly well without them.
+
+If you are in the EU, UK or Switzerland, you will be asked for consent before personalised advertising cookies are set, and you can change or withdraw that choice at any time through the same prompt.
 
 ## Your rights
 
 Because we do not build profiles or store personal data beyond email you choose to send, there is very little held about you. You can still email hello@howtostartavegetablegarden.com to ask what we hold about you, to request a copy, or to ask us to delete it — including any correspondence.
+
+Advertising data is the exception: Google holds it, not us, so requests about it go to Google through the links in the advertising section.
 
 If you are in the EU or UK, you have rights of access, rectification, erasure, restriction, objection and portability under the GDPR. If you are in California, you have the right to know what personal information is collected and to request its deletion under the CCPA. We do not sell personal information, and we never have.
 

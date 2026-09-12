@@ -62,14 +62,29 @@ After a meaningful content change: `node scripts/indexnow.mjs` (key file already
 
 ## Ads and affiliate links
 
-Nothing is affiliate-linked yet. Toolkit items in `src/data/resources.json` carry
-`affiliate: null`; fill one in and `/resources/` renders it with `rel="noopener sponsored"` and
-shows the disclosure block automatically (`hasAffiliates` drives it).
+**Google AdSense is live** (publisher `ca-pub-3174922327325961`, added 2026-09-12). The tag is
+`SITE.adsensePublisherId` in `src/lib/site.ts` and renders from `BaseLayout.astro` — set that
+string to `''` to pull the tag sitewide. Two deliberate details:
 
-**Before adding any ad network**, update `src/content/pages/privacy-policy.md` first — it
-currently states plainly that no ad network is running and that the cookie-free claim will be
-corrected before one is added. The About page and footer already say ads and affiliate links
-may appear. FTC rules want the disclosure above the links, which is how it renders.
+- **`is:inline` is required**, same reason as Plausible: Astro would otherwise bundle it as a
+  module and Google's review crawler would not find the tag it looks for.
+- **Not emitted on `noindex` pages** (the 404), so only the 19 indexable routes carry it.
+
+`src/content/pages/privacy-policy.md` was updated in the same commit: it now names Google,
+describes the cookies, links Google's ad policies and the opt-outs, and the old "no cookies"
+claim is narrowed to "no cookies of our own". **The cookie-free claim is gone — do not
+reintroduce it.**
+
+**Open: no CMP is installed.** Google's EU user consent policy requires a Google-certified CMP
+for EEA/UK/Swiss traffic. The privacy policy already promises EU/UK/Swiss readers a consent
+prompt, so that promise is unkept until one is turned on. The free fix is AdSense ->
+Privacy & messaging -> GDPR message (Google's own Funding Choices CMP), enabled in the
+dashboard, no code change. Do this before ads actually start serving.
+
+Affiliate links: nothing is affiliate-linked yet. Toolkit items in `src/data/resources.json`
+carry `affiliate: null`; fill one in and `/resources/` renders it with `rel="noopener sponsored"`
+and shows the disclosure block automatically (`hasAffiliates` drives it). FTC rules want the
+disclosure above the links, which is how it renders.
 
 ## Analytics
 
@@ -264,5 +279,7 @@ Paris-based operator. Change `src/content/pages/terms-of-service.md` if that is 
 
 ## Not built (deliberately)
 
-No ads, no affiliate links, no newsletter, no cookies, no consent banner. Privacy policy
-states this explicitly — update it *before* adding any of them.
+No affiliate links, no newsletter, no first-party cookies. Ads: AdSense went live 2026-09-12
+(see Ads and affiliate links) — the "no ads / cookie-free" posture no longer holds and the
+privacy policy has been corrected. Update the privacy policy *before* adding a newsletter or
+any other tracker.

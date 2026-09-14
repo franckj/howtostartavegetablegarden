@@ -75,6 +75,10 @@ string to `''` to pull the tag sitewide. Two deliberate details:
   module and Google's review crawler would not find the tag it looks for.
 - **Not emitted on `noindex` pages** (the 404), so only the 19 indexable routes carry it.
 
+**`public/ads.txt`** (added 2026-09-14) authorises the publisher ID:
+`google.com, pub-3174922327325961, DIRECT, f08c47fec0942fa0`. It 404'd for the first two days of
+AdSense review. If the publisher ID ever changes, change it here too.
+
 `src/content/pages/privacy-policy.md` was updated in the same commit: it now names Google,
 describes the cookies, links Google's ad policies and the opt-outs, and the old "no cookies"
 claim is narrowed to "no cookies of our own". **The cookie-free claim is gone — do not
@@ -115,7 +119,8 @@ Two gotchas, both already handled:
   any headless check will see the script load and *no* event. Its own escape hatch is
   `window.__plausible = true` via an init script. A silent verification run is not a failure.
 
-No cookies, so no consent banner. Cookie-free status is asserted in the privacy policy.
+Plausible itself sets no cookies. The site as a whole is **not** cookie-free since AdSense
+(see Ads and affiliate links) — consent for EEA/UK/CH readers is handled by Google's CMP.
 
 ## Content accuracy — what pass 1 established
 

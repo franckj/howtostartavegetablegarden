@@ -47,7 +47,7 @@ const svg = `
         fill="${MUTED}">9 steps, real numbers, and a planting calendar for your zone</text>
 
   <text x="84" y="${H - 38}" font-family="Helvetica, Arial, sans-serif" font-size="24"
-        font-weight="600" fill="${LEAF}">howtostartavegetablegarden.com</text>
+        font-weight="600" fill="${LEAF}">HowToStartaVegetableGarden.com</text>
 </svg>`;
 
 await sharp(Buffer.from(svg)).png().toFile(join(root, 'public/og-image.png'));

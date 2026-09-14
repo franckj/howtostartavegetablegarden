@@ -216,7 +216,7 @@ export function ganttSvg(zone: Zone, opts: { width: number; height: number; comp
 
   // Footer
   parts.push(
-    `<text x="${L.width - 36}" y="${L.height - (compact ? 20 : 22)}" text-anchor="end" font-family="${FONT}" font-size="${compact ? 20 : 22}" fill="#5f6b5e">Zone ${m.zone} · ${SITE.domain}</text>`
+    `<text x="${L.width - 36}" y="${L.height - (compact ? 20 : 22)}" text-anchor="end" font-family="${FONT}" font-size="${compact ? 20 : 22}" fill="#5f6b5e">Zone ${m.zone} · ${SITE.name}</text>`
   );
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${L.width}" height="${L.height}" viewBox="0 0 ${L.width} ${L.height}">${parts.join('')}</svg>`;

@@ -246,7 +246,12 @@ then `og:site_name`, then `<title>`. Google states the `WebSite` node must be on
 page** — "the domain or subdomain root URI, not subdirectories" — so `BaseLayout.astro` emits
 it only when `path === '/'`. Other pages reference it by `@id`, which is fine.
 
-**Never set `alternateName` to the bare domain.** Google treats `alternateName` as the fallback
+**Site name is "HowToStartaVegetableGarden.com"** (Franck, 2026-09-14) — `SITE.name`, used in the
+`WebSite`/`Organization` schema, `og:site_name`, the footer ©, the chart images, the OG card and
+`llms.txt`. `SITE.alternateName` ("How to Start a Vegetable Garden") is on the `WebSite` node.
+Prose mentioning the site uses the camel-case form; email addresses and URLs stay lowercase.
+
+**Never set `alternateName` to the all-lowercase domain.** Google treats `alternateName` as the fallback
 it reaches for when confidence in `name` is low, so listing the domain there invites the exact
 "howtostartavegetablegarden.com" title we want replaced. v1 briefly shipped this; removed.
 
@@ -284,6 +289,13 @@ Do not paper over it with inline `style=` on the `th` (v1 did, in five files; re
 5. **Renaming a homepage H2** means updating the matching `howTo.steps[].anchor` in
    `home.mdx`. The build asserts this and fails loudly — that is intentional.
 6. Trailing slashes everywhere. Internal links must end in `/`.
+8. **"Last updated" dates are computed — never type one** (Franck, 2026-09-14: "do it at every
+   update, or it doesn't make any sense"). `src/lib/updated.ts` gives each page the latest git
+   commit date of *its own content files* (prose/template + the data it renders), today if they
+   are uncommitted, never earlier than the old typed date. The top-of-page date, the footer
+   date and schema `dateModified` all use it. **Mechanical commits** (imports, refactors,
+   sitewide renames, CSS) must put `[skip-date]` in the message so they do not fake freshness —
+   especially on control pages. Adding a page = pass its dependency files to `lastChanged()`.
 7. **The site never mentions AI, Claude, or how pages are produced.** Credibility comes from
    named sources, visible corrections, and the named editor — nothing else. (Franck, 2026-09-14.)
 

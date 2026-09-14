@@ -5,9 +5,10 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import NextSteps from '@/components/NextSteps.astro';
 import data from '@/data/resources.json';
 import { SITE, GUIDE_LINKS, breadcrumbSchema, humanDate } from '@/lib/site';
+import { lastChanged } from '@/lib/updated';
 
 const path = '/resources/';
-const dateModified = '2026-07-31';
+const dateModified = lastChanged(['src/pages/resources.astro', 'src/data/resources.json'], '2026-07-31');
 const { groups, toolkit } = data;
 
 const title = 'Gardening Resources: Tools, Seed, Apps and Local Help';

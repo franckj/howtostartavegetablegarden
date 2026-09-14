@@ -6,8 +6,10 @@ import Toc from '@/components/Toc.astro';
 import Faq from '@/components/Faq.astro';
 import NextSteps from '@/components/NextSteps.astro';
 import { SITE, GUIDE_LINKS, faqSchema, humanDate } from '@/lib/site';
+import { lastChanged, contentDeps } from '@/lib/updated';
 
 const entry = await getEntry('guides', 'home');
+const dateModified = lastChanged([...contentDeps(entry!.filePath!), 'src/pages/index.astro'], entry!.data.dateModified);
 if (!entry) throw new Error('Missing src/content/guides/home.mdx');
 
 const { Content, headings } = await render(entry);
@@ -60,14 +62,14 @@ const howToSchema = {
   title={d.title}
   description={d.description}
   path="/"
-  dateModified={d.dateModified}
+  {dateModified}
   ogType="website"
   schema={[howToSchema, faqSchema(d.faqs)]}
 >
   <div class="wrap page-head prose">
     {d.eyebrow && <p class="eyebrow">{d.eyebrow}</p>}
     <h1>{d.h1}</h1>
-    <p class="updated">Last updated {humanDate(d.dateModified)}</p>
+    <p class="updated">Last updated {humanDate(dateModified)}</p>
   </div>
 
   <div class="wrap prose">

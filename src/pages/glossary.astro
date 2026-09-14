@@ -5,9 +5,10 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import NextSteps from '@/components/NextSteps.astro';
 import glossaryData from '@/data/glossary.json';
 import { SITE, GUIDE_LINKS, breadcrumbSchema, humanDate } from '@/lib/site';
+import { lastChanged } from '@/lib/updated';
 
 const path = '/glossary/';
-const dateModified = '2026-07-31';
+const dateModified = lastChanged(['src/pages/glossary.astro', 'src/data/glossary.json'], '2026-07-31');
 const terms = glossaryData.terms;
 
 const title = 'Vegetable Gardening Glossary: 25 Terms in Plain English';

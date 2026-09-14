@@ -15,13 +15,17 @@ import {
 } from '@/lib/cities';
 import { GANTT_FULL, ganttPath, ganttOgPath } from '@/lib/gantt';
 import { SITE, GUIDE_LINKS, faqSchema, breadcrumbSchema, humanDate } from '@/lib/site';
+import { lastChanged } from '@/lib/updated';
 
 export const getStaticPaths: GetStaticPaths = () =>
   zones.map((zone) => ({ params: { zone: String(zone.zone) }, props: { zone } }));
 
 const { zone } = Astro.props;
 const path = `/planting-calendar/zone-${zone.zone}/`;
-const dateModified = '2026-09-14';
+const dateModified = lastChanged([
+  'src/pages/planting-calendar/zone-[zone].astro', 'src/data/zones.json', 'src/data/crops.json',
+  'src/data/cities.json', 'src/lib/calendar.ts', 'src/lib/cities.ts', 'src/lib/gantt.ts',
+]);
 
 const months = calendarForZone(zone);
 const rows = cropRowsForZone(zone);

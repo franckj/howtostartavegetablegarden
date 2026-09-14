@@ -23,7 +23,8 @@ const guides = defineCollection({
     answer: z.array(z.string()).min(1),
     answerLabel: z.string().optional(),
     eyebrow: z.string().optional(),
-    dateModified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    /** Optional floor only — the shown date is computed from git (src/lib/updated.ts). */
+    dateModified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
     faqs: z.array(faq).min(4),
     /** Slugs of sibling guides to link at the end. */
     related: z.array(z.string()).default([]),
@@ -65,7 +66,8 @@ const pages = defineCollection({
     h1: z.string(),
     crumb: z.string().optional(),
     path: z.string().regex(/^\/([a-z0-9-]+\/)*$/),
-    dateModified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    /** Optional floor only — the shown date is computed from git (src/lib/updated.ts). */
+    dateModified: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
     noindex: z.boolean().default(false),
   }),
 });

@@ -1,15 +1,16 @@
 export const SITE = {
   domain: 'howtostartavegetablegarden.com',
   origin: 'https://howtostartavegetablegarden.com',
-  name: 'How to Start a Vegetable Garden',
+  /** Brand name, written as the domain in camel case (Franck, 2026-09-14). */
+  name: 'HowToStartaVegetableGarden.com',
+  /** The spaced form, offered to Google as alternateName on the WebSite node. */
+  alternateName: 'How to Start a Vegetable Garden',
   tagline: 'Plain-English guides for first-time vegetable gardeners.',
   email: 'hello@howtostartavegetablegarden.com',
   /** Site-specific Plausible script (new pa-* format, from the Plausible dashboard). */
   plausibleScript: 'https://plausible.io/js/pa-033EHS82pAgyEh11ZPIuC.js',
   /** Google AdSense publisher ID. Empty string disables the tag sitewide. */
   adsensePublisherId: 'ca-pub-3174922327325961',
-  /** Bumped whenever v1 content is reviewed; surfaced in schema + footer. */
-  lastUpdated: '2026-07-31',
 } as const;
 
 /** Desktop-only header links. Hidden on mobile, where only the CTA shows. */

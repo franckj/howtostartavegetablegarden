@@ -2,6 +2,7 @@
 import '@/styles/tokens.css';
 import '@/styles/global.css';
 import { SITE, NAV, NAV_CTA, FOOTER_LEGAL, GUIDE_LINKS, humanDate } from '@/lib/site';
+import { lastChanged, SITE_CONTENT_PATHS } from '@/lib/updated';
 
 interface Props {
   title: string;
@@ -21,7 +22,7 @@ const {
   title,
   description,
   path,
-  dateModified = SITE.lastUpdated,
+  dateModified = lastChanged(SITE_CONTENT_PATHS),
   schema = [],
   ogType = 'article',
   noindex = false,
@@ -39,15 +40,16 @@ const isHome = path === '/';
  * "the domain or subdomain root URI, not subdirectories" — so it is emitted
  * there only. Other pages still reference it by @id, which is fine.
  *
- * Deliberately NO `alternateName`: Google treats it as the fallback it reaches
- * for when confidence in `name` is low, so listing the bare domain there invites
- * exactly the "howtostartavegetablegarden.com" title we are trying to replace.
+ * Since 2026-09-14 the brand name IS the domain in camel case
+ * ("HowToStartaVegetableGarden.com", Franck's call). `alternateName` carries the
+ * spaced form as Google's fallback — never the all-lowercase domain.
  */
 const websiteNode = {
   '@type': 'WebSite',
   '@id': `${SITE.origin}/#website`,
   url: `${SITE.origin}/`,
   name: SITE.name,
+  alternateName: SITE.alternateName,
   description: SITE.tagline,
   inLanguage: 'en-US',
   publisher: { '@id': `${SITE.origin}/#organization` },
@@ -223,7 +225,7 @@ const graph = [
         </p>
 
         <div class="site-footer__base">
-          <span>&copy; {new Date().getFullYear()} {SITE.domain}</span>
+          <span>&copy; {new Date().getFullYear()} {SITE.name}</span>
           <span>Last updated {humanDate(dateModified)}</span>
         </div>
       </div>

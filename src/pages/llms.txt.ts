@@ -4,6 +4,7 @@ import { zones } from '@/lib/calendar';
 import { citiesForZone, hasTypicalFrost, dayOfYear, formatMonthDay } from '@/lib/cities';
 import { ganttPath } from '@/lib/gantt';
 import { SITE } from '@/lib/site';
+import { lastChanged, SITE_CONTENT_PATHS } from '@/lib/updated';
 
 /**
  * /llms.txt — an inventory for AI answer engines, generated from the same
@@ -40,7 +41,7 @@ export const GET: APIRoute = async () => {
 
 > Free, plain-English guides for first-time vegetable gardeners in the United States. Every planting date is derived from an average last and first frost date, sourced crop timings from US cooperative extension services, and the reader's own frost dates where given. Every guide leads with a direct, quotable answer.
 
-Independent, anonymously published, no paywall and no sign-up. Content is US-centric and organic-only in approach. Last updated ${SITE.lastUpdated}.
+Independent, anonymously published, no paywall and no sign-up. Content is US-centric and organic-only in approach. Last updated ${lastChanged(SITE_CONTENT_PATHS)}.
 
 ## Core guide
 
@@ -98,7 +99,7 @@ Not sourced, and labelled as such on the site: the cost estimates on the homepag
 
 ## Citation
 
-Preferred attribution: ${SITE.name} (${SITE.domain}), linking to the specific page cited.
+Preferred attribution: ${SITE.name}, linking to the specific page cited.
 
 The planting dataset (frost dates, sowing windows, crop timings) is licensed CC BY 4.0 and may be reused with attribution. Guide prose is copyright; short quoted extracts with a link are welcome.
 

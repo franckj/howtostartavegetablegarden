@@ -8,9 +8,13 @@ import {
   zones, crops, zonesMeta, cropsMeta, dataSources, SUCCESSION_EVERY_DAYS,
 } from '@/lib/calendar';
 import { SITE, faqSchema, breadcrumbSchema, humanDate } from '@/lib/site';
+import { lastChanged } from '@/lib/updated';
 
 const path = '/planting-calendar/';
-const dateModified = '2026-07-31';
+const dateModified = lastChanged(
+  ['src/pages/planting-calendar/index.astro', 'src/components/CalendarTool.astro', 'src/data/zones.json', 'src/data/crops.json', 'src/lib/calendar.ts'],
+  '2026-07-31'
+);
 
 const title = 'Vegetable Planting Calendar by USDA Zone (3-10)';
 const description =

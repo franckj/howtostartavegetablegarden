@@ -8,6 +8,7 @@ import Faq from '@/components/Faq.astro';
 import NextSteps from '@/components/NextSteps.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import { SITE, GUIDE_LINKS, faqSchema, breadcrumbSchema, humanDate } from '@/lib/site';
+import { lastChanged, contentDeps } from '@/lib/updated';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const guides = await getCollection('guides', (e) => e.id !== 'home');
@@ -28,6 +29,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const { entry, kind } = Astro.props;
 const { Content, headings } = await render(entry);
 const d: any = entry.data;
+const dateModified = lastChanged(contentDeps(entry.filePath!), d.dateModified);
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -59,7 +61,7 @@ const schema =
   title={d.title}
   description={d.description}
   path={d.path}
-  dateModified={d.dateModified}
+  {dateModified}
   schema={schema}
   noindex={kind === 'page' && d.noindex}
 >
@@ -68,7 +70,7 @@ const schema =
   <div class="wrap page-head prose">
     {d.eyebrow && <p class="eyebrow">{d.eyebrow}</p>}
     <h1>{d.h1}</h1>
-    <p class="updated">Last updated {humanDate(d.dateModified)}</p>
+    <p class="updated">Last updated {humanDate(dateModified)}</p>
   </div>
 
   <div class="wrap prose">

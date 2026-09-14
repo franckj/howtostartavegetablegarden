@@ -66,11 +66,11 @@ still not live; the disclosure mechanism is built and waiting for real programme
 
 ## Open — needs you
 
-1. **Rotate three Cloudflare API tokens.** They sit in plaintext in
-   `~/.claude/settings.local.json` with write access to the Templatery account. Rotate at
-   https://dash.cloudflare.com/profile/api-tokens and delete the four rules containing
-   `CLOUDFLARE_API_TOKEN=`. Wrangler OAuth is what actually deploys, so they are redundant.
-   **This is the only real risk item on the project.**
+1. **Revoke three Cloudflare API tokens.** The 6 permission rules that held them in plaintext
+   were deleted from `~/.claude/settings.local.json` on 2026-09-14, but the tokens are still
+   active and still sit in old Claude Code session logs. Revoke all three at
+   https://dash.cloudflare.com/profile/api-tokens (and check Manage Account → API Tokens).
+   Nothing depends on them: deploys use Wrangler OAuth. **This is the only real risk item.**
 2. **Request indexing on the homepage in Search Console.** The site-title and favicon fixes
    take days to weeks to appear; this is the only way to nudge it.
 3. **Watch for AdSense approval**, then check Core Web Vitals in Search Console once ads

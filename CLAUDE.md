@@ -214,6 +214,8 @@ Do not paper over it with inline `style=` on the `th` (v1 did, in five files; re
 5. **Renaming a homepage H2** means updating the matching `howTo.steps[].anchor` in
    `home.mdx`. The build asserts this and fails loudly — that is intentional.
 6. Trailing slashes everywhere. Internal links must end in `/`.
+7. **The site never mentions AI, Claude, or how pages are produced.** Credibility comes from
+   named sources, visible corrections, and the named editor — nothing else. (Franck, 2026-09-14.)
 
 ## Routes (20)
 

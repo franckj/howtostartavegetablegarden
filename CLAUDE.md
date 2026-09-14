@@ -180,7 +180,7 @@ swapped PNG, a removed anchor) — each fails loudly. The original bug it exists
 page guarded month sections on `m.entries.length === 0`, so re-sow-only months rendered nothing.
 Guard on `m.entries.length === 0 && m.resow.length === 0`.
 
-## Zone pages v2 (built 2026-09-14, deploy pending — brief `briefs/2026-09-14-zone-pages-v2.md`)
+## Zone pages v2 (deployed 2026-09-14, brief `briefs/2026-09-14-zone-pages-v2.md`)
 
 Four additions to all 8 zone pages, no new page URLs.
 
@@ -322,9 +322,18 @@ these have not been re-measured since — treat them as a v1 baseline, not the c
 **Production, with AdSense, before zone pages v2 (2026-09-14)** — Lighthouse 13.4.1, mobile,
 performance only, `/planting-calendar/zone-8/`, 5 runs: score 72/68/69/69/67 (median **69**),
 LCP 2373/1134/2374/2267/2187 ms (median **2267**), CLS .058/.088/.088/.110/.110 (median **.088**),
-TBT 1181/4236/1783/1668/2063 ms (median **1783**). Ads make runs noisy — TBT ranged 3.6×. The
-"after" measurement is taken on production once v2 is deployed; the brief says the update must
-not worsen median LCP or CLS.
+TBT 1181/4236/1783/1668/2063 ms (median **1783**). Ads make runs noisy — TBT ranged 3.6×.
+
+**Production after v2 (same day, same profile, 5 runs):** score 72/74/63/60/71 (median **71**),
+LCP 2394/2187/3530/3085/2392 (median **2394**, +127 ms), CLS .051/.052/.051/.052/.051 (median
+**.051**, down from .088), TBT median **1497**. The remaining CLS is Google's consent dialog
+(`fc-dialog-container`), not the page.
+
+**The LCP rise is ad noise, not v2** — tested rather than assumed: old (pre-v2) and new builds
+served locally, ads and analytics blocked, 5 alternating runs each. LCP 1384 vs 1384 ms (3 ms
+spread), CLS 0 vs 0, score 100 vs 100. v2's real cost: **FCP +61 ms** (776 → 837 median) and
+TBT +6 ms, from heavier HTML (zone-8: 6.8 → 10.4 KB gzipped). Method worth keeping: on an
+ad-carrying page, compare builds with third parties blocked before blaming or clearing a change.
 
 v2 local checks (2026-09-14): no horizontal overflow at 320/375/768px on all 8 zone pages; JSON-LD
 parses on all 8 with 10 FAQ entries, `ImageObject`, `Dataset.image` link.

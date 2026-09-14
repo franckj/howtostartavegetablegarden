@@ -1,6 +1,6 @@
 # PLAN — Zone pages v2
 
-Answers `briefs/2026-09-14-zone-pages-v2.md`. Status: **built and verified locally 2026-09-14; deploy pending.**
+Answers `briefs/2026-09-14-zone-pages-v2.md`. Status: **deployed 2026-09-14.** Results in `PROJECT-STATUS.md`.
 
 ---
 

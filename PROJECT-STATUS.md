@@ -1,6 +1,6 @@
 # howtostartavegetablegarden.com — status
 
-**Last updated:** 2026-09-14 · **Status:** live, 20 pages, first AI Overview citation observed; zone-pages v2 built and verified locally, deploy pending
+**Last updated:** 2026-09-14 · **Status:** live, 20 pages, first AI Overview citation observed; zone-pages v2 deployed 2026-09-14, checks due Sep 28 and Oct 26
 
 - **Live:** https://howtostartavegetablegarden.com (apex + www, valid SSL)
 - **Repo:** https://github.com/franckj/howtostartavegetablegarden (branch `main`)
@@ -102,7 +102,7 @@ still not live; the disclosure mechanism is built and waiting for real programme
 
 ## Open — content work, in the order I would do it
 
-1. **Zone pages v2 — built 2026-09-14, deploy pending.** See "Next build" below.
+1. **Zone pages v2 — deployed 2026-09-14.** Checks at +14d (Sep 28) and +42d (Oct 26). See below.
 2. **The 7 deferred spokes.** Soil preparation, cheap gardening supplies, small-space
    gardening, watering, beginner mistakes, garden pests, community gardens.
 3. **Zones 9–10 do not wrap the sowing year.** Cool-season windows anchor to the last spring
@@ -139,6 +139,7 @@ Append-only. Every entry notes whether the lesson is site-specific or model-gene
 | 2026-09-14 | Decision: named editor + AI disclosure | Semrush AI-citation study: E-E-A-T (named author, credentials, sources) +31%, second-largest lift. Site has sources, no named human. Franck approves an editor byline ("not a gardener; grew up with a potager; builds websites; every number sourced") with photo and contact invitation. Revised same day: no AI/Claude mention on the site | Ship as a 3-spoke test with controls; revert if spokes fall vs controls. **Site rule added:** the site never mentions AI or Claude. |
 | 2026-09-14 | Plausible read via share link, France excluded | All-time non-FR: 17 visitors, 17 visits, **18 pageviews** (1.06 pages/visit). Sources: Direct 9, Google 7, Bing 1. All 7 Google entries land on calendar pages (zone-8 ×3, hub, zone-3, -5, -10). Week of Sep 7 = 6 visitors, best week so far. France = 18 visitors, all Direct = operator | Real audience is ~12 US visitors in 46 days, and almost nobody visits a second page. Zone pages are the only Google entry, which confirms the v2 priority. P6 baseline ("~7") holds. **Model-generalizable:** exclude the operator before reading any small-site analytics — here they were 51% of visitors and 70% of pageviews. |
 | 2026-09-14 | Bing WMT impressions split by country | EMD query "1,007 impr, pos 6.2, 0 clicks" = 98.5% non-US: RoW 428, Italy 174, Spain 142 (pos 3.7), Germany 139, France 75, Brazil 30, **US 15** (pos 7.0) | The zero-click alarm was a market-mix artefact, not a SERP-presentation problem. **Model-generalizable:** split any aggregate Bing/GSC position by country before diagnosing CTR — an EMD ranks early in markets that do not click English results. |
+| 2026-09-14 | **Deploy: zone pages v2** (pre-registered predictions) | Checks +14d = 2026-09-28, +42d = 2026-10-26. Baselines (Sep 14): P1 GSC Image impressions on zone pages 0 → >0 by +14d, ≥100 by +42d · P2 sub-zone query share 39% (476/1,233) → volume ≥+50%, a/b avg position ≥10 places better · P3 AI-features impressions ~2.5/day → ≥5/day · P4 month-phrased impressions 113 → ≥250 · P5 zone-page avg position US mobile ~16 → ≤12 · C1 control glossary 40 + raised-beds 52 impressions · P6 Plausible zone-page entries from google.com ~7 total → ≥3/week. Kill criteria in the brief. Lighthouse: CLS .088 → .051; LCP unchanged with ads blocked; FCP +61 ms | Clock starts. Ship in the trough (Sep), judge in the peak (Mar–Apr) — the +42d check lands in the seasonal low, so a flat P2/P4 in October is weak evidence either way. |
 
 ## Verification rules (adopted 2026-09-14, apply to every update)
 
@@ -149,7 +150,7 @@ Append-only. Every entry notes whether the lesson is site-specific or model-gene
 3. First-party data (GSC, Bing Webmaster) wins over Semrush/Ahrefs when tools disagree;
    disagreements are flagged, not resolved by picking the flattering number.
 
-## Next build — zone pages v2 (built 2026-09-14, deploy pending)
+## Zone pages v2 — deployed 2026-09-14
 
 Brief: `briefs/2026-09-14-zone-pages-v2.md` · plan: `briefs/2026-09-14-zone-pages-v2-plan.md` ·
 technical detail: `CLAUDE.md` → "Zone pages v2".
@@ -169,10 +170,14 @@ Control pages build byte-identical to production (CSS hash aside).
   their "typical frost dates" would mislead. The table says how often it freezes instead.
 - `npm run deploy` was broken (`wrangler` not on PATH); fixed to `npx wrangler`.
 
-**Still to do at deploy:** push (the hook deploys) → poll for `#sub-zones` → `node
-scripts/indexnow.mjs` → Lighthouse "after" on production, 5 runs, against the baseline in
-`CLAUDE.md` → paste the brief's predictions table into the calibration log with the deploy date →
-check +14 and +42 days after.
+**Deploy verified 2026-09-14:** `#sub-zones` live on 5 consecutive samples; PNGs, OG images and
+8 image-sitemap entries served; check script on production 96/96, 232 bars, 239 pixel samples,
+0 failures; IndexNow 19 URLs, 200 OK. Lighthouse (production, mobile, 5 runs): CLS median
+.088 → .051, LCP 2267 → 2394 ms — the LCP rise traced to ad noise (identical LCP with ads blocked,
+old vs new build); v2's real cost is FCP +61 ms. Full numbers in `CLAUDE.md` → Measured.
+
+**Next:** check predictions P1–P6 and control C1 on **2026-09-28** (+14d) and **2026-10-26**
+(+42d) against the brief's table, and log results — misses as misses.
 
 Decisions behind it: zone pages outrank the 7 deferred spokes on priority (95% of impressions);
 no `/zone-8a/` URLs unless P2 fails; PDF magnet gated + `noindex`, "pdf" intent captured by the

@@ -1,13 +1,13 @@
 ---
 title: "Terms of Service"
-description: "Terms for using howtostartavegetablegarden.com, including the gardening advice disclaimer and how the content may be reused."
+description: "Terms for using HowToStartaVegetableGarden.com, including the gardening advice disclaimer and how the content may be reused."
 h1: "Terms of Service"
 crumb: "Terms of service"
 path: "/terms-of-service/"
 dateModified: "2026-07-31"
 ---
 
-By using howtostartavegetablegarden.com you agree to these terms. If you do not agree with them, please do not use the site.
+By using HowToStartaVegetableGarden.com you agree to these terms. If you do not agree with them, please do not use the site.
 
 ## What this site is
 
@@ -45,7 +45,7 @@ The written guides, page layouts and design are copyright of the site operator.
 
 **You may not:** republish substantial portions or whole pages, mirror the site, or use its content to train a commercial model or to bulk-generate derivative pages without written permission.
 
-**The planting dataset is different.** The planting windows, frost dates and crop data behind the [planting calendar](/planting-calendar/) are published under a [Creative Commons Attribution 4.0 licence](https://creativecommons.org/licenses/by/4.0/). Reuse it freely, including commercially, with attribution to howtostartavegetablegarden.com.
+**The planting dataset is different.** The planting windows, frost dates and crop data behind the [planting calendar](/planting-calendar/) are published under a [Creative Commons Attribution 4.0 licence](https://creativecommons.org/licenses/by/4.0/). Reuse it freely, including commercially, with attribution to HowToStartaVegetableGarden.com.
 
 ## External links and affiliate links
 

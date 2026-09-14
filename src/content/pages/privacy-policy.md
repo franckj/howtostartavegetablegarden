@@ -7,7 +7,7 @@ path: "/privacy-policy/"
 dateModified: "2026-09-12"
 ---
 
-This policy explains what howtostartavegetablegarden.com collects when you read it. The short version: no account, no email list, and analytics that do not identify you. The site does carry Google AdSense advertising, which sets its own cookies — that is set out in full in the advertising section below.
+This policy explains what HowToStartaVegetableGarden.com collects when you read it. The short version: no account, no email list, and analytics that do not identify you. The site does carry Google AdSense advertising, which sets its own cookies — that is set out in full in the advertising section below.
 
 ## What we do not collect
 

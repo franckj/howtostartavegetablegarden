@@ -13,6 +13,8 @@ interface Props {
   schema?: unknown[];
   ogType?: 'website' | 'article';
   noindex?: boolean;
+  /** Site-relative og:image path; defaults to the sitewide card. */
+  ogImage?: string;
 }
 
 const {
@@ -23,10 +25,11 @@ const {
   schema = [],
   ogType = 'article',
   noindex = false,
+  ogImage: ogImagePath = '/og-image.png',
 } = Astro.props;
 
 const canonical = `${SITE.origin}${path}`;
-const ogImage = `${SITE.origin}/og-image.png`;
+const ogImage = `${SITE.origin}${ogImagePath}`;
 
 const isHome = path === '/';
 

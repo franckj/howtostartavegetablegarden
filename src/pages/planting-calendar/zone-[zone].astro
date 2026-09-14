@@ -7,9 +7,13 @@ import Faq from '@/components/Faq.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import NextSteps from '@/components/NextSteps.astro';
 import {
-  zones, crops, calendarForZone, cropRowsForZone, successionForZone,
-  zonesMeta, cropsMeta, formatDay, SUCCESSION_EVERY_DAYS,
+  zones, crops, calendarForZone, cropRowsForZone, successionForZone, windowsForZone,
+  zonesMeta, cropsMeta, formatDay, SUCCESSION_EVERY_DAYS, MONTHS,
 } from '@/lib/calendar';
+import {
+  citiesForZone, citiesMeta, hasTypicalFrost, formatMonthDay, dayOfYear, toolLink,
+} from '@/lib/cities';
+import { GANTT_FULL, ganttPath, ganttOgPath } from '@/lib/gantt';
 import { SITE, GUIDE_LINKS, faqSchema, breadcrumbSchema, humanDate } from '@/lib/site';
 
 export const getStaticPaths: GetStaticPaths = () =>
@@ -17,7 +21,7 @@ export const getStaticPaths: GetStaticPaths = () =>
 
 const { zone } = Astro.props;
 const path = `/planting-calendar/zone-${zone.zone}/`;
-const dateModified = '2026-07-31';
+const dateModified = '2026-09-14';
 
 const months = calendarForZone(zone);
 const rows = cropRowsForZone(zone);
@@ -27,8 +31,67 @@ const runBySlug = new Map(runs.map((r) => [r.crop.slug, r]));
 const activeMonths = months.filter((m) => m.entries.length > 0 || m.resow.length > 0);
 const idleMonths = months.filter((m) => m.entries.length === 0 && m.resow.length === 0);
 
-const title = `Zone ${zone.zone} Planting Calendar: What to Plant Each Month`;
-const description = `Zone ${zone.zone} planting dates for 12 beginner vegetables. Last frost around ${zone.lastFrost}, first frost around ${zone.firstFrost}, ${zone.seasonDays} frost-free days.`;
+const z = zone.zone;
+const title = `Zone ${z} Planting Calendar (${z}a & ${z}b): Printable, by Month`;
+
+const zoneCities = citiesForZone(z);
+const typicalCities = zoneCities.filter((c) => hasTypicalFrost(c) && c.lastFrost.p50);
+const rareFreezeCities = zoneCities.filter((c) => !hasTypicalFrost(c));
+
+const description = `Zone ${z} (${z}a & ${z}b) planting dates for 12 vegetables: a printable chart, month-by-month tables and NOAA frost dates for ${zoneCities.length} zone ${z} cities.`;
+
+const imageUrl = `${SITE.origin}${ganttPath(z)}`;
+const imageAlt = `Zone ${z} vegetable planting calendar: indoor start, direct sow and transplant windows by month for ${crops.length} beginner crops`;
+
+/** "3 weeks" / "10 days" between two day-of-year values. */
+const gap = (days: number) =>
+  days >= 14 ? `${Math.round(days / 7)} weeks` : `${days} day${days === 1 ? '' : 's'}`;
+
+// Same zone, different frost dates — the whole point of the city table, computed.
+const byLastFrost = [...typicalCities].sort(
+  (a, b) => dayOfYear(a.lastFrost.p50!) - dayOfYear(b.lastFrost.p50!)
+);
+const earliestCity = byLastFrost[0];
+const latestCity = byLastFrost.at(-1);
+const frostSpreadDays =
+  earliestCity && latestCity && earliestCity !== latestCity
+    ? dayOfYear(latestCity.lastFrost.p50!) - dayOfYear(earliestCity.lastFrost.p50!)
+    : 0;
+const cityLabel = (c: { city: string; state: string; subzone: string | null }) =>
+  `${c.city}, ${c.state} (${c.subzone})`;
+
+const bySeason = zoneCities
+  .filter((c) => c.frostFreeDays !== null && hasTypicalFrost(c))
+  .sort((a, b) => a.frostFreeDays! - b.frostFreeDays!);
+const shortSeason = bySeason[0];
+const longSeason = bySeason.at(-1);
+
+// Month and fall FAQs are generated from the same month plan as the tables below.
+const july = months[6];
+const listCrops = (names: string[]) =>
+  names.length <= 2 ? names.join(' and ') : `${names.slice(0, -1).join(', ')} and ${names.at(-1)}`;
+const julyByAction = new Map<string, string[]>();
+for (const e of july.entries) {
+  const label = e.fall ? 'sow for a fall crop' : e.label.toLowerCase();
+  julyByAction.set(label, [...(julyByAction.get(label) ?? []), e.crop.name.toLowerCase()]);
+}
+const julyResow = july.resow.map((r) => r.crop.name.toLowerCase());
+const julyAnswer =
+  july.entries.length === 0 && july.resow.length === 0
+    ? `Nothing needs sowing outdoors in July in zone ${z}. Keep harvesting what is already in the ground, and plan the fall beds.`
+    : `In zone ${z}, July plantings are: ` +
+      [
+        ...[...julyByAction].map(([action, names]) => `${action} &mdash; ${listCrops([...new Set(names)])}`),
+        ...(julyResow.length ? [`re-sow every ${SUCCESSION_EVERY_DAYS} days &mdash; ${listCrops(julyResow)}`] : []),
+      ].join('; ') +
+      `. The <a href="#july">July table</a> gives the exact window for each.` +
+      (july.resow.some((r) => r.heatRisk) ? ' Cool-season sowings in July may bolt in the heat.' : '');
+
+const fallWindows = windowsForZone(zone).filter((w) => w.fall).sort((a, b) => a.startDay - b.startDay);
+const fallFirst = fallWindows[0];
+const fallLast = [...fallWindows].sort((a, b) => a.endDay - b.endDay).at(-1);
+
+const monthHasPlanting = (i: number) => months[i].entries.length > 0 || months[i].resow.length > 0;
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -37,8 +100,11 @@ const crumbs = [
 ];
 
 const tocItems = [
+  { id: 'chart', label: `Zone ${zone.zone} planting chart` },
   { id: 'month-by-month', label: 'Month by month' },
   { id: 'crop-by-crop', label: 'Every crop, sowing to harvest' },
+  { id: 'sub-zones', label: `Zone ${zone.zone}a vs ${zone.zone}b` },
+  { id: 'city-frost-dates', label: `Frost dates for cities in zone ${zone.zone}` },
   { id: 'notes', label: `Growing in zone ${zone.zone}` },
 ];
 
@@ -67,6 +133,37 @@ const faqs = [
     q: `Does a raised bed change these dates in zone ${zone.zone}?`,
     a: 'Yes, in spring. A raised bed warms 2 to 3 weeks earlier than open ground, so you can bring the early sowings forward by up to two weeks. Autumn dates are unchanged, since the first frost arrives on the same day regardless of your setup.',
   },
+  {
+    q: `What is the difference between zone ${z}a and ${z}b?`,
+    a: `Five degrees in the average coldest night of the year. Zone ${z}a averages ${zone.subzones.a}&deg;F at its coldest and zone ${z}b ${zone.subzones.b}&deg;F. The letter matters for perennials on the edge of winter hardiness. It does not change vegetable planting dates, which follow your frost dates &mdash; the calendar on this page applies to both halves.`,
+  },
+  {
+    q: `Is zone ${z}a or ${z}b better for tomatoes?`,
+    a:
+      `Neither &mdash; the letter does not decide it. ${z}a and ${z}b differ only in how cold the coldest winter night gets, and tomatoes grow in summer, long after that night has passed. What matters is the length of your frost-free season.` +
+      (shortSeason && longSeason && shortSeason !== longSeason
+        ? ` Within zone ${z}, ${cityLabel(longSeason)} averages ${longSeason.frostFreeDays} frost-free days and ${cityLabel(shortSeason)} only ${shortSeason.frostFreeDays}.`
+        : '') +
+      ' Check the city table on this page, or enter your own frost dates in the calendar.',
+  },
+  {
+    q: `What can I plant in July in zone ${z}?`,
+    a: julyAnswer,
+  },
+  ...(fallFirst && fallLast
+    ? [{
+        q: `When does fall planting start in zone ${z}?`,
+        a:
+          `Sowings for a fall harvest in zone ${z} start around ${formatDay(fallFirst.startDay)} with ${fallFirst.crop.name.toLowerCase()} and run to about ${formatDay(fallLast.endDay)} with ${fallLast.crop.name.toLowerCase()}. Each date is counted back from the average first frost (${zone.firstFrost}) by the crop's days to harvest plus two weeks, so a crop sown on time matures before the cold arrives.` +
+          (fallFirst.startDay < 182
+            ? ` That puts the slowest crops in before midsummer: with the first frost in ${zone.firstFrost.split(' ')[0]}, a fall ${fallFirst.crop.name.toLowerCase()} crop has to be sown while it still feels like spring.`
+            : ''),
+      }]
+    : []),
+  {
+    q: `Is there a printable PDF of the zone ${z} planting calendar?`,
+    a: `Not as a download yet. The chart and the month-by-month tables on this page print cleanly &mdash; use your browser's Print command and the menus, ads and questions are left off the page. A downloadable version is on the way.`,
+  },
 ];
 
 const zoneSchema = {
@@ -81,6 +178,23 @@ const zoneSchema = {
   dateModified,
   isAccessibleForFree: true,
   spatialCoverage: { '@type': 'Place', name: `USDA hardiness zone ${zone.zone}, United States` },
+  image: { '@id': `${SITE.origin}${path}#calendar-image` },
+};
+
+const imageSchema = {
+  '@type': 'ImageObject',
+  '@id': `${SITE.origin}${path}#calendar-image`,
+  contentUrl: imageUrl,
+  url: imageUrl,
+  width: GANTT_FULL.width,
+  height: GANTT_FULL.height,
+  caption: imageAlt,
+  encodingFormat: 'image/png',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  acquireIfPossible: `${SITE.origin}/about/`,
+  creditText: SITE.name,
+  creator: { '@id': `${SITE.origin}/#organization` },
+  copyrightNotice: SITE.name,
 };
 ---
 
@@ -89,13 +203,14 @@ const zoneSchema = {
   {description}
   {path}
   {dateModified}
-  schema={[zoneSchema, faqSchema(faqs), breadcrumbSchema(crumbs)]}
+  schema={[zoneSchema, imageSchema, faqSchema(faqs), breadcrumbSchema(crumbs)]}
+  ogImage={ganttOgPath(z)}
 >
   <Breadcrumbs items={crumbs} />
 
   <div class="wrap page-head prose">
     <p class="eyebrow">Planting calendar</p>
-    <h1>Zone {zone.zone} Planting Calendar: What to Plant Each Month</h1>
+    <h1>{title}</h1>
     <p class="updated">Last updated {humanDate(dateModified)}</p>
   </div>
 
@@ -121,6 +236,35 @@ const zoneSchema = {
       Typical regions in zone {zone.zone}: {zone.regions}.
     </p>
 
+    <h2 id="chart">Zone {z} planting chart</h2>
+    <figure class="zone-chart">
+      <a href={ganttPath(z)}>
+        <img
+          src={ganttPath(z)}
+          alt={imageAlt}
+          width={GANTT_FULL.width}
+          height={GANTT_FULL.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <figcaption>
+        Every sowing window for zone {z} on one page, drawn from the same data as the tables
+        below. Dashed lines mark the average last frost ({zone.lastFrost}) and first frost
+        ({zone.firstFrost}).
+      </figcaption>
+    </figure>
+
+    <nav class="month-nav" aria-label={`Zone ${z} months`}>
+      {
+        MONTHS.map((name, i) => (
+          <a href={`#${name.toLowerCase()}`} class={monthHasPlanting(i) ? undefined : 'month-nav__idle'}>
+            {name.slice(0, 3)}
+          </a>
+        ))
+      }
+    </nav>
+
     <h2 id="month-by-month">Month by month in zone {zone.zone}</h2>
     <p>
       {activeMonths.length} of the 12 months have something to plant in zone {zone.zone}. Rows
@@ -131,7 +275,15 @@ const zoneSchema = {
 
     {
       months.map((m) =>
-        m.entries.length === 0 && m.resow.length === 0 ? null : (
+        m.entries.length === 0 && m.resow.length === 0 ? (
+          <>
+            <h3 id={m.name.toLowerCase()}>{m.name}</h3>
+            <p class="month-idle">
+              Nothing to sow outdoors in {m.name} in zone {z}. Crops already in the ground keep
+              growing and keep being harvested.
+            </p>
+          </>
+        ) : (
           <>
             <h3 id={m.name.toLowerCase()}>{m.name}</h3>
             <div class="table-wrap">
@@ -185,9 +337,8 @@ const zoneSchema = {
               Nothing to sow outdoors in{' '}
               {idleMonths.map((m) => m.name).join(', ')} in zone {zone.zone}.
             </strong>{' '}
-            Crops already in the ground keep growing and keep being harvested. Use the time to
-            plan beds, order seed, build a compost pile, or start long-season crops under a
-            light indoors.
+            Use the time to plan beds, order seed, build a compost pile, or start long-season
+            crops under a light indoors.
           </p>
         </div>
       )
@@ -236,6 +387,125 @@ const zoneSchema = {
         </tbody>
       </table>
     </div>
+
+    <h2 id="sub-zones">Zone {z}a vs {z}b: what the letter means</h2>
+    <p>
+      Zone {z} covers places whose coldest night of the year averages {zone.minTempF}&deg;F.
+      USDA splits it into two 5-degree halves: <strong>{z}a</strong> ({zone.subzones.a}&deg;F)
+      and <strong>{z}b</strong> ({zone.subzones.b}&deg;F).
+    </p>
+    <p>
+      The letter tells you about winter survival &mdash; whether a perennial left in the ground
+      makes it through the coldest night. It says nothing about when your last spring frost
+      arrives, and that date decides every sowing window on this page.
+      {
+        frostSpreadDays >= 7 && earliestCity && latestCity && (
+          <>
+            {' '}{cityLabel(earliestCity)} and {cityLabel(latestCity)} are both zone {z}, yet their
+            typical last frosts are {gap(frostSpreadDays)} apart:{' '}
+            {formatMonthDay(earliestCity.lastFrost.p50!)} and {formatMonthDay(latestCity.lastFrost.p50!)}.
+          </>
+        )
+      }
+      {
+        rareFreezeCities.length > 0 && (
+          <>
+            {' '}And in {cityLabel(rareFreezeCities[0])},{' '}
+            {rareFreezeCities[0].freezeChancePct === 0
+              ? 'a 32°F freeze almost never happens at all.'
+              : `a freeze happens in only ${rareFreezeCities[0].freezeChancePct}% of years.`}
+          </>
+        )
+      }
+    </p>
+    <p>
+      So for vegetables, ignore the letter. Find the frost dates for the weather station nearest
+      you &mdash; the table below covers {zoneCities.length} zone {z} cities &mdash; and enter them in
+      the <a href="/planting-calendar/">interactive calendar</a>. Every window recalculates from
+      your dates.
+    </p>
+
+    <h2 id="city-frost-dates">Frost dates for cities in zone {z}</h2>
+    <p>
+      Same zone, frost dates weeks apart &mdash; which is why the calendar asks for your own dates
+      rather than trusting the zone.
+    </p>
+    <div class="frost-table">
+      <input type="checkbox" id={`ft-all-${z}`} class="frost-table__toggle" />
+      <label for={`ft-all-${z}`} class="frost-table__toggle-label">Show safer 30% and 10% dates</label>
+      <div class="table-wrap">
+        <table>
+          <caption>
+            NOAA 1991&ndash;2020 normals for each city's weather station (usually the airport).
+            The <strong>typical</strong> date has a 50% chance of frost after it in spring, or
+            before it in fall; at <strong>10%</strong> the risk is 1 year in 10.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">City</th>
+              <th scope="col">Zone</th>
+              <th scope="col">Last frost</th>
+              <th scope="col" class="ft-extra">30%</th>
+              <th scope="col" class="ft-extra">10%</th>
+              <th scope="col">First frost</th>
+              <th scope="col" class="ft-extra">30%</th>
+              <th scope="col" class="ft-extra">10%</th>
+              <th scope="col">Frost-free days</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              zoneCities.map((c) => {
+                const link = toolLink(c, z);
+                const d = (v: string | null) => (v ? formatMonthDay(v) : '');
+                return (
+                  <tr>
+                    <th scope="row">
+                      {c.city}, {c.state}
+                      <span class="ft-station">
+                        <a href={c.source} rel="noopener" target="_blank">{c.station.name.replace(/, [A-Z]{2} US$/, '').toLowerCase()}</a>
+                        {c.freezeChancePct !== null && c.freezeChancePct < 95 && hasTypicalFrost(c) && (
+                          <> &middot; freezes in {c.freezeChancePct}% of years</>
+                        )}
+                      </span>
+                      {link && <a class="ft-use" href={link}>Use these dates</a>}
+                    </th>
+                    <td>{c.subzone}</td>
+                    {hasTypicalFrost(c) ? (
+                      <>
+                        <td>{d(c.lastFrost.p50)}</td>
+                        <td class="ft-extra">{d(c.lastFrost.p30)}</td>
+                        <td class="ft-extra">{d(c.lastFrost.p10)}</td>
+                        <td>{d(c.firstFrost.p50)}</td>
+                        <td class="ft-extra">{d(c.firstFrost.p30)}</td>
+                        <td class="ft-extra">{d(c.firstFrost.p10)}</td>
+                      </>
+                    ) : (
+                      <td colspan="6" class="ft-rare">
+                        {c.freezeChancePct === 0
+                          ? 'A 32°F freeze almost never happens here — no frost date'
+                          : `Freezes in only ${c.freezeChancePct}% of years — no typical frost date`}
+                      </td>
+                    )}
+                    <td>{c.frostFreeDays === 365 ? '365 (year-round)' : c.frostFreeDays ?? ''}</td>
+                  </tr>
+                );
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="ft-sources">
+      Sources: {
+        citiesMeta.sources.map((src, i) => (
+          <>
+            {i > 0 && '; '}
+            <a href={src.url} rel="noopener" target="_blank">{src.name}</a>
+          </>
+        ))
+      }. The zone shown is read from the 2023 USDA map at each station's location.
+    </p>
 
     <h2 id="notes">Growing in zone {zone.zone}</h2>
     <p>{zone.summary}</p>

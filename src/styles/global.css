@@ -1183,3 +1183,215 @@ caption {
   color: var(--soil);
   margin-bottom: var(--sp-2);
 }
+
+/* ---------- zone pages: chart, month nav, city frost table ---------- */
+.zone-chart {
+  margin: var(--sp-5) 0;
+}
+
+.zone-chart img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--white);
+}
+
+.zone-chart figcaption {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  margin-top: var(--sp-2);
+}
+
+.month-nav {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--sp-2);
+  margin: var(--sp-5) 0 var(--sp-6);
+}
+
+.month-nav a {
+  display: block;
+  text-align: center;
+  padding: var(--sp-2) 0;
+  border: 1px solid var(--leaf-border);
+  border-radius: var(--r-sm);
+  background: var(--leaf-light);
+  color: var(--leaf-dark);
+  font-weight: 650;
+  font-size: var(--fs-sm);
+  text-decoration: none;
+}
+
+.month-nav a:hover {
+  background: var(--white);
+}
+
+/* Months with nothing to sow still get an anchor, just quieter. */
+.month-nav a.month-nav__idle {
+  background: var(--white);
+  border-color: var(--border);
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@media (min-width: 621px) {
+  .month-nav {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+.month-idle {
+  color: var(--muted);
+}
+
+.frost-table {
+  margin: var(--sp-5) 0 var(--sp-3);
+}
+
+.frost-table .table-wrap {
+  margin-top: var(--sp-3);
+}
+
+.frost-table tbody th,
+.frost-table tbody td,
+.frost-table thead th {
+  padding: var(--sp-3);
+}
+
+.frost-table tbody th {
+  white-space: normal;
+  min-width: 11rem;
+}
+
+.frost-table tbody td {
+  white-space: nowrap;
+}
+
+.ft-station {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.ft-station a {
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.ft-use {
+  display: inline-block;
+  margin-top: var(--sp-1);
+  font-size: var(--fs-xs);
+  font-weight: 650;
+}
+
+.ft-rare {
+  white-space: normal !important;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* The 30% and 10% columns stay hidden until asked for: nine columns do not fit
+   the prose width, and the typical date is what most readers need. No JS — a
+   checkbox and a sibling selector. */
+.frost-table .ft-extra {
+  display: none;
+}
+
+.frost-table__toggle {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.frost-table__toggle-label {
+  display: inline-block;
+  font-size: var(--fs-sm);
+  font-weight: 650;
+  color: var(--leaf);
+  cursor: pointer;
+  padding: var(--sp-1) 0;
+}
+
+.frost-table__toggle-label::before {
+  content: '+ ';
+}
+
+.frost-table__toggle:checked + .frost-table__toggle-label::before {
+  content: '− ';
+}
+
+.frost-table__toggle:focus-visible + .frost-table__toggle-label {
+  outline: 2px solid var(--leaf);
+  outline-offset: 2px;
+}
+
+.frost-table__toggle:checked ~ .table-wrap .ft-extra {
+  display: table-cell;
+}
+
+.ft-sources {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+/* ---------- print: zone pages print as chart + tables ----------
+   Scoped with :has(.zone-chart) so the control pages (glossary, resources,
+   spokes) print exactly as before — see the v2 brief. */
+@media print {
+  body:has(.zone-chart) .site-header,
+  body:has(.zone-chart) .site-footer,
+  body:has(.zone-chart) .skip,
+  body:has(.zone-chart) .crumbs,
+  body:has(.zone-chart) .toc,
+  body:has(.zone-chart) .faq,
+  body:has(.zone-chart) .month-nav,
+  body:has(.zone-chart) .frost-table__toggle-label,
+  body:has(.zone-chart) .ft-use,
+  body:has(.zone-chart) section:has(> .cards),
+  body:has(.zone-chart) ins.adsbygoogle,
+  body:has(.zone-chart) .google-auto-placed,
+  body:has(.zone-chart) .adsbygoogle,
+  body:has(.zone-chart) iframe {
+    display: none !important;
+  }
+
+  body:has(.zone-chart) {
+    background: #fff;
+  }
+
+  body:has(.zone-chart) .table-wrap {
+    overflow: visible;
+    border: 0;
+  }
+
+  body:has(.zone-chart) .frost-table .ft-extra {
+    display: table-cell;
+  }
+
+  body:has(.zone-chart) tr,
+  body:has(.zone-chart) .zone-chart,
+  body:has(.zone-chart) .note {
+    break-inside: avoid;
+  }
+
+  body:has(.zone-chart) h2,
+  body:has(.zone-chart) h3 {
+    break-after: avoid;
+  }
+
+  body:has(.zone-chart) a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .frost-table tbody th {
+    min-width: 8.5rem;
+  }
+}

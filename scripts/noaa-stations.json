@@ -1,0 +1,272 @@
+[
+  {
+    "city": "International Falls",
+    "state": "MN",
+    "station": "USW00014918",
+    "zone": 3
+  },
+  {
+    "city": "Hibbing",
+    "state": "MN",
+    "station": "USW00094931",
+    "zone": 3
+  },
+  {
+    "city": "Baudette",
+    "state": "MN",
+    "station": "USW00094961",
+    "zone": 3
+  },
+  {
+    "city": "Fargo",
+    "state": "ND",
+    "station": "USW00014914",
+    "zone": 4
+  },
+  {
+    "city": "Rochester",
+    "state": "MN",
+    "station": "USW00014925",
+    "zone": 4
+  },
+  {
+    "city": "Duluth",
+    "state": "MN",
+    "station": "USW00014913",
+    "zone": 4
+  },
+  {
+    "city": "Bismarck",
+    "state": "ND",
+    "station": "USW00024011",
+    "zone": 4
+  },
+  {
+    "city": "Great Falls",
+    "state": "MT",
+    "station": "USW00024143",
+    "zone": 4
+  },
+  {
+    "city": "Caribou",
+    "state": "ME",
+    "station": "USW00014607",
+    "zone": 4
+  },
+  {
+    "city": "Minneapolis",
+    "state": "MN",
+    "station": "USW00014922",
+    "zone": 5
+  },
+  {
+    "city": "Omaha",
+    "state": "NE",
+    "station": "USW00014942",
+    "zone": 5
+  },
+  {
+    "city": "Des Moines",
+    "state": "IA",
+    "station": "USW00014933",
+    "zone": 5
+  },
+  {
+    "city": "Madison",
+    "state": "WI",
+    "station": "USW00014837",
+    "zone": 5
+  },
+  {
+    "city": "Billings",
+    "state": "MT",
+    "station": "USW00024033",
+    "zone": 5
+  },
+  {
+    "city": "Burlington",
+    "state": "VT",
+    "station": "USW00014742",
+    "zone": 5
+  },
+  {
+    "city": "Chicago",
+    "state": "IL",
+    "station": "USW00094846",
+    "zone": 6
+  },
+  {
+    "city": "Denver",
+    "state": "CO",
+    "station": "USW00003017",
+    "zone": 6
+  },
+  {
+    "city": "Detroit",
+    "state": "MI",
+    "station": "USW00094847",
+    "zone": 6
+  },
+  {
+    "city": "Kansas City",
+    "state": "MO",
+    "station": "USW00003947",
+    "zone": 6
+  },
+  {
+    "city": "Pittsburgh",
+    "state": "PA",
+    "station": "USW00094823",
+    "zone": 6
+  },
+  {
+    "city": "Spokane",
+    "state": "WA",
+    "station": "USW00024157",
+    "zone": 6
+  },
+  {
+    "city": "New York (LaGuardia)",
+    "state": "NY",
+    "station": "USW00014732",
+    "zone": 7
+  },
+  {
+    "city": "Boston",
+    "state": "MA",
+    "station": "USW00014739",
+    "zone": 7
+  },
+  {
+    "city": "St. Louis",
+    "state": "MO",
+    "station": "USW00013994",
+    "zone": 7
+  },
+  {
+    "city": "Nashville",
+    "state": "TN",
+    "station": "USW00013897",
+    "zone": 7
+  },
+  {
+    "city": "Oklahoma City",
+    "state": "OK",
+    "station": "USW00013967",
+    "zone": 7
+  },
+  {
+    "city": "Salt Lake City",
+    "state": "UT",
+    "station": "USW00024127",
+    "zone": 7
+  },
+  {
+    "city": "Atlanta",
+    "state": "GA",
+    "station": "USW00013874",
+    "zone": 8
+  },
+  {
+    "city": "Dallas-Fort Worth",
+    "state": "TX",
+    "station": "USW00003927",
+    "zone": 8
+  },
+  {
+    "city": "Charlotte",
+    "state": "NC",
+    "station": "USW00013881",
+    "zone": 8
+  },
+  {
+    "city": "Washington",
+    "state": "DC",
+    "station": "USW00013743",
+    "zone": 8
+  },
+  {
+    "city": "Albuquerque",
+    "state": "NM",
+    "station": "USW00023050",
+    "zone": 8
+  },
+  {
+    "city": "Eugene",
+    "state": "OR",
+    "station": "USW00024221",
+    "zone": 8
+  },
+  {
+    "city": "Houston",
+    "state": "TX",
+    "station": "USW00012960",
+    "zone": 9
+  },
+  {
+    "city": "San Antonio",
+    "state": "TX",
+    "station": "USW00012921",
+    "zone": 9
+  },
+  {
+    "city": "Jacksonville",
+    "state": "FL",
+    "station": "USW00053860",
+    "zone": 9
+  },
+  {
+    "city": "Las Vegas",
+    "state": "NV",
+    "station": "USW00023169",
+    "zone": 9
+  },
+  {
+    "city": "Sacramento",
+    "state": "CA",
+    "station": "USW00093225",
+    "zone": 9
+  },
+  {
+    "city": "Seattle",
+    "state": "WA",
+    "station": "USW00024233",
+    "zone": 9
+  },
+  {
+    "city": "Los Angeles",
+    "state": "CA",
+    "station": "USW00023174",
+    "zone": 10
+  },
+  {
+    "city": "San Francisco",
+    "state": "CA",
+    "station": "USW00023234",
+    "zone": 10
+  },
+  {
+    "city": "San Jose",
+    "state": "CA",
+    "station": "USW00023293",
+    "zone": 10
+  },
+  {
+    "city": "Phoenix",
+    "state": "AZ",
+    "station": "USW00023183",
+    "zone": 10
+  },
+  {
+    "city": "Tampa",
+    "state": "FL",
+    "station": "USW00012842",
+    "zone": 10
+  },
+  {
+    "city": "Orlando",
+    "state": "FL",
+    "station": "USW00012815",
+    "zone": 10
+  }
+]

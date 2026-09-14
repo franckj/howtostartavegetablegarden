@@ -30,6 +30,8 @@ export interface Crop {
 export interface Zone {
   zone: number;
   minTempF: string;
+  /** USDA 5°F half-zones, e.g. { a: "10 to 15", b: "15 to 20" }. */
+  subzones: { a: string; b: string };
   lastFrost: string;
   firstFrost: string;
   lastFrostDay: number;

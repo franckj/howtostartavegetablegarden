@@ -11,7 +11,11 @@
       "firstFrostDay": 258,
       "seasonDays": 123,
       "regions": "Northern Minnesota, northern North Dakota, interior Alaska, high-elevation Rockies",
-      "summary": "One of the shortest growing seasons in the continental US. Short-season varieties and transplants matter more here than anywhere else."
+      "summary": "One of the shortest growing seasons in the continental US. Short-season varieties and transplants matter more here than anywhere else.",
+      "subzones": {
+        "a": "-40 to -35",
+        "b": "-35 to -30"
+      }
     },
     {
       "zone": 4,
@@ -22,7 +26,11 @@
       "firstFrostDay": 268,
       "seasonDays": 138,
       "regions": "Minnesota, Wisconsin, northern Michigan, Vermont, Maine, Montana",
-      "summary": "A real but tight season. Tomatoes and peppers need an indoor head start to ripen before the September frost."
+      "summary": "A real but tight season. Tomatoes and peppers need an indoor head start to ripen before the September frost.",
+      "subzones": {
+        "a": "-30 to -25",
+        "b": "-25 to -20"
+      }
     },
     {
       "zone": 5,
@@ -33,7 +41,11 @@
       "firstFrostDay": 283,
       "seasonDays": 163,
       "regions": "Iowa, Nebraska, Illinois, Ohio, upstate New York, Massachusetts, Colorado Front Range",
-      "summary": "Comfortable for nearly every beginner crop, with room for a spring planting and a fall planting of greens."
+      "summary": "Comfortable for nearly every beginner crop, with room for a spring planting and a fall planting of greens.",
+      "subzones": {
+        "a": "-20 to -15",
+        "b": "-15 to -10"
+      }
     },
     {
       "zone": 6,
@@ -43,8 +55,12 @@
       "lastFrostDay": 110,
       "firstFrostDay": 293,
       "seasonDays": 183,
-      "regions": "Kansas City, St. Louis, Philadelphia, southern New England, Pacific Northwest interior",
-      "summary": "Roughly six frost-free months. You can plant a spring crop, a summer crop, and a fall crop of the same bed."
+      "regions": "Chicago, Denver, Detroit, Kansas City, Pittsburgh and the inland Pacific Northwest",
+      "summary": "Roughly six frost-free months. You can plant a spring crop, a summer crop, and a fall crop of the same bed.",
+      "subzones": {
+        "a": "-10 to -5",
+        "b": "-5 to 0"
+      }
     },
     {
       "zone": 7,
@@ -54,8 +70,12 @@
       "lastFrostDay": 95,
       "firstFrostDay": 305,
       "seasonDays": 210,
-      "regions": "Virginia, Tennessee, Oklahoma, northern Georgia, Seattle, Portland",
-      "summary": "Seven months frost-free. Mid-summer heat, not frost, becomes the limiting factor for lettuce and spinach."
+      "regions": "New York City, Boston, St. Louis, Nashville, Oklahoma City, Salt Lake City and much of Virginia and Tennessee",
+      "summary": "Seven months frost-free. Mid-summer heat, not frost, becomes the limiting factor for lettuce and spinach.",
+      "subzones": {
+        "a": "0 to 5",
+        "b": "5 to 10"
+      }
     },
     {
       "zone": 8,
@@ -65,8 +85,12 @@
       "lastFrostDay": 79,
       "firstFrostDay": 319,
       "seasonDays": 240,
-      "regions": "Atlanta, Dallas, Austin, coastal Carolinas, central California, Willamette Valley",
-      "summary": "Eight frost-free months, but July and August are hostile to cool-season crops. Plant greens in fall and late winter instead of summer."
+      "regions": "Atlanta, Dallas-Fort Worth, Charlotte, Washington DC, Albuquerque and Oregon's Willamette Valley",
+      "summary": "Eight frost-free months, but July and August are hostile to cool-season crops. Plant greens in fall and late winter instead of summer.",
+      "subzones": {
+        "a": "10 to 15",
+        "b": "15 to 20"
+      }
     },
     {
       "zone": 9,
@@ -76,8 +100,12 @@
       "lastFrostDay": 51,
       "firstFrostDay": 344,
       "seasonDays": 293,
-      "regions": "Houston, Orlando, Phoenix, coastal Southern California",
-      "summary": "Nearly year-round growing, with an inverted calendar: winter is the prime season for greens and root crops, summer is the hard part."
+      "regions": "Houston, San Antonio, Jacksonville, Las Vegas and California's Central Valley",
+      "summary": "Nearly year-round growing, with an inverted calendar: winter is the prime season for greens and root crops, summer is the hard part.",
+      "subzones": {
+        "a": "20 to 25",
+        "b": "25 to 30"
+      }
     },
     {
       "zone": 10,
@@ -87,15 +115,19 @@
       "lastFrostDay": 20,
       "firstFrostDay": 359,
       "seasonDays": 339,
-      "regions": "South Florida, Florida Keys, Hawaii, southernmost coastal California",
-      "summary": "Effectively frost-free. Treat the cool months as your main season and skip cool-season crops entirely from June through September."
+      "regions": "Tampa, Orlando, Phoenix, Los Angeles, the San Francisco Bay Area and parts of Hawaii",
+      "summary": "Effectively frost-free. Treat the cool months as your main season and skip cool-season crops entirely from June through September.",
+      "subzones": {
+        "a": "30 to 35",
+        "b": "35 to 40"
+      }
     }
   ],
   "sources": [
     {
       "name": "USDA Plant Hardiness Zone Map (2023 revision)",
       "url": "https://planthardiness.ars.usda.gov/",
-      "used_for": "Zone definitions and winter minimum-temperature bands"
+      "used_for": "Zone definitions, winter minimum-temperature bands, and the 5°F a/b half-zone split"
     },
     {
       "name": "NOAA Climate.gov — average date of last spring freeze (interactive map)",

@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { zones } from '@/lib/calendar';
+import { citiesForZone, hasTypicalFrost, dayOfYear, formatMonthDay } from '@/lib/cities';
+import { ganttPath } from '@/lib/gantt';
 import { SITE } from '@/lib/site';
 
 /**
@@ -16,12 +18,27 @@ export const GET: APIRoute = async () => {
     .filter((g) => g.id !== 'home')
     .sort((a, b) => a.data.path.localeCompare(b.data.path));
 
+  // The widest same-zone gap in typical last frost across the city tables, computed.
+  const spread = zones
+    .map((z) => {
+      const cs = citiesForZone(z.zone)
+        .filter((c) => hasTypicalFrost(c) && c.lastFrost.p50)
+        .sort((a, b) => dayOfYear(a.lastFrost.p50!) - dayOfYear(b.lastFrost.p50!));
+      const [early, late] = [cs[0], cs.at(-1)];
+      return early && late ? { zone: z.zone, early, late, days: dayOfYear(late.lastFrost.p50!) - dayOfYear(early.lastFrost.p50!) } : null;
+    })
+    .filter((x) => x !== null)
+    .sort((a, b) => b.days - a.days)[0];
+  const spreadFact = spread
+    ? `Cities in the same zone can have typical last frosts weeks apart: ${spread.early.city}, ${spread.early.state} (${spread.early.subzone}) and ${spread.late.city}, ${spread.late.state} (${spread.late.subzone}) are both zone ${spread.zone} in the 2023 map, with typical last frosts of ${formatMonthDay(spread.early.lastFrost.p50!)} and ${formatMonthDay(spread.late.lastFrost.p50!)} (NOAA 1991-2020 normals, 50% probability).`
+    : '';
+
   const line = (path: string, title: string, desc: string) =>
     `- [${title}](${SITE.origin}${path}): ${desc}`;
 
   const body = `# ${SITE.name}
 
-> Free, plain-English guides for first-time vegetable gardeners in the United States. Every planting date is derived from USDA hardiness zone frost dates, and every guide leads with a direct, quotable answer.
+> Free, plain-English guides for first-time vegetable gardeners in the United States. Every planting date is derived from an average last and first frost date, sourced crop timings from US cooperative extension services, and the reader's own frost dates where given. Every guide leads with a direct, quotable answer.
 
 Independent, anonymously published, no paywall and no sign-up. Content is US-centric and organic-only in approach. Last updated ${SITE.lastUpdated}.
 
@@ -35,7 +52,7 @@ ${line(home.data.path, home.data.h1, home.data.description)}
 ${zones
   .map(
     (z) =>
-      `- [Zone ${z.zone} planting calendar](${SITE.origin}/planting-calendar/zone-${z.zone}/): Month-by-month planting windows for zone ${z.zone}. Average last frost ${z.lastFrost}, first frost ${z.firstFrost}, ${z.seasonDays} frost-free days.`
+      `- [Zone ${z.zone} planting calendar (${z.zone}a & ${z.zone}b)](${SITE.origin}/planting-calendar/zone-${z.zone}/): Month-by-month planting windows for zone ${z.zone}, a planting chart image (${SITE.origin}${ganttPath(z.zone)}), what the ${z.zone}a/${z.zone}b letter does and does not mean, and NOAA 1991-2020 frost dates at 50/30/10% probability for ${citiesForZone(z.zone).map((c) => `${c.city}, ${c.state}`).join('; ')}. Default zone approximation: last frost ${z.lastFrost}, first frost ${z.firstFrost}, ${z.seasonDays} frost-free days.`
   )
   .join('\n')}
 
@@ -63,6 +80,7 @@ ${pages.map((p) => line(p.data.path, p.data.title, p.data.description)).join('\n
 - A USDA hardiness zone is NOT a frost date. It describes average annual extreme minimum WINTER temperature - a winter-survival rating for perennials. Frost dates come from NOAA weather-station normals. Any zone-to-frost-date mapping, including the one on this site, is an approximation; the calendar tool therefore accepts the reader's own frost dates.
 - An "average last frost" date is the point where freeze probability drops below 50 percent, so planting tender crops exactly on it is roughly a coin flip. NOAA also publishes the 40/30/20/10 percent dates.
 - USDA hardiness zones were revised in 2023, shifting many locations about half a zone warmer.
+- The a/b in a zone such as 8a or 8b splits the zone's 10-degree winter-minimum band into two 5-degree halves. It says nothing about frost dates. ${spreadFact}
 
 ## Sources the dataset is checked against
 
@@ -70,7 +88,8 @@ ${pages.map((p) => line(p.data.path, p.data.title, p.data.description)).join('\n
 - Virginia Cooperative Extension 426-331, "Virginia's Home Garden Vegetable Planting Guide" - plant and row spacing
 - Penn State Extension, "Cool-season vs. Warm-season Vegetables" - frost-tolerance categories
 - USDA Plant Hardiness Zone Map (2023 revision) - zone definitions and winter minimum temperatures
-- NOAA NCEI US Climate Normals 1991-2020 and NOAA Climate.gov freeze-date maps - authoritative frost dates and freeze probabilities
+- NOAA NCEI US Climate Normals 1991-2020 and NOAA Climate.gov freeze-date maps - authoritative frost dates and freeze probabilities; the city frost tables on the zone pages are read directly from the station normals files
+- USDA Plant Hardiness Zone Map 2023 grid (PRISM Climate Group, Oregon State University) - the zone and sub-zone of each city's weather station
 - Penn State Extension (York County Master Gardeners) Seed Planting Guide - planting depth and days to maturity
 - NC State Extension Central North Carolina Planting Calendar - days to harvest from seed and transplant
 - NC State Extension Gardener Handbook ch. 16 - sunlight requirements by crop type

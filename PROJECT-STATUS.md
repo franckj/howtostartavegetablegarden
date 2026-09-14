@@ -1,6 +1,6 @@
 # howtostartavegetablegarden.com — status
 
-**Last updated:** 2026-09-14 · **Status:** live, 20 pages, first AI Overview citation observed; zone-pages v2 brief queued
+**Last updated:** 2026-09-14 · **Status:** live, 20 pages, first AI Overview citation observed; zone-pages v2 built and verified locally, deploy pending
 
 - **Live:** https://howtostartavegetablegarden.com (apex + www, valid SSL)
 - **Repo:** https://github.com/franckj/howtostartavegetablegarden (branch `main`)
@@ -76,11 +76,11 @@ still not live; the disclosure mechanism is built and waiting for real programme
 3. **Watch for AdSense approval**, then check Core Web Vitals in Search Console once ads
    actually serve. If CLS goes red, turn the ad load slider down in AdSense — a dashboard
    lever, not a code change.
-4. **Bing zero-click check — partly done 2026-09-14.** DataForSEO's live Bing SERP (US, desktop)
-   for "how to start a vegetable garden" does **not** show the site in the top 10, so the
-   "title renders as bare domain" hypothesis could not be tested. Bing WMT's pos 6.2 is an
-   average across markets and devices. Remaining: in Bing WMT → Search Performance, filter
-   country = US and device, and see where the 1,007 impressions actually come from.
+4. **Bing zero-click — closed 2026-09-14, not a title problem.** Bing WMT by country: US is
+   **15** of ~1,010 impressions (1.5%, pos 7.0). The rest: Rest of World 428, Italy 174, Spain
+   142 (pos 3.7), Germany 139, France 75, Brazil 30. An English query shown in non-English
+   markets gets no clicks, and part of it is likely rank-tracker noise. DataForSEO's US Bing SERP
+   agrees: site not in the top 10. Nothing to fix.
 5. **Backlinks — done 2026-09-14, prior-owner spam, move on.** DataForSEO: 21 backlinks from 17
    domains, spam score 45–70 — web directories (australianwebdirectory.pro/.shop,
    simplewebdirectory.com), "website worth" pages, image hotlinks, plus 2 `pages.dev` links from
@@ -102,7 +102,7 @@ still not live; the disclosure mechanism is built and waiting for real programme
 
 ## Open — content work, in the order I would do it
 
-1. **Zone pages v2** — see "Next build" below. Data says this before the spokes.
+1. **Zone pages v2 — built 2026-09-14, deploy pending.** See "Next build" below.
 2. **The 7 deferred spokes.** Soil preparation, cheap gardening supplies, small-space
    gardening, watering, beginner mistakes, garden pests, community gardens.
 3. **Zones 9–10 do not wrap the sowing year.** Cool-season windows anchor to the last spring
@@ -138,6 +138,7 @@ Append-only. Every entry notes whether the lesson is site-specific or model-gene
 | 2026-09-14 | Analyst error caught by Franck | Recommended an indexable free PDF from one SERP observation (a PDF at organic #2); Google had dropped most PDFs from the index on ~Aug 8 (Amsive / SERoundtable, widely confirmed) | Corrected same day. **Method:** one SERP result is an anecdote — check for platform-level changes before designing around a format. PDF stays gated + `noindex`; "pdf" queries captured by the HTML zone page. |
 | 2026-09-14 | Decision: named editor + AI disclosure | Semrush AI-citation study: E-E-A-T (named author, credentials, sources) +31%, second-largest lift. Site has sources, no named human. Franck approves an editor byline ("not a gardener; grew up with a potager; builds websites; every number sourced") with photo and contact invitation. Revised same day: no AI/Claude mention on the site | Ship as a 3-spoke test with controls; revert if spokes fall vs controls. **Site rule added:** the site never mentions AI or Claude. |
 | 2026-09-14 | Plausible read via share link, France excluded | All-time non-FR: 17 visitors, 17 visits, **18 pageviews** (1.06 pages/visit). Sources: Direct 9, Google 7, Bing 1. All 7 Google entries land on calendar pages (zone-8 ×3, hub, zone-3, -5, -10). Week of Sep 7 = 6 visitors, best week so far. France = 18 visitors, all Direct = operator | Real audience is ~12 US visitors in 46 days, and almost nobody visits a second page. Zone pages are the only Google entry, which confirms the v2 priority. P6 baseline ("~7") holds. **Model-generalizable:** exclude the operator before reading any small-site analytics — here they were 51% of visitors and 70% of pageviews. |
+| 2026-09-14 | Bing WMT impressions split by country | EMD query "1,007 impr, pos 6.2, 0 clicks" = 98.5% non-US: RoW 428, Italy 174, Spain 142 (pos 3.7), Germany 139, France 75, Brazil 30, **US 15** (pos 7.0) | The zero-click alarm was a market-mix artefact, not a SERP-presentation problem. **Model-generalizable:** split any aggregate Bing/GSC position by country before diagnosing CTR — an EMD ranks early in markets that do not click English results. |
 
 ## Verification rules (adopted 2026-09-14, apply to every update)
 
@@ -148,12 +149,30 @@ Append-only. Every entry notes whether the lesson is site-specific or model-gene
 3. First-party data (GSC, Bing Webmaster) wins over Semrush/Ahrefs when tools disagree;
    disagreements are flagged, not resolved by picking the flattering number.
 
-## Next build — zone pages v2
+## Next build — zone pages v2 (built 2026-09-14, deploy pending)
 
-Brief: `briefs/2026-09-14-zone-pages-v2.md`. Four additions to the 8 zone pages, no new URLs:
-build-time gantt PNG per zone, honest sub-zone (a/b) section + title, NOAA city frost table,
-month anchors + month/printable FAQs. Predictions P1–P6 and control C1 are in the brief;
-check at +14 and +42 days after deploy and log results here.
+Brief: `briefs/2026-09-14-zone-pages-v2.md` · plan: `briefs/2026-09-14-zone-pages-v2-plan.md` ·
+technical detail: `CLAUDE.md` → "Zone pages v2".
+
+**Built and verified locally:** chart PNG per zone (~28 KB, image sitemap, `ImageObject`,
+per-zone `og:image`); `#sub-zones` section and "(Na & Nb): Printable, by Month" titles; NOAA city
+frost tables (45 cities, 3 in zone 3) generated from station files with zones read off the 2023
+USDA grid; 12 month anchors + month nav; 5 new FAQs per zone; print stylesheet; tool accepts
+`?zone=&last=&first=`; `llms.txt` corrected. Check script: 96/96 zone-months, 232 chart bars,
+239 pixel samples, 0 failures — and each check proven to fail on deliberately broken output.
+Control pages build byte-identical to production (CSS hash aside).
+
+**Found along the way:**
+- Zone `regions` text for zones 6–10 named cities from the old zone map (zone 9 claimed Phoenix and
+  Orlando, both 10a now). Corrected, or the page would contradict its own city table.
+- The rare-freeze rule: Phoenix, Tampa, San Francisco and LA freeze in under half of years, so
+  their "typical frost dates" would mislead. The table says how often it freezes instead.
+- `npm run deploy` was broken (`wrangler` not on PATH); fixed to `npx wrangler`.
+
+**Still to do at deploy:** push (the hook deploys) → poll for `#sub-zones` → `node
+scripts/indexnow.mjs` → Lighthouse "after" on production, 5 runs, against the baseline in
+`CLAUDE.md` → paste the brief's predictions table into the calibration log with the deploy date →
+check +14 and +42 days after.
 
 Decisions behind it: zone pages outrank the 7 deferred spokes on priority (95% of impressions);
 no `/zone-8a/` URLs unless P2 fails; PDF magnet gated + `noindex`, "pdf" intent captured by the

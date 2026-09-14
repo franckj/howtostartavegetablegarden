@@ -143,6 +143,24 @@ import { zones, MONTHS } from '@/lib/calendar';
 
     if (prefs.lf) lfInput.value = prefs.lf;
     if (prefs.ff) ffInput.value = prefs.ff;
+
+    // Zone pages link here with a city's NOAA dates: ?zone=8&last=03-15&first=11-20.
+    // A link is an explicit choice, so it beats saved prefs. Malformed values are ignored.
+    const params = new URLSearchParams(location.search);
+    const qZone = params.get('zone');
+    const qDate = (v: string | null) =>
+      v && /^\d{2}-\d{2}$/.test(v) && dayFromInput(`2026-${v}`) !== null ? `2026-${v}` : null;
+    const qLast = qDate(params.get('last'));
+    const qFirst = qDate(params.get('first'));
+    const fromLink = !!(qLast && qFirst);
+    if (qZone && zones.some((z) => String(z.zone) === qZone)) {
+      zoneSel.value = qZone;
+      if (!fromLink) syncDateInputs(true);
+    }
+    if (fromLink) {
+      lfInput.value = qLast!;
+      ffInput.value = qFirst!;
+    }
     syncDateInputs();
 
     const esc = (s: string) =>
@@ -229,8 +247,9 @@ import { zones, MONTHS } from '@/lib/calendar';
       render();
     });
 
-    // If the reader arrived with custom dates saved, open the panel so it is obvious.
-    if (prefs.lf || prefs.ff) document.getElementById('cal-override')?.setAttribute('open', '');
+    // If the reader arrived with custom dates, saved or linked, open the panel so it is obvious.
+    if (prefs.lf || prefs.ff || fromLink) document.getElementById('cal-override')?.setAttribute('open', '');
+    if (fromLink || qZone) save();
 
     render();
   }

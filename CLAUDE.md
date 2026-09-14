@@ -163,11 +163,81 @@ the calendar and NOT to an offset from the last frost — an offset-based versio
 October sowings, which are its *best* fall window. Each zone page states how to read the flag
 for that zone. If you ever get real summer-temperature data, this is the thing to replace.
 
-**When touching the calendar, re-run the tool-vs-static cross-check.** The island and the zone
-pages both call the same functions, so they must agree for all 96 zone-months. The bug this
-caught: the zone page still guarded month sections on `m.entries.length === 0`, so months with
-only re-sow rows rendered nothing — the original defect, resurfacing silently. Guard on
-`m.entries.length === 0 && m.resow.length === 0`.
+**When touching the calendar, run `node scripts/check-calendar.mjs [baseUrl]`** (default
+`http://localhost:4321`; start `npm run preview` first). It was only described here until
+2026-09-14 — now it is committed. It checks, with Playwright (`playwright-core` + the cached
+Chromium):
+
+- tool vs static page for all 96 zone-months (row by row, ~536 rows);
+- every chart-image bar against the month tables, both directions, plus a pixel sample of every
+  bar in each PNG (~240 samples) and the 150 KB size cap;
+- all 12 month anchors on each zone page;
+- that the city table's "Use these dates" links fill in the tool, and malformed params do not
+  break it.
+
+It was proven by breaking output on purpose (a dropped month section, a shifted bar date, a
+swapped PNG, a removed anchor) — each fails loudly. The original bug it exists for: the zone
+page guarded month sections on `m.entries.length === 0`, so re-sow-only months rendered nothing.
+Guard on `m.entries.length === 0 && m.resow.length === 0`.
+
+## Zone pages v2 (built 2026-09-14, deploy pending — brief `briefs/2026-09-14-zone-pages-v2.md`)
+
+Four additions to all 8 zone pages, no new page URLs.
+
+**1. Chart image.** `src/lib/gantt.ts` builds `ganttModel(zone)` from `calendar.ts` and draws an
+SVG; `src/pages/img/planting-calendar/zone-[file].ts` turns it into PNGs with `sharp` during
+`astro build`: `zone-N.png` (1200×900, on the page, in the image sitemap, `ImageObject` schema),
+`zone-N-og.png` (1200×630, the page's `og:image` via BaseLayout's `ogImage` prop) and `zone-N.json`
+(the model plus each bar's drawn rectangle, for the check). ~28 KB per PNG.
+- `sharp` is now an explicit dependency (was only transitive via Astro).
+- **Fonts come from the build machine** (Arimo → Liberation Sans → DejaVu Sans). Builds run
+  locally via the pre-push hook, where Arimo exists. If Cloudflare's Git integration ever builds
+  the site, re-check the PNGs — the fallback font changes label widths.
+- Indoors bars are hollow on purpose so they read apart from solid outdoor bars.
+
+**2. Sub-zones (`#sub-zones`).** Title and H1 are "Zone N Planting Calendar (Na & Nb): Printable,
+by Month" (Franck approved the shorter title). The a/b bands live in `zones.json` as `subzones`.
+The section's example ("X and Y are both zone N, yet their typical last frosts are W weeks
+apart") is **computed from `cities.json`**, not written by hand — so is the tomato FAQ.
+
+**3. City frost table (`#city-frost-dates`) — `src/data/cities.json`, generated, never hand-edited.**
+`node scripts/fetch-noaa.mjs` reads `scripts/noaa-stations.json` (city, state, NOAA station id,
+intended zone) and writes the file:
+- Frost dates: NOAA NCEI 1991–2020 annual normals, one CSV per station (`ANN-TMIN-PRBLST/PRBFST-T32FP50/30/10`,
+  `PRBGSL-T32FP50`, `PRBOCC-LSTH032`). Any value carrying a NOAA measurement flag
+  (M/V/X/Y/Z, e.g. Los Angeles's -9999 "insufficient values") becomes `null` and its cell is left out.
+- Zone: the **2023 USDA PHZM grid (PRISM, Oregon State) sampled at the station's coordinates** —
+  no ZIP lookup, nothing typed. The script throws if a station lands in a different zone than
+  listed. Grid and CSVs cache in `node_modules/.cache/noaa/`.
+- **The build fails if a row has frost values without a NOAA `source`** or a zone without a
+  `zoneSource` (assertion in `src/lib/cities.ts`; proven by blanking one source).
+- **Rare-freeze rule:** when NOAA's freeze occurrence is under 50% of years (Phoenix 17.5%, Tampa
+  34.5%, LA 0%), the "50% date" describes rare cold snaps, so the row says how often it freezes
+  instead and gets no "Use these dates" link. 50–95% shows the dates plus "freezes in X% of years".
+- 6 cities per zone, **3 for zone 3** (approved: the 2023 map left few zone 3 cities).
+- 30%/10% columns hide behind a no-JS checkbox toggle; they show automatically in print.
+- "Use these dates" links to `/planting-calendar/?zone=N&last=MM-DD&first=MM-DD#calendar-tool`.
+  `CalendarTool.astro` reads those params; they beat saved prefs, malformed values are ignored.
+
+**4. Month anchors + FAQs.** All 12 months have an `h3` id (idle months get a one-line stub) and a
+month nav under the chart. Five FAQs per zone were added (a/b difference, a/b for tomatoes, July,
+fall start, printable PDF) — the July and fall answers are generated from the month plan. The
+PDF answer says "not as a download yet" — **swap it when the PDF brief ships.**
+
+**Print:** `@media print` rules in `global.css` are scoped with `body:has(.zone-chart)` so only
+zone pages change how they print.
+
+**Control pages — do not edit during a measurement window.** Glossary, resources and the three
+spokes are the baseline for the brief's predictions (C1). v2 left their built HTML byte-identical
+to production apart from the shared CSS bundle hash. Any future brief names its own controls.
+
+**Zone `regions` text for zones 6–10 was corrected** to cities the 2023 grid actually puts there
+(e.g. zone 9 no longer claims Phoenix or Orlando, which are 10a), so the prose cannot contradict
+the city table on the same page. Zones 3–5 still name states only.
+
+**`llms.txt` fixed:** its summary line claimed dates were "derived from USDA hardiness zone frost
+dates" — the claim fact-check pass 1 removed everywhere else. It now lists the new sections per
+zone and a computed same-zone frost-spread fact.
 
 ## Google site name and favicon
 
@@ -224,8 +294,13 @@ Do not paper over it with inline `style=` on the `th` (v1 did, in five files; re
 `/starting-seeds-indoors/` · `/glossary/` · `/resources/` · `/about/` · `/contact/` ·
 `/privacy-policy/` · `/terms-of-service/` · `/404.html` · `/llms.txt`
 
+Build-time assets (not pages, not in the sitemap as URLs): `/img/planting-calendar/zone-N.png`,
+`zone-N-og.png`, `zone-N.json` for N = 3…10. The PNGs are listed as `<image:image>` entries on
+their zone page's sitemap URL.
+
 Schema: `Organization` + `WebPage` sitewide, `WebSite` on the homepage only (see the site-name
-section); `HowTo` + `FAQPage` on home; `Dataset` + `FAQPage` on calendar pages; `FAQPage` +
+section); `HowTo` + `FAQPage` on home; `Dataset` + `FAQPage` on calendar pages, plus
+`ImageObject` (linked from `Dataset.image`) on zone pages; `FAQPage` +
 `BreadcrumbList` on spokes; `DefinedTermSet` on the glossary; `ItemList` on resources.
 
 ## Launch checklist — done
@@ -243,6 +318,16 @@ Lighthouse (local preview, Playwright Chromium, **pre-AdSense**): performance 10
 100, best practices 100, SEO 100 on home, spoke and calendar. Auto ads landed 2026-09-12 and
 these have not been re-measured since — treat them as a v1 baseline, not the current site. No horizontal overflow at 375px or
 768px on any route. Calendar island: no page errors, `localStorage` zone persistence works.
+
+**Production, with AdSense, before zone pages v2 (2026-09-14)** — Lighthouse 13.4.1, mobile,
+performance only, `/planting-calendar/zone-8/`, 5 runs: score 72/68/69/69/67 (median **69**),
+LCP 2373/1134/2374/2267/2187 ms (median **2267**), CLS .058/.088/.088/.110/.110 (median **.088**),
+TBT 1181/4236/1783/1668/2063 ms (median **1783**). Ads make runs noisy — TBT ranged 3.6×. The
+"after" measurement is taken on production once v2 is deployed; the brief says the update must
+not worsen median LCP or CLS.
+
+v2 local checks (2026-09-14): no horizontal overflow at 320/375/768px on all 8 zone pages; JSON-LD
+parses on all 8 with 10 FAQ entries, `ImageObject`, `Dataset.image` link.
 
 ## Open work
 

@@ -1,6 +1,6 @@
 # PLAN — Zone pages v2
 
-Answers `briefs/2026-09-14-zone-pages-v2.md`. Status: **awaiting approval.** No code written.
+Answers `briefs/2026-09-14-zone-pages-v2.md`. Status: **built and verified locally 2026-09-14; deploy pending.**
 
 ---
 
@@ -132,4 +132,4 @@ Roughly one long session. The NOAA fetch and city selection is the least predict
 
 ## Decisions
 1. **Title:** approved 2026-09-14, the shorter version above.
-2. **Zone 3 with 3–5 cities** instead of 5–8. Still open.
+2. **Zone 3 with 3–5 cities** instead of 5–8: approved 2026-09-14.

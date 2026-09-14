@@ -71,26 +71,13 @@ still not live; the disclosure mechanism is built and waiting for real programme
 2. **Watch for AdSense approval**, then check Core Web Vitals in Search Console once ads
    actually serve. If CLS goes red, turn the ad load slider down in AdSense — a dashboard
    lever, not a code change.
-3. **Bing zero-click — closed 2026-09-14, not a title problem.** Bing WMT by country: US is
-   **15** of ~1,010 impressions (1.5%, pos 7.0). The rest: Rest of World 428, Italy 174, Spain
-   142 (pos 3.7), Germany 139, France 75, Brazil 30. An English query shown in non-English
-   markets gets no clicks, and part of it is likely rank-tracker noise. DataForSEO's US Bing SERP
-   agrees: site not in the top 10. Nothing to fix.
-4. **Backlinks — done 2026-09-14, prior-owner spam, move on.** DataForSEO: 21 backlinks from 17
-   domains, spam score 45–70 — web directories (australianwebdirectory.pro/.shop,
-   simplewebdirectory.com), "website worth" pages, image hotlinks, plus 2 `pages.dev` links from
-   2023 that predate registration. No real editorial links. Ahrefs' 324 vs DataForSEO's 21 is a
-   tool disagreement (flagged, not resolved); neither is first-party.
-5. **Filter your own traffic in Plausible.** Confirmed 2026-09-14: all 18 France visitors are
-   Direct / None = you, and they account for 43 of 61 pageviews. Plausible → Site settings →
-   Shields → IP addresses → add your IP.
-6. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
+3. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
    fill the `affiliate` fields in `src/data/resources.json`. The disclosure renders itself.
-7. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
+4. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
    deployments → Connect to Git. Not needed — a `pre-push` hook already makes `git push`
    build and deploy — but it would move builds onto Cloudflare's infrastructure and add PR
    previews. **If you connect it, delete `.githooks/pre-push`** or every push deploys twice.
-8. **Optional: www → apex 301.** Rules → Redirect Rules, hostname equals
+5. **Optional: www → apex 301.** Rules → Redirect Rules, hostname equals
    `www.howtostartavegetablegarden.com`. Canonical tags already handle it, so cosmetic.
 
 ---

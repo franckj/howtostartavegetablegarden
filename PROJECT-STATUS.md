@@ -66,18 +66,16 @@ still not live; the disclosure mechanism is built and waiting for real programme
 
 ## Open — needs you
 
-1. **Request indexing on the homepage in Search Console.** The site-title and favicon fixes
-   take days to weeks to appear; this is the only way to nudge it.
-2. **Watch for AdSense approval**, then check Core Web Vitals in Search Console once ads
+1. **Watch for AdSense approval**, then check Core Web Vitals in Search Console once ads
    actually serve. If CLS goes red, turn the ad load slider down in AdSense — a dashboard
    lever, not a code change.
-3. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
+2. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
    fill the `affiliate` fields in `src/data/resources.json`. The disclosure renders itself.
-4. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
+3. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
    deployments → Connect to Git. Not needed — a `pre-push` hook already makes `git push`
    build and deploy — but it would move builds onto Cloudflare's infrastructure and add PR
    previews. **If you connect it, delete `.githooks/pre-push`** or every push deploys twice.
-5. **Optional: www → apex 301.** Rules → Redirect Rules, hostname equals
+4. **Optional: www → apex 301.** Rules → Redirect Rules, hostname equals
    `www.howtostartavegetablegarden.com`. Canonical tags already handle it, so cosmetic.
 
 ---

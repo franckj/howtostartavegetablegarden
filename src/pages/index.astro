@@ -5,7 +5,7 @@ import AnswerBox from '@/components/AnswerBox.astro';
 import Toc from '@/components/Toc.astro';
 import Faq from '@/components/Faq.astro';
 import NextSteps from '@/components/NextSteps.astro';
-import { SITE, GUIDE_LINKS, faqSchema, humanDate } from '@/lib/site';
+import { SITE, GUIDE_LINKS, faqSchema } from '@/lib/site';
 import { lastChanged, contentDeps } from '@/lib/updated';
 
 const entry = await getEntry('guides', 'home');
@@ -69,7 +69,6 @@ const howToSchema = {
   <div class="wrap page-head prose">
     {d.eyebrow && <p class="eyebrow">{d.eyebrow}</p>}
     <h1>{d.h1}</h1>
-    <p class="updated">Last updated {humanDate(dateModified)}</p>
   </div>
 
   <div class="wrap prose">

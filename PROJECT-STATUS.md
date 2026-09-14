@@ -136,6 +136,7 @@ Append-only. Every entry notes whether the lesson is site-specific or model-gene
 | 2026-09-14 | 6-week checkpoint (GSC, Bing WMT, Plausible, Semrush, Ahrefs) | Google: 2,666 impr, 95% on zone pages, avg pos 55–75, 4 clicks; 47% of impressions non-US desktop = rank-tracker noise, US mobile ≈ pos 16 is the real signal. Bing: EMD query pos 6.2, 1,007 impr, **0 clicks**; 126 Copilot citations (111 homepage, 43% share on "how to grow a vegetable garden"). Plausible ~12 real visitors, 0 AI referrers. 91% of ranking keywords trigger an AIO, 65% an Image pack. Sub-zone (a/b) queries = 39% of impressions; 17 "printable/pdf" queries | Engines split: Bing rewards EMD + pillar at once; Google opens only the long tail. Citations do not yet convert to visits. **Model-generalizable:** pair every EMD pillar with a programmatic dataset surface. |
 | 2026-09-14 | DataForSEO demand check | "zone 7b planting schedule" 1,300/mo KD 1; "6b" 1,300; "8b" 1,000 KD 1 — equal to whole-zone terms. "…schedule pdf" 260–320/mo. "planting schedule by zip code" 480/mo. All peak Mar–Apr at 2–3×, trough Nov–Dec | **Model-generalizable:** check sub-segment volumes before calling them long tail — the "precise" variant can be the head term. Ship in the trough, judge in the peak. |
 | 2026-09-14 | Analyst error caught by Franck | Recommended an indexable free PDF from one SERP observation (a PDF at organic #2); Google had dropped most PDFs from the index on ~Aug 8 (Amsive / SERoundtable, widely confirmed) | Corrected same day. **Method:** one SERP result is an anecdote — check for platform-level changes before designing around a format. PDF stays gated + `noindex`; "pdf" queries captured by the HTML zone page. |
+| 2026-09-14 | Decision: named editor + AI disclosure | Semrush AI-citation study: E-E-A-T (named author, credentials, sources) +31%, second-largest lift. Site has sources, no named human. Franck approves an editor byline ("not a gardener; built with Claude from extension + NOAA data") with photo and contact invitation | Ship as a 3-spoke test with controls; revert if spokes fall vs controls (Aug 2026 spam update risk). If it holds: honest AI disclosure + verified sources = citable, a **model-generalizable** blueprint finding. |
 | 2026-09-14 | Plausible read via share link, France excluded | All-time non-FR: 17 visitors, 17 visits, **18 pageviews** (1.06 pages/visit). Sources: Direct 9, Google 7, Bing 1. All 7 Google entries land on calendar pages (zone-8 ×3, hub, zone-3, -5, -10). Week of Sep 7 = 6 visitors, best week so far. France = 18 visitors, all Direct = operator | Real audience is ~12 US visitors in 46 days, and almost nobody visits a second page. Zone pages are the only Google entry, which confirms the v2 priority. P6 baseline ("~7") holds. **Model-generalizable:** exclude the operator before reading any small-site analytics — here they were 51% of visitors and 70% of pageviews. |
 
 ## Verification rules (adopted 2026-09-14, apply to every update)
@@ -157,6 +158,14 @@ check at +14 and +42 days after deploy and log results here.
 Decisions behind it: zone pages outrank the 7 deferred spokes on priority (95% of impressions);
 no `/zone-8a/` URLs unless P2 fails; PDF magnet gated + `noindex`, "pdf" intent captured by the
 HTML page; zip-code lookup parked (see Ideas queue).
+
+## Queued build — author box (after zone pages v2)
+
+Brief: `briefs/2026-09-14-author-box.md`. Named editor byline + AI-disclosure author box with
+Franck's photo, on the 3 spoke guides only, `Person` schema linking franckj.com. Copy approved
+by Franck 2026-09-14. Ships after the zone-pages +14-day check; predictions A1–A3 in the brief.
+Risk noted: Google's Aug 2026 spam update targets scaled AI content — A2 is the kill switch.
+Needs Franck: the photo file and confirmation of the author URL.
 
 ## Ideas queue (not committed — demand-gated)
 

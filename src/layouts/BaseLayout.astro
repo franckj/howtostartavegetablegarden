@@ -30,6 +30,8 @@ const {
 } = Astro.props;
 
 const canonical = `${SITE.origin}${path}`;
+/** Footer date: the latest content change anywhere on the site. The page's own date sits under its H1. */
+const siteUpdated = lastChanged(SITE_CONTENT_PATHS);
 const ogImage = `${SITE.origin}${ogImagePath}`;
 
 const isHome = path === '/';
@@ -226,7 +228,7 @@ const graph = [
 
         <div class="site-footer__base">
           <span>&copy; {new Date().getFullYear()} {SITE.name}</span>
-          <span>Last updated {humanDate(dateModified)}</span>
+          <span>Site last updated {humanDate(siteUpdated)}</span>
         </div>
       </div>
     </footer>

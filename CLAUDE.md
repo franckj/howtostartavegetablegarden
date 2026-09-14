@@ -292,8 +292,9 @@ Do not paper over it with inline `style=` on the `th` (v1 did, in five files; re
 8. **"Last updated" dates are computed — never type one** (Franck, 2026-09-14: "do it at every
    update, or it doesn't make any sense"). `src/lib/updated.ts` gives each page the latest git
    commit date of *its own content files* (prose/template + the data it renders), today if they
-   are uncommitted, never earlier than the old typed date. The top-of-page date, the footer
-   date and schema `dateModified` all use it. **Mechanical commits** (imports, refactors,
+   are uncommitted, never earlier than the old typed date. The top-of-page date and schema
+   `dateModified` use it. The **footer** shows "Site last updated" = the latest content change
+   anywhere on the site (a per-page footer date next to a sitewide change read as abandoned). **Mechanical commits** (imports, refactors,
    sitewide renames, CSS) must put `[skip-date]` in the message so they do not fake freshness —
    especially on control pages. Adding a page = pass its dependency files to `lastChanged()`.
 7. **The site never mentions AI, Claude, or how pages are produced.** Credibility comes from

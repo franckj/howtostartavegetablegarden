@@ -66,36 +66,31 @@ still not live; the disclosure mechanism is built and waiting for real programme
 
 ## Open — needs you
 
-1. **Revoke three Cloudflare API tokens.** The 6 permission rules that held them in plaintext
-   were deleted from `~/.claude/settings.local.json` on 2026-09-14, but the tokens are still
-   active and still sit in old Claude Code session logs. Revoke all three at
-   https://dash.cloudflare.com/profile/api-tokens (and check Manage Account → API Tokens).
-   Nothing depends on them: deploys use Wrangler OAuth. **This is the only real risk item.**
-2. **Request indexing on the homepage in Search Console.** The site-title and favicon fixes
+1. **Request indexing on the homepage in Search Console.** The site-title and favicon fixes
    take days to weeks to appear; this is the only way to nudge it.
-3. **Watch for AdSense approval**, then check Core Web Vitals in Search Console once ads
+2. **Watch for AdSense approval**, then check Core Web Vitals in Search Console once ads
    actually serve. If CLS goes red, turn the ad load slider down in AdSense — a dashboard
    lever, not a code change.
-4. **Bing zero-click — closed 2026-09-14, not a title problem.** Bing WMT by country: US is
+3. **Bing zero-click — closed 2026-09-14, not a title problem.** Bing WMT by country: US is
    **15** of ~1,010 impressions (1.5%, pos 7.0). The rest: Rest of World 428, Italy 174, Spain
    142 (pos 3.7), Germany 139, France 75, Brazil 30. An English query shown in non-English
    markets gets no clicks, and part of it is likely rank-tracker noise. DataForSEO's US Bing SERP
    agrees: site not in the top 10. Nothing to fix.
-5. **Backlinks — done 2026-09-14, prior-owner spam, move on.** DataForSEO: 21 backlinks from 17
+4. **Backlinks — done 2026-09-14, prior-owner spam, move on.** DataForSEO: 21 backlinks from 17
    domains, spam score 45–70 — web directories (australianwebdirectory.pro/.shop,
    simplewebdirectory.com), "website worth" pages, image hotlinks, plus 2 `pages.dev` links from
    2023 that predate registration. No real editorial links. Ahrefs' 324 vs DataForSEO's 21 is a
    tool disagreement (flagged, not resolved); neither is first-party.
-6. **Filter your own traffic in Plausible.** Confirmed 2026-09-14: all 18 France visitors are
+5. **Filter your own traffic in Plausible.** Confirmed 2026-09-14: all 18 France visitors are
    Direct / None = you, and they account for 43 of 61 pageviews. Plausible → Site settings →
    Shields → IP addresses → add your IP.
-7. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
+6. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
    fill the `affiliate` fields in `src/data/resources.json`. The disclosure renders itself.
-8. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
+7. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
    deployments → Connect to Git. Not needed — a `pre-push` hook already makes `git push`
    build and deploy — but it would move builds onto Cloudflare's infrastructure and add PR
    previews. **If you connect it, delete `.githooks/pre-push`** or every push deploys twice.
-9. **Optional: www → apex 301.** Rules → Redirect Rules, hostname equals
+8. **Optional: www → apex 301.** Rules → Redirect Rules, hostname equals
    `www.howtostartavegetablegarden.com`. Canonical tags already handle it, so cosmetic.
 
 ---
@@ -140,6 +135,7 @@ Append-only. Every entry notes whether the lesson is site-specific or model-gene
 | 2026-09-14 | Plausible read via share link, France excluded | All-time non-FR: 17 visitors, 17 visits, **18 pageviews** (1.06 pages/visit). Sources: Direct 9, Google 7, Bing 1. All 7 Google entries land on calendar pages (zone-8 ×3, hub, zone-3, -5, -10). Week of Sep 7 = 6 visitors, best week so far. France = 18 visitors, all Direct = operator | Real audience is ~12 US visitors in 46 days, and almost nobody visits a second page. Zone pages are the only Google entry, which confirms the v2 priority. P6 baseline ("~7") holds. **Model-generalizable:** exclude the operator before reading any small-site analytics — here they were 51% of visitors and 70% of pageviews. |
 | 2026-09-14 | Bing WMT impressions split by country | EMD query "1,007 impr, pos 6.2, 0 clicks" = 98.5% non-US: RoW 428, Italy 174, Spain 142 (pos 3.7), Germany 139, France 75, Brazil 30, **US 15** (pos 7.0) | The zero-click alarm was a market-mix artefact, not a SERP-presentation problem. **Model-generalizable:** split any aggregate Bing/GSC position by country before diagnosing CTR — an EMD ranks early in markets that do not click English results. |
 | 2026-09-14 | **Deploy: zone pages v2** (pre-registered predictions) | Checks +14d = 2026-09-28, +42d = 2026-10-26. Baselines (Sep 14): P1 GSC Image impressions on zone pages 0 → >0 by +14d, ≥100 by +42d · P2 sub-zone query share 39% (476/1,233) → volume ≥+50%, a/b avg position ≥10 places better · P3 AI-features impressions ~2.5/day → ≥5/day · P4 month-phrased impressions 113 → ≥250 · P5 zone-page avg position US mobile ~16 → ≤12 · C1 control glossary 40 + raised-beds 52 impressions · P6 Plausible zone-page entries from google.com ~7 total → ≥3/week. Kill criteria in the brief. Lighthouse: CLS .088 → .051; LCP unchanged with ads blocked; FCP +61 ms | Clock starts. Ship in the trough (Sep), judge in the peak (Mar–Apr) — the +42d check lands in the seasonal low, so a flat P2/P4 in October is weak evidence either way. |
+| 2026-09-14 | Cloudflare token cleanup | Plaintext token rules removed from local Claude settings. Tokens cut to 4, each narrow: github pages deploy (new, replaces "auto deploy", deleted by mistake mid-cleanup; set as the GitHub secret in newsletter-copilot, pizzarustica, createrevenue-site; first two re-deployed OK), templatery-dns-read, Analytics Report Claude, Domain Analyzer Traffic Checker tool. Dead-project and broad Workers tokens deleted | Security item closed. **Method:** turn on the dashboard's Last used column before deleting anything, and check GitHub repo secrets first; deleting a token by name alone broke 3 deploy pipelines. Model-generalizable. |
 
 ## Verification rules (adopted 2026-09-14, apply to every update)
 

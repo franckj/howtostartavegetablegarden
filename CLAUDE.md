@@ -11,6 +11,11 @@ changes, schema changes. It is the source of truth.
 PAT) · `PROJECT-BRIEF.md` = strategy context · project knowledge holds stable operator
 instructions only.
 
+## Briefs
+
+Build briefs from the analyst project live in `briefs/` (dated). Read the newest one before
+starting work; it names the acceptance checks and the control pages that must not be edited.
+
 ## Status
 
 - **Live:** https://howtostartavegetablegarden.com (apex + www)

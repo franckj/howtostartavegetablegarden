@@ -1,6 +1,6 @@
 # howtostartavegetablegarden.com — status
 
-**Last updated:** 2026-09-12 · **Status:** live, 20 pages, AdSense tag installed and awaiting review
+**Last updated:** 2026-09-14 · **Status:** live, 20 pages, first AI Overview citation observed; zone-pages v2 brief queued
 
 - **Live:** https://howtostartavegetablegarden.com (apex + www, valid SSL)
 - **Repo:** https://github.com/franckj/howtostartavegetablegarden (branch `main`)
@@ -76,24 +76,31 @@ still not live; the disclosure mechanism is built and waiting for real programme
 3. **Watch for AdSense approval**, then check Core Web Vitals in Search Console once ads
    actually serve. If CLS goes red, turn the ad load slider down in AdSense — a dashboard
    lever, not a code change.
-4. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
+4. **Bing zero-click check.** "how to start a vegetable garden": 1,007 impressions at pos 6.2
+   with 0 clicks is abnormal. Search it on bing.com (US) and screenshot the listing — likely
+   the title renders as the bare domain, or Copilot's answer absorbs the clicks.
+5. **Ahrefs shows 324 all-time backlinks** on a domain registered Jul 29. Inspect the referring
+   domains once; if it is prior-owner spam, note it and move on.
+6. **Filter your own traffic in Plausible** — 18 of ~36 visitors are France/direct.
+7. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
    fill the `affiliate` fields in `src/data/resources.json`. The disclosure renders itself.
-5. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
+8. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
    deployments → Connect to Git. Not needed — a `pre-push` hook already makes `git push`
    build and deploy — but it would move builds onto Cloudflare's infrastructure and add PR
    previews. **If you connect it, delete `.githooks/pre-push`** or every push deploys twice.
-6. **Optional: www → apex 301.** Rules → Redirect Rules, hostname equals
+9. **Optional: www → apex 301.** Rules → Redirect Rules, hostname equals
    `www.howtostartavegetablegarden.com`. Canonical tags already handle it, so cosmetic.
 
 ---
 
 ## Open — content work, in the order I would do it
 
-1. **The 7 deferred spokes.** Soil preparation, cheap gardening supplies, small-space
+1. **Zone pages v2** — see "Next build" below. Data says this before the spokes.
+2. **The 7 deferred spokes.** Soil preparation, cheap gardening supplies, small-space
    gardening, watering, beginner mistakes, garden pests, community gardens.
-2. **Zones 9–10 do not wrap the sowing year.** Cool-season windows anchor to the last spring
+3. **Zones 9–10 do not wrap the sowing year.** Cool-season windows anchor to the last spring
    frost, so zone 9 shows November idle even though you could sow then. Low priority.
-3. **Replace the bolting heuristic** if real summer-temperature data ever becomes available.
+4. **Replace the bolting heuristic** if real summer-temperature data ever becomes available.
    It is currently a fixed calendar span (Jun 15 – Sep 1), labelled as such on every zone page.
 
 ---
@@ -102,7 +109,9 @@ still not live; the disclosure mechanism is built and waiting for real programme
 
 Impressions in GSC for the exact-match query within 3–7 days. AI citations typically lag
 indexing by 2–6 weeks — watch Plausible for `perplexity.ai` and `chatgpt.com` referrers. Two
-pages were indexed within ~36 hours of launch.
+pages were indexed within ~36 hours of launch. **Observed:** first Google AIO citation at ~6.5
+weeks (zone page); Copilot citations from week 5 (homepage). Neither has produced a referral
+visit yet.
 
 ## Calibration log
 
@@ -115,8 +124,38 @@ Append-only. Every entry notes whether the lesson is site-specific or model-gene
 | 2026-09-12 | Ahrefs crawl: 5 internal 404s + 1 external 404 | All 5 were `/cdn-cgi/l/email-protection` — Cloudflare Email Address Obfuscation rewriting `mailto:` at the edge. Build output was clean. External: NIFA extension directory moved; `usdalocalfoodportal.com` 403 = USDA bot-block, false positive | **A crawler 404 that does not exist in `dist/` is an edge feature, not a code bug** — check the CDN before the repo. Model-generalizable. Obfuscation also hid the contact address from AI crawlers, working against the E-E-A-T signal the Contact page exists to give. Now off. |
 | 2026-09-12 | AdSense installed, Auto ads | Tag on 19 indexable routes, suppressed on the `noindex` 404. Privacy policy rewritten; Google CMP enabled for EEA/UK/CH consent | Monetization clock starts. Launch Lighthouse 100s predate the ad tag and are now a stale baseline — Auto ads inject post-paint, so re-measure CLS against production before quoting them. Site-specific. |
 | 2026-08-01 | Full GSC 24h export | 29 impressions, 0 clicks, avg pos ~70. Pages: zone-8 (15), zone-6 (8), calendar hub (3), homepage (1 @ pos 11), about (1), glossary (1). 21 queries, ~all zone-intent; 5/21 are half-zone (8b, 6b, 6a×2). One seasonal-intent query: "is it too late to start a vegetable garden" @ 47 | Zone-8 dominates — southern-zone fall-planting season is live NOW, matching July/Aug sowing content. Homepage already at pos 11 on 1 impression. Half-zone trend strengthening: threshold to act = still present in week-2 data. "Too late to start" = real Jul–Aug intent, homepage FAQ candidate. |
+| 2026-09-14 | First AI Overview citation observed | Google AIO for "zone 3 planting schedule" cites `/planting-calendar/zone-3/` in the "+2" behind ufseeds.com (FR locale). GSC AI-features report confirms 40 impressions across zone pages since Aug 7, ~2.5/day in Sept | Lag ~6.5 weeks. Zone pages cited before the pillar. **Model-generalizable:** programmatic tool pages earn AI citations first. |
+| 2026-09-14 | Etsy sells a zone-3 printable planner, ranked in the Image pack | Site absent from Google Images — SVG and HTML tables only, no bitmaps | Paid demand for the PDF magnet confirmed. **Model-generalizable:** a rendered image of the tool element is its own SERP surface. |
+| 2026-09-14 | 6-week checkpoint (GSC, Bing WMT, Plausible, Semrush, Ahrefs) | Google: 2,666 impr, 95% on zone pages, avg pos 55–75, 4 clicks; 47% of impressions non-US desktop = rank-tracker noise, US mobile ≈ pos 16 is the real signal. Bing: EMD query pos 6.2, 1,007 impr, **0 clicks**; 126 Copilot citations (111 homepage, 43% share on "how to grow a vegetable garden"). Plausible ~12 real visitors, 0 AI referrers. 91% of ranking keywords trigger an AIO, 65% an Image pack. Sub-zone (a/b) queries = 39% of impressions; 17 "printable/pdf" queries | Engines split: Bing rewards EMD + pillar at once; Google opens only the long tail. Citations do not yet convert to visits. **Model-generalizable:** pair every EMD pillar with a programmatic dataset surface. |
+| 2026-09-14 | DataForSEO demand check | "zone 7b planting schedule" 1,300/mo KD 1; "6b" 1,300; "8b" 1,000 KD 1 — equal to whole-zone terms. "…schedule pdf" 260–320/mo. "planting schedule by zip code" 480/mo. All peak Mar–Apr at 2–3×, trough Nov–Dec | **Model-generalizable:** check sub-segment volumes before calling them long tail — the "precise" variant can be the head term. Ship in the trough, judge in the peak. |
+| 2026-09-14 | Analyst error caught by Franck | Recommended an indexable free PDF from one SERP observation (a PDF at organic #2); Google had dropped most PDFs from the index on ~Aug 8 (Amsive / SERoundtable, widely confirmed) | Corrected same day. **Method:** one SERP result is an anecdote — check for platform-level changes before designing around a format. PDF stays gated + `noindex`; "pdf" queries captured by the HTML zone page. |
+
+## Verification rules (adopted 2026-09-14, apply to every update)
+
+1. Pre-registered predictions with numeric targets, check dates, and kill criteria written
+   before deploy. Misses are logged as misses.
+2. Control pages left untouched (glossary, raised-beds spoke) to separate update effect from
+   domain aging.
+3. First-party data (GSC, Bing Webmaster) wins over Semrush/Ahrefs when tools disagree;
+   disagreements are flagged, not resolved by picking the flattering number.
+
+## Next build — zone pages v2
+
+Brief: `briefs/2026-09-14-zone-pages-v2.md`. Four additions to the 8 zone pages, no new URLs:
+build-time gantt PNG per zone, honest sub-zone (a/b) section + title, NOAA city frost table,
+month anchors + month/printable FAQs. Predictions P1–P6 and control C1 are in the brief;
+check at +14 and +42 days after deploy and log results here.
+
+Decisions behind it: zone pages outrank the 7 deferred spokes on priority (95% of impressions);
+no `/zone-8a/` URLs unless P2 fails; PDF magnet gated + `noindex`, "pdf" intent captured by the
+HTML page; zip-code lookup parked (see Ideas queue).
 
 ## Ideas queue (not committed — demand-gated)
+
+**Zip-code frost lookup (tool feature)**
+- "planting schedule by zip code" 480/mo, CPC $7. Zip → nearest NOAA station → frost dates
+  pre-filled in the calendar island. Needs a station index; not before zone pages v2 ships.
+
 
 **Progress Tracker — "My First Garden" (visitor-side gamification)**
 - Concept: pillar guide converted to a trackable season checklist, zone-aware

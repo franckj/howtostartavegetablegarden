@@ -76,12 +76,19 @@ still not live; the disclosure mechanism is built and waiting for real programme
 3. **Watch for AdSense approval**, then check Core Web Vitals in Search Console once ads
    actually serve. If CLS goes red, turn the ad load slider down in AdSense — a dashboard
    lever, not a code change.
-4. **Bing zero-click check.** "how to start a vegetable garden": 1,007 impressions at pos 6.2
-   with 0 clicks is abnormal. Search it on bing.com (US) and screenshot the listing — likely
-   the title renders as the bare domain, or Copilot's answer absorbs the clicks.
-5. **Ahrefs shows 324 all-time backlinks** on a domain registered Jul 29. Inspect the referring
-   domains once; if it is prior-owner spam, note it and move on.
-6. **Filter your own traffic in Plausible** — 18 of ~36 visitors are France/direct.
+4. **Bing zero-click check — partly done 2026-09-14.** DataForSEO's live Bing SERP (US, desktop)
+   for "how to start a vegetable garden" does **not** show the site in the top 10, so the
+   "title renders as bare domain" hypothesis could not be tested. Bing WMT's pos 6.2 is an
+   average across markets and devices. Remaining: in Bing WMT → Search Performance, filter
+   country = US and device, and see where the 1,007 impressions actually come from.
+5. **Backlinks — done 2026-09-14, prior-owner spam, move on.** DataForSEO: 21 backlinks from 17
+   domains, spam score 45–70 — web directories (australianwebdirectory.pro/.shop,
+   simplewebdirectory.com), "website worth" pages, image hotlinks, plus 2 `pages.dev` links from
+   2023 that predate registration. No real editorial links. Ahrefs' 324 vs DataForSEO's 21 is a
+   tool disagreement (flagged, not resolved); neither is first-party.
+6. **Filter your own traffic in Plausible.** Confirmed 2026-09-14: all 18 France visitors are
+   Direct / None = you, and they account for 43 of 61 pageviews. Plausible → Site settings →
+   Shields → IP addresses → add your IP.
 7. **Join an affiliate programme** (Amazon Associates is the obvious one for hand tools), then
    fill the `affiliate` fields in `src/data/resources.json`. The disclosure renders itself.
 8. **Optional: connect Cloudflare's Git integration.** Pages → project → Settings → Builds &
@@ -129,6 +136,7 @@ Append-only. Every entry notes whether the lesson is site-specific or model-gene
 | 2026-09-14 | 6-week checkpoint (GSC, Bing WMT, Plausible, Semrush, Ahrefs) | Google: 2,666 impr, 95% on zone pages, avg pos 55–75, 4 clicks; 47% of impressions non-US desktop = rank-tracker noise, US mobile ≈ pos 16 is the real signal. Bing: EMD query pos 6.2, 1,007 impr, **0 clicks**; 126 Copilot citations (111 homepage, 43% share on "how to grow a vegetable garden"). Plausible ~12 real visitors, 0 AI referrers. 91% of ranking keywords trigger an AIO, 65% an Image pack. Sub-zone (a/b) queries = 39% of impressions; 17 "printable/pdf" queries | Engines split: Bing rewards EMD + pillar at once; Google opens only the long tail. Citations do not yet convert to visits. **Model-generalizable:** pair every EMD pillar with a programmatic dataset surface. |
 | 2026-09-14 | DataForSEO demand check | "zone 7b planting schedule" 1,300/mo KD 1; "6b" 1,300; "8b" 1,000 KD 1 — equal to whole-zone terms. "…schedule pdf" 260–320/mo. "planting schedule by zip code" 480/mo. All peak Mar–Apr at 2–3×, trough Nov–Dec | **Model-generalizable:** check sub-segment volumes before calling them long tail — the "precise" variant can be the head term. Ship in the trough, judge in the peak. |
 | 2026-09-14 | Analyst error caught by Franck | Recommended an indexable free PDF from one SERP observation (a PDF at organic #2); Google had dropped most PDFs from the index on ~Aug 8 (Amsive / SERoundtable, widely confirmed) | Corrected same day. **Method:** one SERP result is an anecdote — check for platform-level changes before designing around a format. PDF stays gated + `noindex`; "pdf" queries captured by the HTML zone page. |
+| 2026-09-14 | Plausible read via share link, France excluded | All-time non-FR: 17 visitors, 17 visits, **18 pageviews** (1.06 pages/visit). Sources: Direct 9, Google 7, Bing 1. All 7 Google entries land on calendar pages (zone-8 ×3, hub, zone-3, -5, -10). Week of Sep 7 = 6 visitors, best week so far. France = 18 visitors, all Direct = operator | Real audience is ~12 US visitors in 46 days, and almost nobody visits a second page. Zone pages are the only Google entry, which confirms the v2 priority. P6 baseline ("~7") holds. **Model-generalizable:** exclude the operator before reading any small-site analytics — here they were 51% of visitors and 70% of pageviews. |
 
 ## Verification rules (adopted 2026-09-14, apply to every update)
 

@@ -1,0 +1,2312 @@
+{
+ "site": "howtostartavegetablegarden.com",
+ "pulled_at": "2026-09-22T19:58:47.613Z",
+ "days": 28,
+ "window": [
+  "2026-08-25",
+  "2026-09-21"
+ ],
+ "errors": [],
+ "plausible": {
+  "totals": {
+   "visitors": {
+    "now": 16,
+    "prev": 22
+   },
+   "visits": {
+    "now": 17,
+    "prev": 24
+   },
+   "pageviews": {
+    "now": 40,
+    "prev": 47
+   },
+   "bounce_rate": {
+    "now": 71,
+    "prev": 83
+   },
+   "visit_duration": {
+    "now": 107,
+    "prev": 212
+   },
+   "views_per_visit": {
+    "now": 2.35,
+    "prev": 1.96
+   }
+  },
+  "sources": [
+   [
+    "Direct / None",
+    8
+   ],
+   [
+    "Google",
+    6
+   ],
+   [
+    "Bing",
+    1
+   ],
+   [
+    "Telegram",
+    1
+   ]
+  ],
+  "channels": [
+   [
+    "Direct",
+    8
+   ],
+   [
+    "Organic Search",
+    7
+   ],
+   [
+    "Organic Social",
+    1
+   ]
+  ],
+  "pages": [
+   [
+    "/",
+    9
+   ],
+   [
+    "/planting-calendar/",
+    3
+   ],
+   [
+    "/planting-calendar/zone-8/",
+    3
+   ],
+   [
+    "/planting-calendar/zone-3/",
+    2
+   ],
+   [
+    "/planting-calendar/zone-10/",
+    1
+   ],
+   [
+    "/planting-calendar/zone-5/",
+    1
+   ]
+  ],
+  "goals": []
+ },
+ "gsc": {
+  "window": [
+   "2026-08-23",
+   "2026-09-19"
+  ],
+  "totals": {
+   "clicks": 4,
+   "impressions": 1662
+  },
+  "queries": [
+   {
+    "key": "zone 3 planting schedule",
+    "clicks": 1,
+    "impressions": 8,
+    "ctr": 12.5,
+    "position": 55.5
+   },
+   {
+    "key": "4b growing zone",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "key": "5a growing zone",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "key": "5b gardening zone",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 82
+   },
+   {
+    "key": "5b planting schedule",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "6a gardening schedule",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 70
+   },
+   {
+    "key": "6a planting schedule",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 67.7
+   },
+   {
+    "key": "6b planting schedule",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 58
+   },
+   {
+    "key": "7a gardening calendar",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 51
+   },
+   {
+    "key": "7a planting schedule",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "key": "7b planting guide",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 62
+   },
+   {
+    "key": "7b planting schedule",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 71.7
+   },
+   {
+    "key": "7b zone planting schedule",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 62
+   },
+   {
+    "key": "8a planting schedule",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 70.5
+   },
+   {
+    "key": "8b gardening zone",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 79
+   },
+   {
+    "key": "8b growing zone",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "8b planting calendar",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 72
+   },
+   {
+    "key": "8b planting guide",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 75.5
+   },
+   {
+    "key": "8b planting schedule",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 71
+   },
+   {
+    "key": "8b planting zone",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 74
+   },
+   {
+    "key": "8b zone",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 64
+   },
+   {
+    "key": "8b zone planting guide",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 64
+   },
+   {
+    "key": "9a planting guide",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 57
+   },
+   {
+    "key": "9a planting schedule",
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 59.3
+   },
+   {
+    "key": "9a planting zone",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 69
+   },
+   {
+    "key": "9a zone planting schedule",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 53
+   },
+   {
+    "key": "9b planting calendar",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "9b planting guide",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 58
+   },
+   {
+    "key": "calendar zone",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 69
+   },
+   {
+    "key": "cold weather crops zone 6",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 59
+   },
+   {
+    "key": "cold weather crops zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 65
+   },
+   {
+    "key": "container vs raised bed",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 41.3
+   },
+   {
+    "key": "direct sow broccoli zone 6 may 24",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 52
+   },
+   {
+    "key": "fall garden planting schedule zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 56
+   },
+   {
+    "key": "fall garden zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 61
+   },
+   {
+    "key": "fall garden zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 65
+   },
+   {
+    "key": "fall gardening zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 57
+   },
+   {
+    "key": "fall gardening zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 51
+   },
+   {
+    "key": "fall planting for zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 57
+   },
+   {
+    "key": "fall planting guide zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 62
+   },
+   {
+    "key": "fall planting guide zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 70
+   },
+   {
+    "key": "fall planting guide zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 54
+   },
+   {
+    "key": "fall planting in zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 56
+   },
+   {
+    "key": "fall planting schedule zone 6",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 61
+   },
+   {
+    "key": "fall planting zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 73
+   },
+   {
+    "key": "fall planting zone 8",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 77.5
+   },
+   {
+    "key": "fall planting zone 8a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 56
+   },
+   {
+    "key": "fall planting zone 9",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 60
+   },
+   {
+    "key": "first frost zone 5b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 58
+   },
+   {
+    "key": "first frost zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 77
+   },
+   {
+    "key": "florida zone 10a planting guide",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "free vegetable planting calendar by zip code",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 47
+   },
+   {
+    "key": "frost date zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 70
+   },
+   {
+    "key": "frost dates for zone 8a",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 70
+   },
+   {
+    "key": "frost dates zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 58
+   },
+   {
+    "key": "garden calendar zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 52
+   },
+   {
+    "key": "garden zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 85
+   },
+   {
+    "key": "garden zone 8",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 82
+   },
+   {
+    "key": "garden zone 9",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 73
+   },
+   {
+    "key": "gardening calendar zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 62
+   },
+   {
+    "key": "gardening calendar zone 6",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 60.5
+   },
+   {
+    "key": "gardening calendar zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 60.5
+   },
+   {
+    "key": "gardening glossary",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 85
+   },
+   {
+    "key": "gardening in zone 4",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 83
+   },
+   {
+    "key": "gardening in zone 8",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 61.7
+   },
+   {
+    "key": "gardening in zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 83
+   },
+   {
+    "key": "gardening in zone 9",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 58
+   },
+   {
+    "key": "gardening terminology",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 91
+   },
+   {
+    "key": "gardening terminology for beginners",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 97
+   },
+   {
+    "key": "gardening terms",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 80
+   },
+   {
+    "key": "gardening terms for beginners",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 96
+   },
+   {
+    "key": "gardening zone 10",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 85
+   },
+   {
+    "key": "gardening zone 3",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 82.7
+   },
+   {
+    "key": "gardening zone 4",
+    "clicks": 0,
+    "impressions": 5,
+    "ctr": 0,
+    "position": 82.6
+   },
+   {
+    "key": "gardening zone 5",
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 69.5
+   },
+   {
+    "key": "gardening zone 5b",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 76
+   },
+   {
+    "key": "gardening zone 6",
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 79.8
+   },
+   {
+    "key": "gardening zone 8",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 78.7
+   },
+   {
+    "key": "gardening zone 9",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 80
+   },
+   {
+    "key": "grow zone 10",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 77
+   },
+   {
+    "key": "grow zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 65
+   },
+   {
+    "key": "grow zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 78
+   },
+   {
+    "key": "grow zone 7b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 70
+   },
+   {
+    "key": "grow zone 8",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 78
+   },
+   {
+    "key": "grow zone 8a",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 89
+   },
+   {
+    "key": "growing in zone 9",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 56
+   },
+   {
+    "key": "growing zone 10",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 85
+   },
+   {
+    "key": "growing zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 88
+   },
+   {
+    "key": "growing zone 5a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 73
+   },
+   {
+    "key": "growing zone 6",
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 80.3
+   },
+   {
+    "key": "growing zone 8",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 84
+   },
+   {
+    "key": "growing zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 60
+   },
+   {
+    "key": "growing zone 9",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "key": "hardiness zone 8a planting schedule",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "key": "hardiness zone 8b planting calendar",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 69
+   },
+   {
+    "key": "in zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 12
+   },
+   {
+    "key": "last frost date for zone 6",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "key": "last frost date zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "last frost date zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 76
+   },
+   {
+    "key": "last frost date zone 7",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 68.3
+   },
+   {
+    "key": "last frost zone 5",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 65.7
+   },
+   {
+    "key": "last frost zone 5b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 53
+   },
+   {
+    "key": "last frost zone 6",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 72
+   },
+   {
+    "key": "october zone",
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 71.8
+   },
+   {
+    "key": "plant in august zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 56
+   },
+   {
+    "key": "planting calendar for zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 57
+   },
+   {
+    "key": "planting calendar for zone 7b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 70
+   },
+   {
+    "key": "planting calendar for zone 8a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 80
+   },
+   {
+    "key": "planting calendar for zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 59
+   },
+   {
+    "key": "planting calendar zone 7",
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 66.8
+   },
+   {
+    "key": "planting calendar zone 7a",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 73.5
+   },
+   {
+    "key": "planting calendar zone 7b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 54
+   },
+   {
+    "key": "planting calendar zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "key": "planting calendar zone 9a",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 57.7
+   },
+   {
+    "key": "planting calendar zone 9b",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 62.5
+   },
+   {
+    "key": "planting chart for zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 62
+   },
+   {
+    "key": "planting chart zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 56
+   },
+   {
+    "key": "planting chart zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "planting chart zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 68.5
+   },
+   {
+    "key": "planting chart zone 8",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 61.7
+   },
+   {
+    "key": "planting dates for zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 60
+   },
+   {
+    "key": "planting dates zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 55
+   },
+   {
+    "key": "planting dates zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 77
+   },
+   {
+    "key": "planting guide for zone 5b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "key": "planting guide for zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "planting guide for zone 7b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 63
+   },
+   {
+    "key": "planting guide for zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 77
+   },
+   {
+    "key": "planting guide for zone 8a",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 85.3
+   },
+   {
+    "key": "planting guide for zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 73
+   },
+   {
+    "key": "planting guide for zone 9a",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 62.5
+   },
+   {
+    "key": "planting guide zone 10a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 84
+   },
+   {
+    "key": "planting guide zone 5",
+    "clicks": 0,
+    "impressions": 4,
+    "ctr": 0,
+    "position": 59.8
+   },
+   {
+    "key": "planting guide zone 5b",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 65
+   },
+   {
+    "key": "planting guide zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 61
+   },
+   {
+    "key": "planting guide zone 6b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 61
+   },
+   {
+    "key": "planting guide zone 7a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 62
+   },
+   {
+    "key": "planting guide zone 8",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "key": "planting guide zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 85
+   },
+   {
+    "key": "planting guide zone 9",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 62.3
+   },
+   {
+    "key": "planting guide zone 9b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 56
+   },
+   {
+    "key": "planting in zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "key": "planting in zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "planting in zone 8b",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 73
+   },
+   {
+    "key": "planting plan zone 7",
+    "clicks": 0,
+    "impressions": 7,
+    "ctr": 0,
+    "position": 65.3
+   },
+   {
+    "key": "planting schedule for zone 5b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "key": "planting schedule for zone 7b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 73
+   },
+   {
+    "key": "planting schedule for zone 9b",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 58.7
+   },
+   {
+    "key": "planting schedule zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "planting schedule zone 6",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "key": "planting schedule zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 62
+   },
+   {
+    "key": "planting schedule zone 8",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 67.7
+   },
+   {
+    "key": "planting schedule zone 8a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 71
+   },
+   {
+    "key": "planting zone 3",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 83.5
+   },
+   {
+    "key": "planting zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 87
+   },
+   {
+    "key": "planting zone 5a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 79
+   },
+   {
+    "key": "planting zone 5b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "planting zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 81
+   },
+   {
+    "key": "planting zone 6 schedule",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 62
+   },
+   {
+    "key": "planting zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 79.5
+   },
+   {
+    "key": "planting zone 7a schedule",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 61.5
+   },
+   {
+    "key": "planting zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 82
+   },
+   {
+    "key": "planting zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 76
+   },
+   {
+    "key": "pot vs ground",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 36
+   },
+   {
+    "key": "printable zone 5 planting schedule",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 62.7
+   },
+   {
+    "key": "printable zone 6 planting schedule",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 52.5
+   },
+   {
+    "key": "printable zone 7 planting schedule",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 56.5
+   },
+   {
+    "key": "printable zone 8 planting guide",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 59.5
+   },
+   {
+    "key": "raised bed vs container gardening",
+    "clicks": 0,
+    "impressions": 6,
+    "ctr": 0,
+    "position": 42
+   },
+   {
+    "key": "raised beds",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 1
+   },
+   {
+    "key": "raised beds vs containers",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 48
+   },
+   {
+    "key": "seed starting calendar zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "key": "seed starting calendar zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 64
+   },
+   {
+    "key": "seed starting guide zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 60
+   },
+   {
+    "key": "seed starting guide zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 70
+   },
+   {
+    "key": "seed starting schedule zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 64
+   },
+   {
+    "key": "succession planting chart zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 77
+   },
+   {
+    "key": "succession planting chart zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 76
+   },
+   {
+    "key": "vegetable planting guide by zone",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 47.5
+   },
+   {
+    "key": "vegetable planting guide zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 56
+   },
+   {
+    "key": "vegetable planting schedule zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 61
+   },
+   {
+    "key": "vegetable planting schedule zone 9",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 58.5
+   },
+   {
+    "key": "vegetables by hardiness zone",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 63
+   },
+   {
+    "key": "vegetables for zone 10a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "key": "vegetables for zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "key": "vegetables to plant in august zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 55
+   },
+   {
+    "key": "vegetables to plant in august zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 64
+   },
+   {
+    "key": "vegetables to plant in september zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 54
+   },
+   {
+    "key": "what can i plant in august zone 7",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 54.3
+   },
+   {
+    "key": "what can i plant in july zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 63
+   },
+   {
+    "key": "what can i plant in september zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 59.5
+   },
+   {
+    "key": "what can i plant now in zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 69
+   },
+   {
+    "key": "what can i plant now in zone 7b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "what is zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 75
+   },
+   {
+    "key": "what to plant in april zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 65
+   },
+   {
+    "key": "what to plant in august in zone 8",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 73.5
+   },
+   {
+    "key": "what to plant in august in zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "key": "what to plant in august zone 5b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 58
+   },
+   {
+    "key": "what to plant in august zone 6a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 64
+   },
+   {
+    "key": "what to plant in august zone 7a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 60
+   },
+   {
+    "key": "what to plant in august zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 84
+   },
+   {
+    "key": "what to plant in august zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 71
+   },
+   {
+    "key": "what to plant in fall zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 43
+   },
+   {
+    "key": "what to plant in february zone 9",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 53
+   },
+   {
+    "key": "what to plant in july in zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 59
+   },
+   {
+    "key": "what to plant in july zone 5",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 59
+   },
+   {
+    "key": "what to plant in july zone 5b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 60
+   },
+   {
+    "key": "what to plant in july zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 69
+   },
+   {
+    "key": "what to plant in july zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 61
+   },
+   {
+    "key": "what to plant in july zone 7b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 76
+   },
+   {
+    "key": "what to plant in june zone 8",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 63.5
+   },
+   {
+    "key": "what to plant in june zone 9",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 53
+   },
+   {
+    "key": "what to plant in march zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 63
+   },
+   {
+    "key": "what to plant in may zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 58
+   },
+   {
+    "key": "what to plant in november zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 59.5
+   },
+   {
+    "key": "what to plant in november zone 9",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 62
+   },
+   {
+    "key": "what to plant in october zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 62
+   },
+   {
+    "key": "what to plant in october zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 61
+   },
+   {
+    "key": "what to plant in september zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 63
+   },
+   {
+    "key": "what to plant in september zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 56
+   },
+   {
+    "key": "what to plant in september zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 61
+   },
+   {
+    "key": "what to plant in september zone 7b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 47
+   },
+   {
+    "key": "what to plant in september zone 8",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 60
+   },
+   {
+    "key": "what to plant in the fall zone 6",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 38.5
+   },
+   {
+    "key": "what to plant in zone 10a now",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 72
+   },
+   {
+    "key": "what to plant in zone 10b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   },
+   {
+    "key": "what to plant in zone 7b now",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 58
+   },
+   {
+    "key": "what to plant in zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 70
+   },
+   {
+    "key": "what to plant in zone 8a in august",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 83
+   },
+   {
+    "key": "what to plant in zone 8b in august",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 82
+   },
+   {
+    "key": "what to plant now in zone 10a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "key": "what to plant now in zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 56
+   },
+   {
+    "key": "what to plant now in zone 6a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 57
+   },
+   {
+    "key": "what to plant now in zone 7a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "key": "what to plant now in zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 69
+   },
+   {
+    "key": "what to plant now in zone 9",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 53
+   },
+   {
+    "key": "what to plant now in zone 9a",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 54
+   },
+   {
+    "key": "what to plant now zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 60
+   },
+   {
+    "key": "what to plant now zone 9b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 44
+   },
+   {
+    "key": "what to plant right now in zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "key": "when to plant beans in zone 6",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "key": "when to plant beans in zone 8a",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 74.5
+   },
+   {
+    "key": "when to plant beans in zone 8b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 68
+   },
+   {
+    "key": "when to plant beans in zone 9b",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 67
+   },
+   {
+    "key": "when to plant beans zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 64
+   },
+   {
+    "key": "when to plant carrots zone 9",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 65
+   },
+   {
+    "key": "when to plant cover crops zone 5",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 79
+   },
+   {
+    "key": "when to plant cover crops zone 8",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 75
+   },
+   {
+    "key": "when to plant cucumbers in zone 9",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 50
+   },
+   {
+    "key": "when to plant fall crops in zone 7",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 52.5
+   },
+   {
+    "key": "when to plant fall lettuce zone 7",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 66
+   }
+  ],
+  "pages": [
+   {
+    "key": "https://howtostartavegetablegarden.com/planting-calendar/zone-10/",
+    "clicks": 1,
+    "impressions": 130,
+    "ctr": 0.8,
+    "position": 59.3
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/planting-calendar/zone-3/",
+    "clicks": 1,
+    "impressions": 48,
+    "ctr": 2.1,
+    "position": 39.9
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/planting-calendar/zone-5/",
+    "clicks": 1,
+    "impressions": 255,
+    "ctr": 0.4,
+    "position": 58.7
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/planting-calendar/zone-8/",
+    "clicks": 1,
+    "impressions": 293,
+    "ctr": 0.3,
+    "position": 64.6
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/",
+    "clicks": 0,
+    "impressions": 11,
+    "ctr": 0,
+    "position": 5.5
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/about/",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 7
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/contact/",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 8
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/easiest-vegetables-for-beginners/",
+    "clicks": 0,
+    "impressions": 5,
+    "ctr": 0,
+    "position": 19.4
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/glossary/",
+    "clicks": 0,
+    "impressions": 23,
+    "ctr": 0,
+    "position": 56.7
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/planting-calendar/",
+    "clicks": 0,
+    "impressions": 44,
+    "ctr": 0,
+    "position": 49.5
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/planting-calendar/zone-4/",
+    "clicks": 0,
+    "impressions": 80,
+    "ctr": 0,
+    "position": 68.9
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/planting-calendar/zone-6/",
+    "clicks": 0,
+    "impressions": 258,
+    "ctr": 0,
+    "position": 56.8
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/planting-calendar/zone-7/",
+    "clicks": 0,
+    "impressions": 279,
+    "ctr": 0,
+    "position": 58.4
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/planting-calendar/zone-9/",
+    "clicks": 0,
+    "impressions": 208,
+    "ctr": 0,
+    "position": 55.1
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/privacy-policy/",
+    "clicks": 0,
+    "impressions": 7,
+    "ctr": 0,
+    "position": 19.4
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/raised-beds-vs-containers-vs-in-ground/",
+    "clicks": 0,
+    "impressions": 24,
+    "ctr": 0,
+    "position": 38.4
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/resources/",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 4
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/starting-seeds-indoors/",
+    "clicks": 0,
+    "impressions": 8,
+    "ctr": 0,
+    "position": 9.3
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/terms-of-service/",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 9
+   }
+  ]
+ },
+ "bing": {
+  "note": "Bing buckets query/page stats by week; the window is approximate to the week. AI citation (Copilot) numbers are not in the Bing API.",
+  "totals": {
+   "clicks": 0,
+   "impressions": 1461
+  },
+  "queries": [
+   {
+    "key": "how to start a vegetable garden",
+    "clicks": 0,
+    "impressions": 1448,
+    "ctr": 0,
+    "position": 6.4
+   },
+   {
+    "key": "how to start a vegetable garden in spring",
+    "clicks": 0,
+    "impressions": 5,
+    "ctr": 0,
+    "position": 6
+   },
+   {
+    "key": "how to start a veget",
+    "clicks": 0,
+    "impressions": 2,
+    "ctr": 0,
+    "position": 10
+   },
+   {
+    "key": "top ten terms used in vegetable gardening",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 2
+   },
+   {
+    "key": "usda spring vegetable growth calendar and soil condition guide",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 5
+   },
+   {
+    "key": "usda planting zones crop calendar vegetables",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 7
+   },
+   {
+    "key": "usda september winter vegetable seed variety broccoli kale suitable temperature light requirements",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 5
+   },
+   {
+    "key": "starting a vegetable garden guide",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 4
+   }
+  ],
+  "pages": [
+   {
+    "key": "https://howtostartavegetablegarden.com/",
+    "clicks": 0,
+    "impressions": 1456,
+    "ctr": 0,
+    "position": 6.4
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/planting-calendar/",
+    "clicks": 0,
+    "impressions": 3,
+    "ctr": 0,
+    "position": 6
+   },
+   {
+    "key": "https://howtostartavegetablegarden.com/glossary/",
+    "clicks": 0,
+    "impressions": 1,
+    "ctr": 0,
+    "position": 2
+   }
+  ]
+ },
+ "page_health": [
+  {
+   "path": "/",
+   "status": 200,
+   "title_len": 64,
+   "meta_len": 143,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 10,
+   "words": 3709,
+   "title": "How to Start a Vegetable Garden: A Beginner's Step-by-Step Guide"
+  },
+  {
+   "path": "/about/",
+   "status": 200,
+   "title_len": 15,
+   "meta_len": 140,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 0,
+   "words": 1024,
+   "title": "About This Site"
+  },
+  {
+   "path": "/contact/",
+   "status": 200,
+   "title_len": 7,
+   "meta_len": 112,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 0,
+   "words": 419,
+   "title": "Contact"
+  },
+  {
+   "path": "/easiest-vegetables-for-beginners/",
+   "status": 200,
+   "title_len": 56,
+   "meta_len": 140,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 6,
+   "words": 2094,
+   "title": "The 10 Easiest Vegetables to Grow for Beginners (Ranked)"
+  },
+  {
+   "path": "/glossary/",
+   "status": 200,
+   "title_len": 55,
+   "meta_len": 140,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 0,
+   "words": 1689,
+   "title": "Vegetable Gardening Glossary: 25 Terms in Plain English"
+  },
+  {
+   "path": "/planting-calendar/",
+   "status": 200,
+   "title_len": 47,
+   "meta_len": 130,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 8,
+   "words": 1778,
+   "title": "Vegetable Planting Calendar by USDA Zone (3-10)"
+  },
+  {
+   "path": "/planting-calendar/zone-3/",
+   "status": 200,
+   "title_len": 55,
+   "meta_len": 133,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 10,
+   "words": 2848,
+   "title": "Zone 3 Planting Calendar (3a & 3b): Printable, by Month"
+  },
+  {
+   "path": "/planting-calendar/zone-4/",
+   "status": 200,
+   "title_len": 55,
+   "meta_len": 133,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 10,
+   "words": 2926,
+   "title": "Zone 4 Planting Calendar (4a & 4b): Printable, by Month"
+  },
+  {
+   "path": "/planting-calendar/zone-5/",
+   "status": 200,
+   "title_len": 55,
+   "meta_len": 133,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 10,
+   "words": 2945,
+   "title": "Zone 5 Planting Calendar (5a & 5b): Printable, by Month"
+  },
+  {
+   "path": "/planting-calendar/zone-6/",
+   "status": 200,
+   "title_len": 55,
+   "meta_len": 133,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 10,
+   "words": 2938,
+   "title": "Zone 6 Planting Calendar (6a & 6b): Printable, by Month"
+  },
+  {
+   "path": "/planting-calendar/zone-7/",
+   "status": 200,
+   "title_len": 55,
+   "meta_len": 133,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 10,
+   "words": 2933,
+   "title": "Zone 7 Planting Calendar (7a & 7b): Printable, by Month"
+  },
+  {
+   "path": "/planting-calendar/zone-8/",
+   "status": 200,
+   "title_len": 55,
+   "meta_len": 133,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 10,
+   "words": 3076,
+   "title": "Zone 8 Planting Calendar (8a & 8b): Printable, by Month"
+  },
+  {
+   "path": "/planting-calendar/zone-9/",
+   "status": 200,
+   "title_len": 55,
+   "meta_len": 133,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 10,
+   "words": 3143,
+   "title": "Zone 9 Planting Calendar (9a & 9b): Printable, by Month"
+  },
+  {
+   "path": "/planting-calendar/zone-10/",
+   "status": 200,
+   "title_len": 58,
+   "meta_len": 137,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 10,
+   "words": 3204,
+   "title": "Zone 10 Planting Calendar (10a & 10b): Printable, by Month"
+  },
+  {
+   "path": "/privacy-policy/",
+   "status": 200,
+   "title_len": 14,
+   "meta_len": 158,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 0,
+   "words": 1033,
+   "title": "Privacy Policy"
+  },
+  {
+   "path": "/raised-beds-vs-containers-vs-in-ground/",
+   "status": 200,
+   "title_len": 53,
+   "meta_len": 147,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 7,
+   "words": 1959,
+   "title": "Raised Beds vs Containers vs In-Ground: Which to Pick"
+  },
+  {
+   "path": "/resources/",
+   "status": 200,
+   "title_len": 53,
+   "meta_len": 151,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 0,
+   "words": 1492,
+   "title": "Gardening Resources: Tools, Seed, Apps and Local Help"
+  },
+  {
+   "path": "/starting-seeds-indoors/",
+   "status": 200,
+   "title_len": 61,
+   "meta_len": 131,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 7,
+   "words": 2003,
+   "title": "Starting Seeds Indoors: Timeline, Equipment and Hardening Off"
+  },
+  {
+   "path": "/terms-of-service/",
+   "status": 200,
+   "title_len": 16,
+   "meta_len": 124,
+   "h1": 1,
+   "canonical_ok": true,
+   "noindex": false,
+   "faq_questions": 0,
+   "words": 765,
+   "title": "Terms of Service"
+  }
+ ]
+}

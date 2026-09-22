@@ -1,0 +1,33 @@
+{
+  "site": "howtostartavegetablegarden.com",
+  "gsc_property": "sc-domain:howtostartavegetablegarden.com",
+  "out_dir": "docs/seo",
+  "strategy": "Evergreen beginner vegetable-gardening resource, US market, anonymous. The planting calendar and 8 USDA zone pages (one data source) are the differentiator. Targets Google snippets and AI Overviews. Revenue: AdSense Auto ads; affiliate links built but not live.",
+  "rules_file": "CLAUDE.md",
+  "hard_rules": [
+    "MEASUREMENT WINDOWS ARE OPEN. Read the newest briefs/ files: zone-pages v2 (checks 2026-09-28 and 2026-10-26) and author-box. Their control pages (glossary, resources, the 3 spoke guides, homepage) must not be edited until the windows close, and edits to the zone pages would contaminate the test. Until then, propose only new pages (the 7 deferred spokes in PROJECT-STATUS.md) or site-wide fixes the analyst has not ruled out, and say which window each task touches.",
+    "All planting dates, spacings and depths come from src/data/zones.json + crops.json. Never hardcode one in a page.",
+    "Prose lives in content collections (src/content/guides/*.mdx, src/content/pages/*.md). Every guide opens with a direct answer box whose first two sentences fully answer the H1.",
+    "A new guide also goes into GUIDE_LINKS in src/lib/site.ts. Trailing slashes on every internal link.",
+    "'Last updated' dates are computed; never type one. Mechanical commits carry [skip-date].",
+    "The site never mentions AI, Claude or how pages are produced. No author personas. Never reintroduce the 'no cookies' claim.",
+    "The analyst project (chat Claude) owns PROJECT-STATUS.md and writes briefs/. Don't rewrite its analysis; log shipped work in CLAUDE.md and add a line to PROJECT-STATUS.md."
+  ],
+  "ai_keywords": [
+    "how to start a vegetable garden",
+    "when to plant vegetables by zone",
+    "vegetable planting calendar",
+    "raised bed vegetable garden for beginners",
+    "how much does it cost to start a vegetable garden"
+  ],
+  "competitors": [
+    "almanac.com",
+    "gardeningknowhow.com",
+    "homesandgardens.com",
+    "bhg.com",
+    "biologyinsights.com"
+  ],
+  "content": "Guides in src/content/guides/*.mdx, pages in src/content/pages/*.md, data in src/data/.",
+  "deploy": "git fetch first, then git push (the pre-push hook builds and deploys). Then node scripts/indexnow.mjs.",
+  "log": "Update CLAUDE.md (technical truth) and add a dated line to PROJECT-STATUS.md."
+}

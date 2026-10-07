@@ -1,6 +1,6 @@
 # howtostartavegetablegarden.com — status
 
-**Last updated:** 2026-09-14 · **Status:** live, 20 pages, first AI Overview citation observed; zone-pages v2 deployed 2026-09-14, checks due Sep 28 and Oct 26
+**Last updated:** 2026-10-07 · **Status:** live, 20 pages, first AI Overview citation observed; zone-pages v2 deployed 2026-09-14, +14-day check done on 2026-10-07 (`docs/seo/2026-09-28-zone-v2-check.md`: zone-page impressions halved, control pages fell 44% too, image impressions still 0); +42-day verdict due 2026-10-26 (board reminder). Session closed 2026-10-07: nothing waiting on Franck except the AdSense status on 2026-10-12
 
 - **Live:** https://howtostartavegetablegarden.com (apex + www, valid SSL)
 - **Repo:** https://github.com/franckj/howtostartavegetablegarden (branch `main`)

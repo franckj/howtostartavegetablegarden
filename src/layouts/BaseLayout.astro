@@ -147,7 +147,7 @@ const graph = [
         function (i) {
           plausible.o = i || {};
         };
-      plausible.init();
+      plausible.init({ autoCapturePageviews: false }); // page views: Cloudflare Web Analytics; Plausible keeps the events (ops plausible/README.md)
     </script>
   </head>
   <body>

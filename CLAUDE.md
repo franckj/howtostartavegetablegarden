@@ -24,6 +24,7 @@ starting work; it names the acceptance checks and the control pages that must no
 - **v1 shipped:** 2026-07-30 — 18 routes
 - **Fact-check pass 1:** 2026-07-31 — calendar dataset corrected against extension sources
 - **Succession sowing:** 2026-07-31 — repeating sowing runs; fixed the empty-month defect
+- **Analytics:** page views to Cloudflare Web Analytics, Plausible keeps the events (`plausible.init({ autoCapturePageviews: false })`); prepared 2026-10-24, live with the deploy in ops `plausible/README.md`
 - Domain registered 2026-07-29 at Spaceship, zone `503472023b8afc3b3d7470e0db12a766` in the
   Cloudflare **Templatery** account (`caaea080dc96ef6541c3f5091718fe1e`)
 

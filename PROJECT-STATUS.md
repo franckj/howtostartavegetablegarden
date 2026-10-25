@@ -95,7 +95,7 @@ still not live; the disclosure mechanism is built and waiting for real programme
 ## Traction markers
 
 Impressions in GSC for the exact-match query within 3–7 days. AI citations typically lag
-indexing by 2–6 weeks — watch Plausible for `perplexity.ai` and `chatgpt.com` referrers. Two
+indexing by 2–6 weeks — watch Cloudflare Web Analytics (Plausible until 2026-10-25) for `perplexity.ai` and `chatgpt.com` referrers. Two
 pages were indexed within ~36 hours of launch. **Observed:** first Google AIO citation at ~6.5
 weeks (zone page); Copilot citations from week 5 (homepage). Neither has produced a referral
 visit yet.

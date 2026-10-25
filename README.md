@@ -61,7 +61,7 @@ src/
   content.config.ts        collection schemas (Zod) — the contract for a new page
   components/              AnswerBox, Toc, Faq, NextSteps, Breadcrumbs, CalendarTool,
                            and three tables generated from crops.json
-  layouts/BaseLayout.astro meta, OG, JSON-LD @graph, header, footer, Plausible
+  layouts/BaseLayout.astro meta, OG, JSON-LD @graph, header, footer, events counter
 ```
 
 **All planting dates derive from `zones.json` + `crops.json`.** Nothing is hardcoded in a

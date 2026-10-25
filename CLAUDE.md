@@ -24,7 +24,7 @@ starting work; it names the acceptance checks and the control pages that must no
 - **v1 shipped:** 2026-07-30 — 18 routes
 - **Fact-check pass 1:** 2026-07-31 — calendar dataset corrected against extension sources
 - **Succession sowing:** 2026-07-31 — repeating sowing runs; fixed the empty-month defect
-- **Analytics:** page views to Cloudflare Web Analytics, Plausible keeps the events (`plausible.init({ autoCapturePageviews: false })`); prepared 2026-10-24, live with the deploy in ops `plausible/README.md`
+- **Analytics:** page views to Cloudflare Web Analytics; events to our cookie-free counter `https://e.franckj.com/s.js` (ops `events/README.md`), which replaced Plausible on 2026-10-25
 - Domain registered 2026-07-29 at Spaceship, zone `503472023b8afc3b3d7470e0db12a766` in the
   Cloudflare **Templatery** account (`caaea080dc96ef6541c3f5091718fe1e`)
 
@@ -72,7 +72,7 @@ After a meaningful content change: `node scripts/indexnow.mjs` (key file already
 `SITE.adsensePublisherId` in `src/lib/site.ts` and renders from `BaseLayout.astro` — set that
 string to `''` to pull the tag sitewide. Two deliberate details:
 
-- **`is:inline` is required**, same reason as Plausible: Astro would otherwise bundle it as a
+- **`is:inline` is required**, same reason as the events counter's tags: Astro would otherwise bundle it as a
   module and Google's review crawler would not find the tag it looks for.
 - **Not emitted on `noindex` pages** (the 404), so only the 19 indexable routes carry it.
 
@@ -108,20 +108,25 @@ disclosure above the links, which is how it renders.
 
 ## Analytics
 
-Plausible, new `pa-*` script format (`SITE.plausibleScript` in `src/lib/site.ts`), verified
-sending on 2026-07-30: `POST https://plausible.io/api/event` -> 202, domain
-`howtostartavegetablegarden.com`, pageview + engagement events.
+**Events go to our own cookie-free counter** (ops `events/README.md`), which replaced Plausible on
+2026-10-25 (Franck's "go and deploy"). `BaseLayout.astro` carries two tags in `<head>`, on every
+page: an inline queue stub (`window.plausible` / `window.events`), then
+`<script defer data-no-forms src="https://e.franckj.com/s.js">`. The site sends no custom events:
+the counter records clicks to other sites (`Outbound Link: Click`, with the URL) and file downloads
+by itself; `data-no-forms` keeps form submissions out. Page views: Cloudflare Web Analytics.
 
 Two gotchas, both already handled:
 
-- **Both script tags need `is:inline`.** Without it Astro bundles the queue shim as a module,
-  which defers it past the async script and `plausible.init()` never seeds `plausible.o`.
-- **Plausible silently drops events when `navigator.webdriver` is true** — so Playwright and
-  any headless check will see the script load and *no* event. Its own escape hatch is
-  `window.__plausible = true` via an init script. A silent verification run is not a failure.
+- **Both script tags need `is:inline`, stub first.** Without it Astro bundles the stub as a
+  deferred module instead of a classic script that runs at once, ahead of the tracker.
+- **The counter skips automated browsers (`navigator.webdriver`)** — so Playwright and any
+  headless check will see the script load and *no* event. Its escape hatch is
+  `window.__eventsTest = true` via an init script. A silent verification run is not a failure.
+  `scripts/check-calendar.mjs` blocks `e.franckj.com` with the ad hosts anyway.
 
-Plausible itself sets no cookies. The site as a whole is **not** cookie-free since AdSense
-(see Ads and affiliate links) — consent for EEA/UK/CH readers is handled by Google's CMP.
+The counter sets no cookies and stores nothing in the browser. The site as a whole is **not**
+cookie-free since AdSense (see Ads and affiliate links) — consent for EEA/UK/CH readers is handled
+by Google's CMP.
 
 ## Content accuracy — what pass 1 established
 

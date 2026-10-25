@@ -6,7 +6,7 @@
 - **Repo:** https://github.com/franckj/howtostartavegetablegarden (branch `main`)
 - **Host:** Cloudflare Pages project `howtostartavegetablegarden`, Templatery account
 - **Domain:** registered 2026-07-29 at Spaceship, zone on Cloudflare
-- **Analytics:** Plausible, verified sending
+- **Analytics:** page views: Cloudflare Web Analytics; events: our cookie-free counter (since 2026-10-25, replaced Plausible; ops `events/README.md`)
 
 Technical detail lives in `CLAUDE.md`. This file is the status summary.
 

@@ -19,9 +19,7 @@ This policy explains what HowToStartaVegetableGarden.com collects when you read 
 
 ## What is collected
 
-**Aggregate analytics.** We use Cloudflare Web Analytics to see which pages get read and roughly where readers come from, and [Plausible Analytics](https://plausible.io/) for clicks on links to other sites. Both are cookieless. Plausible does not use cookies, does not collect or store personal data, and does not track you across websites or over time. It records aggregate counts only: page URL, referrer, browser and operating system, device type, and country — all derived without a persistent identifier.
-
-Plausible processes and stores its data on servers in the European Union. You can read the details in the [Plausible data policy](https://plausible.io/data-policy).
+**Aggregate analytics.** We use Cloudflare Web Analytics to see which pages get read and roughly where readers come from, and a small event counter we run on Cloudflare for clicks on links to other sites. Both are cookieless. The event counter keeps the action, the page, the site that sent you and your country, never your IP address, and cannot identify you. It stores nothing in your browser and does not track you across websites or over time.
 
 **Server logs.** The site is hosted on Cloudflare Pages. Like any web host, Cloudflare processes technical request data — including IP address — to serve pages and protect against abuse. This is standard infrastructure logging, retained by Cloudflare under its own policies, and it is not used by us for analytics or profiling. See the [Cloudflare privacy policy](https://www.cloudflare.com/privacypolicy/).
 

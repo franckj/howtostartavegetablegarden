@@ -42,7 +42,7 @@ const key = (r) => `${r.crop} | ${r.action} | ${r.window}`;
 const browser = await chromium.launch({ executablePath: findChrome() });
 const page = await browser.newPage();
 // Keep third-party scripts (ads, analytics) out of the comparison run.
-await page.route(/googlesyndication|doubleclick|plausible\.io|fundingchoices/, (r) => r.abort());
+await page.route(/googlesyndication|doubleclick|e\.franckj\.com|fundingchoices/, (r) => r.abort());
 
 // Display helpers only — mirrors formatDay/monthOf in calendar.ts so the chart
 // model's day numbers can be compared with the text on the page.

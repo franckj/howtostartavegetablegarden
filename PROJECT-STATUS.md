@@ -191,3 +191,5 @@ Needs Franck: headshot, optional potager photo + year, confirmation of the autho
 - Earliest sensible launch: Jan–Feb 2027, into the spring wave
 - Expand PDF→interactive trigger: PDF download rate + any organic shares/mentions
 - Blueprint note: "checklist-ification of pillar + share card" is model-generalizable
+
+- 2026-10-26: zone pages v2 +42-day verdict written, `docs/seo/2026-10-26-zone-v2-verdict.md`. P1 hit (2,257 image impressions), P2/P4/P5 missed, P3/P6 not measurable. Measurement window closed.

@@ -21,7 +21,7 @@ reply. Edit it here only; a copy edited in a repo is overwritten the next mornin
 8. **Anything to paste is complete and in its own code block**; when he copies a command and a key, the command step comes first (one clipboard).
 9. **Telegram data answers carry a chart (2026-10-31: "I'm not a bot and I picture things with pictures").**
 10. Direct, no fluff, lead with the action. Async only: no calls.
-10b. **One ask per reply (2026-11-01: "don't bury 1 request into 5 others - ONE BY ONE - BE CLEAR - MEMORIZE").** Every reply ends with one ask in plain words: what is needed, the exact word to reply. Other open items wait for the next turn; Claude keeps the list.
+10b. **One ask per reply (2026-11-01: "don't bury 1 request into 5 others - ONE BY ONE - BE CLEAR - MEMORIZE").** Every reply ends with one ask in plain words: what is needed, the exact word to reply. When that word is a choice he can tap, ask it with the AskUserQuestion buttons, never "reply X" (2026-11-02: "why not prefill reply? already asked for it dozens of time"). Other open items wait for the next turn; Claude keeps the list.
 
 ## Facts
 
@@ -30,7 +30,7 @@ reply. Edit it here only; a copy edited in a repo is overwritten the next mornin
 
 ## Work
 
-13. **Work counts once it is in the default branch (2026-11-01: "this should be definitely stopped", "this concerns all projects and repos").** Timers, routines and local sessions read the default branch only. A session that leaves work on its own branch says so at the end of its reply (rule 1) with the word needed. Anything it could not finish goes in the repo as "Not done, blocked", with who unblocks it. The supervisor alerts daily on branches holding unmerged work.
+13. **Work counts once it is in the default branch (2026-11-01: "this should be definitely stopped", "this concerns all projects and repos").** Timers, routines and local sessions read the default branch only. A session that leaves work on its own branch says so at the end of its reply (rule 1) with the word needed. Anything it could not finish goes in the repo as "Not done, blocked", with who unblocks it. Branches are Claude's job, never Franck's (2026-11-02: "I don't fucking care of this, your job"): the supervisor lists them as notes in STATUS.md, nothing goes to Telegram, and a session clears them without asking: docs-only work goes to the default branch (no [deploy]), dead work goes in `stranded_ignore` with its reason. Only code that would ship needs his word.
 13b. **A fact goes where it will be read, the same turn (Franck, 2026-11-01: "I'm really fed up with things lost everywhere").** A confirmation, a reply or a decision lands in BA-STATE.md (top entry), the person's or client's file (`people/`, `clients/`, `clients/CLIENTS.md`) and the plan line in `strategy/` that tracks it, all in one push to main. A task file, a session add-on or a daily brief is never the only place. Cause: Josh's Member Monday confirmation (2026-10-29) sat only in a task file, so three daily briefs kept it as "waiting".
 14. **Notes go to ops `INBOX.md` (2026-10-30)**, one line, marked done when acted on.
 15. **Every next step names its owner**: Franck, or the authorization Claude needs.

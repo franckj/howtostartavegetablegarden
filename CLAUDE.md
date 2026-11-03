@@ -38,6 +38,8 @@ reply. Edit it here only; a copy edited in a repo is overwritten the next mornin
 
 - **Reviews of what is due (Franck, 2026-11-01: "that's how I want to run all review").** Sweep every source first, the project board included. One short numbered list, then one item per message with a one-tap choice: Now / Later / Delete. Skip what is not due yet. Decide low-value reminders yourself. His own tasks come last. Never raise domain renewals.
 
+- **Client reports (Franck, 2026-11-02).** Claude never sends one: Franck reviews and replies himself. Free check drafts give him 3 to 6 confirmed issues to pick from, a warm thank-you opening, and if-then fixes when the client's goal is in doubt.
+
 <!-- how-franck-works:end -->
 
 

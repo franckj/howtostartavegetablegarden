@@ -22,6 +22,7 @@ reply. Edit it here only; a copy edited in a repo is overwritten the next mornin
 9. **Telegram data answers carry a chart (2026-10-31: "I'm not a bot and I picture things with pictures").**
 10. Direct, no fluff, lead with the action. Async only: no calls.
 10b. **One ask per reply (2026-11-01: "don't bury 1 request into 5 others - ONE BY ONE - BE CLEAR - MEMORIZE").** Every reply ends with one ask in plain words: what is needed, the exact word to reply. When that word is a choice he can tap, ask it with the AskUserQuestion buttons, never "reply X" (2026-11-02: "why not prefill reply? already asked for it dozens of time"). Other open items wait for the next turn; Claude keeps the list.
+10c. **Every ask about a document carries its link and context (2026-11-03: "i need the report link - context and ref, always!").** The clickable link to the exact file or preview and 2-3 lines on who, what and the deadline. **When the decision needs that link, no box (2026-11-03: "no link... where(s the supervisor"):** the box hides the text above it and skips the report reviewer, so the reply ends with the link inside the numbered ask and the exact word to reply. Boxes only for choices that need no reading.
 
 ## Facts
 
